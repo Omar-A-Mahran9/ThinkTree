@@ -21,25 +21,31 @@ class Role extends Model
     ];
 
     public static $modules = [
-        'blogs',
         'admins',
+        'whyus',
+        'ourlevels',
+        'contact_us',
+        'cities',
+
         'customers',
         'customersRate',
-        'vendors',
-        'partener',
-        'awards',
-        'gallary',
-        'roles',
-        'addonService', 
-        'tags',
-        'cities',
-        'offers',
-        'products',
-        'newsletter',
-        'contact_us',
+
         'settings',
-        'orders',
-        'sliders',
+        'roles',
+      
+        // 'vendors',
+        // 'partener',
+        // 'awards',
+        // 'gallary',
+     
+        // 'addonService', 
+        // 'tags',
+        // 'offers',
+        // 'products',
+        // 'newsletter',
+        
+        // 'orders',
+        // 'sliders',
     ];
 
     protected static function booted()

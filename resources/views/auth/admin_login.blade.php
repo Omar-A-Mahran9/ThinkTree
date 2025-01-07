@@ -1,22 +1,10 @@
 <!DOCTYPE html>
-<!--
-Author: Keenthemes
-Product Name: Metronic
-Product Version: 8.2.0
-Purchase: https://1.envato.market/EA4JP
-Website: http://www.keenthemes.com
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html>
-<!--begin::Head-->
 
 <head>
     <base href="../../../" />
-    <title>{{ __('Tawasol-Technology') }}</title>
+    <title>{{ __('ThinkTree') }}</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -28,7 +16,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:title"
         content="Metronic - Bootstrap Admin Template, HTML, VueJS, React, Angular. Laravel, Asp.Net Core, Ruby on Rails, Spring Boot, Blazor, Django, Express.js, Node.js, Flask Admin Dashboard Theme & Template" />
     <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Tawasol-Technology" />
+    <meta property="og:site_name" content="ThinkTree" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
     <link rel="shortcut icon" href="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
@@ -83,7 +71,7 @@ License: For each use you must have a valid license purchased only from above li
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
-    <div class="d-flex flex-column flex-root" id="kt_app_root">
+    <div class="d-flex flex-column flex-root " id="kt_app_root">
 
 
         <!--begin::Authentication - Sign-in -->
@@ -122,8 +110,9 @@ License: For each use you must have a valid license purchased only from above li
                                         placeholder="{{ __('Email') }}" name="email" id="email_inp"
                                         autocomplete="off" />
 
+
                                     <!-- Email Icon Inside Input -->
-                                    <span class="position-absolute top-50 start-0 translate-middle-y ms-3">
+                                    {{-- <span class="position-absolute top-50 start-0 translate-middle-y  ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none">
                                             <path
@@ -135,7 +124,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 stroke="#6E7079" stroke-width="1.5" stroke-linecap="round"
                                                 stroke-linejoin="round" />
                                         </svg>
-                                    </span>
+                                    </span> --}}
                                     <!--end::Icon-->
                                 </div>
                                 <!--end::Input wrapper-->
@@ -156,7 +145,7 @@ License: For each use you must have a valid license purchased only from above li
                                         id="password_inp" />
 
                                     <!-- Password Icon Inside Input -->
-                                    <span class="position-absolute top-50 start-0 translate-middle-y ms-3">
+                                    {{-- <span class="position-absolute top-50 start-0 translate-middle-y ms-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20"
                                             viewBox="0 0 18 20" fill="none">
                                             <path
@@ -170,7 +159,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <path d="M8.86328 12.2026V14.4236" stroke="#130F26" stroke-width="1.5"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
-                                    </span>
+                                    </span> --}}
 
                                     <!--begin::Visibility toggle-->
                                     <span
@@ -253,3 +242,27 @@ License: For each use you must have a valid license purchased only from above li
 <!--end::Body-->
 
 </html>
+<style>
+    #kt_app_root {
+        position: relative;
+        /* Set relative positioning to contain the pseudo-element */
+        overflow: hidden;
+        /* Ensures no part of the background image exceeds container boundaries */
+    }
+
+    #kt_app_root::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{{ asset('placeholder_images/back.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(4px);
+        z-index: -1;
+        /* Ensures the background stays behind the content */
+    }
+</style>

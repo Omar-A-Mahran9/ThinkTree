@@ -12,7 +12,7 @@ class City extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
-    protected $appends = ['name'];
+    protected $appends = [ 'name', 'full_image_path' ];
     protected $casts = [
         'created_at' => 'date:Y-m-d',
         'updated_at' => 'date:Y-m-d',
@@ -25,11 +25,13 @@ class City extends Model
     {
         static::addGlobalScope(new SortingScope);
     }
-
- 
- 
     public function getNameAttribute()
     {
         return $this->attributes['name_' . app()->getLocale()];
+    }
+
+    public function getFullImagePathAttribute()
+    {
+        return asset(getImagePathFromDirectory($this->image, 'city', "default.svg"));
     }
 }

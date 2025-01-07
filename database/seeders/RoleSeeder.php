@@ -32,10 +32,8 @@ class RoleSeeder extends Seeder
         // indices of unused actions from the above array
         $exceptions = [
             'settings' => ['unused_actions' => [1, 2, 4], 'extra_actions' => []], // 1,2,4 are the indices of unused action from $actions array
-            'recycle_bin' => ['unused_actions' => [1, 2, 3], 'extra_actions' => ['restore']],
-            'contact_us' => ['unused_actions' => [1, 2, 4], 'extra_actions' => []],
-            'customers' => ['unused_actions' => [1, 2, 4], 'extra_actions' => ['block']],
-        ];
+             'contact_us' => ['unused_actions' => [1, 2, 4], 'extra_actions' => []],
+         ];
 
 
         foreach ($categories as $category)

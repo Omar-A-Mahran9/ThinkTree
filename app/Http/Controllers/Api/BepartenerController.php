@@ -9,7 +9,7 @@ use App\Models\PaymentData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class BepartenerController extends Controller
+class BeWhyUsController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -13,13 +13,13 @@ class CityController extends Controller
     public function index(Request $request)
     {
         $count_cities = City::count(); // Get the count of blogs
-        $visited_site=10000;
+  
         $this->authorize('view_cities');
 
         if ($request->ajax())
             return response(getModelData(model: new City()));
         else
-            return view('dashboard.cities.index',compact('count_cities','visited_site'));
+            return view('dashboard.cities.index',compact('count_cities' ));
     }
 
     public function store(StoreCityRequest $request)

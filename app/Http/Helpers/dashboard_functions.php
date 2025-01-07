@@ -39,7 +39,7 @@ if (!function_exists('uploadImageToDirectory')) {
         $model     = Str::plural($model);
         $model     = Str::ucfirst($model);
         $path      = "/Images/$model";
-        $imageName = str_replace(' ', '', 'twasol_' . time() . $imageFile->getClientOriginalName());  // Set Image name
+        $imageName = str_replace(' ', '', 'ThinkTree_' . time() . $imageFile->getClientOriginalName());  // Set Image name
         $imageFile->storeAs($path, $imageName, 'public');
         return $imageName;
     }

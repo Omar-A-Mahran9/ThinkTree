@@ -25,7 +25,6 @@ var KTDatatablesServerSide = (function () {
                 { data: "id" },
                 { data: "name" },
                 { data: "phone" },
-                { data: "email" },
                 { data: "message" },
                 // { data: "reply" },
                 { data: "created_at" },
@@ -56,23 +55,9 @@ var KTDatatablesServerSide = (function () {
                         `;
                     },
                 },
+
                 {
                     targets: 2,
-                    render: function (data, type, row) {
-                        return `
-                            <div class="d-flex align-items-center">
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
- 
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.email}</a>
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                        `;
-                    },
-                },
-                {
-                    targets: 3,
                     render: function (data, type, row) {
                         return `
                             <div class="d-flex align-items-center">
@@ -86,7 +71,7 @@ var KTDatatablesServerSide = (function () {
                     },
                 },
                 {
-                    targets: 4,
+                    targets: 3,
                     render: function (data, type, row) {
                         return `
                             <div class="d-flex align-items-center">

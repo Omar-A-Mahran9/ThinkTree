@@ -69,7 +69,6 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
-                        <th>{{ __('Email') }}</th>
                         <th>{{ __('Phone') }}</th>
 
                         <th>{{ __('Description') }}</th>

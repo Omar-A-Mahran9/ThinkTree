@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             // BrandSeeder::class,
             // CategorySeeder::class,
-            VendorSeeder::class
+            // VendorSeeder::class
         ]);
     }
 }

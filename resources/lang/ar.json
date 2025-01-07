@@ -1,20 +1,17 @@
 {
     "login": "تسجيل الدخول",
     "Welcome back": "!مرحبًا بعودتك",
-    "Tawasol-Technology": "تواصل تكنولوجي",
-    "Visited Data": "تفاصيل الزيارة",
-    "visit date": "تاريخ الزيارة",
-    "city": "المدينة",
+    "Tinktree": "Tinktree",
+    "Why Us": "لماذا نحن",
+    "Search for Our level": "البحث عن مستوياتنا",
+    "Icon": "الرمز",
+    "Add level": "اضافة مستوى",
+    "Add new level": "اضافة مستوى جديد",
 
-    "Booking": "الحجوزات",
-    "booking": "الحجوزات",
-    "Trip": "الرحلة",
-    "Booking Date": "تاريخ الحجز",
-    "Payment way": "وسيلة الدفع",
-    "Blogs": "مدونتنا",
-
-    "Add Partener": "اضافة شريك",
-    "Search for partners": "البحث عن شركاء",
+    "Our Level": "مستوياتنا",
+    "our levels list": "قائمة مستوياتنا",
+    "Add Why us": "اضافة لماذا نحن",
+    "Search for Why us": "البحث  لماذا نحن",
     "Blogs list": "قائمة المدونات",
     "Add new blog": "اضافة مدونة ",
     "Search for blogs": "البحث عن مدونة",
@@ -30,7 +27,7 @@
     "Add new gallary": "اضافة صورة",
 
     "blogs count": "عدد  المدونات",
-    "Add new partner": "اضافة شريك جديد",
+    "Add new why us": "اضافة من جديد",
     "car prices": "أسعار السيارات",
     "Common Question list": "قائمة الأسئلة الشائعة",
     "Add new Common Question": "اضافة سؤال ",
@@ -39,8 +36,8 @@
     "Common Question count": "عدد  الأسئلة الشائعة",
     "from time": "بداية الباقة",
     "to time": "بداية الباقة",
-    "partner": "الشركاء",
-    "Partners list": "قائمة الشركاء",
+    "Why us": "من نحن",
+    "Why us list": "قائمة من نحن",
     "Statue": "الحالة",
     "Contact requests list": "طلبات التواصل",
     "Search for contact requests": "طلبات التواصل البحث",
@@ -84,9 +81,8 @@
 
     "cities count": "عدد  المدن",
 
-
     "Home": "الرئيسية",
-    "Tawasol": "تواصل تكنولوجي",
+    "Tawasol": "Tinktree",
 
     "Orders": "الطلبات",
     "orders": "الطلبات",
@@ -240,12 +236,6 @@
     "Edit addon": "تعديل الخدمة",
     "addon count": "عدد الخدمات",
 
-    "Type": "النوع",
-    "type": "النوع",
-    "Payment ways": "خيارات الدفع",
-    "Payment parteners": "شركاء المدفوعات",
-    "Add Payment ways": "أضف خيارات الدفع",
-    "Add Payment parteners": "أضف شريك",
     "Addon Services": "خدمات إضافية",
     "Add new Service": "اضافة خدمة",
     "Addons list": "قائمة الخدمات",
@@ -706,7 +696,7 @@
     "Tax": "الضريبة",
     "Brand Name In English": "اسم العلامة التجارية بالإنجليزية",
     "Brand Name In Arabic": "اسم العلامة التجارية بالعربية",
- 
+
     "size applicable": "المقاس المطبق",
     "It must consist of letters and numbers": "يجب أن تتكون من أحرف وأرقام",
     "Order Reasons": "أسباب الطلب",

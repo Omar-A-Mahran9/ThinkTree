@@ -33,15 +33,13 @@ class UpdateAddonRequest extends FormRequest
                 "required",
                 "string",
                 "max:255",
-                Rule::unique('addon_services', 'name_ar')->ignore($addon->id),
-                new NotNumbersOnly(),
+                 new NotNumbersOnly(),
             ],
             "name_en" => [
                 "required",
                 "string",
                 "max:255",
-                Rule::unique('addon_services', 'name_en')->ignore($addon->id),
-                new NotNumbersOnly(),
+                 new NotNumbersOnly(),
             ],
 
             "description_ar" => ["required",   new NotNumbersOnly()  ],

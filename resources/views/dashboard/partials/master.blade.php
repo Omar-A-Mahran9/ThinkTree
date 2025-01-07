@@ -106,10 +106,10 @@
     <div class="position-fixed bottom-0 start-0 p-3 " style="z-index: 1090">
         <div id="kt_docs_toast_toggle" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <img src="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" class="me-2 theme-light-show"
-                    width="20" srcset="">
-                <img src="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" class="me-2 theme-dark-show"
-                    width="20" srcset="">
+                <img src="{{ asset('placeholder_images/favicon.svg') }}" class="me-2 theme-light-show" width="20"
+                    srcset="">
+                <img src="{{ asset('placeholder_images/favicon.svg') }}" class="me-2 theme-dark-show" width="20"
+                    srcset="">
                 <strong class="me-auto">{{ __('' . setting('website_name')) }}</strong>
                 <small>{{ __('Now') }}</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -120,21 +120,7 @@
         </div>
     </div>
     <!-- end::Toast -->
-    <script>
-        var favIconCounter = {{ $unreadNotifications->count() }};
-        var favicon;
 
-        $(document).ready(function() {
-            favicon = new Favico({
-                animation: 'popFade'
-            });
-
-            if (favIconCounter > 0)
-                favicon.badge(favIconCounter);
-
-            KTLayoutSearch.init();
-        });
-    </script>
 </body>
 <!--end::Body-->
 

@@ -93,7 +93,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('blog/{id}', 'HomeController@getblog');
 
     Route::get('questions', 'HomeController@getQuestions');
-    Route::post('bepartener/{step}', 'BepartenerController@store');
+    Route::post('bepartener/{step}', 'BeWhyUsController@store');
 
     Route::get('booking',[BookingController::class,'index']);
     Route::post('booking',[BookingController::class,'store']);

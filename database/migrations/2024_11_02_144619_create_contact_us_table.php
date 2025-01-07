@@ -13,18 +13,9 @@ return new class extends Migration
     {
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
+            $table->string('parent_name');
+            $table->string('child_name');
             $table->integer('phone');
- 
-            $table->unsignedBigInteger('addon_service_id')->nullable();
-
-            // Foreign key constraint.
-            $table->foreign('addon_service_id')
-                  ->references('id')
-                  ->on('addon_services')
-                  ->onDelete('cascade');
-
             $table->string('message');
             $table->timestamps();
         });

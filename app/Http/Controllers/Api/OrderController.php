@@ -86,8 +86,7 @@ class OrderController extends Controller
         ];
     
         $order = Order::create($orderData);
-         Mail::to("info@tawasol-technology.com")->send(new OrderConfirmationMail($order));
-
+ 
         return $this->success(
             $order,
          );

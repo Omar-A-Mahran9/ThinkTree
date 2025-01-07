@@ -1,4 +1,4 @@
-<title>{{ __('Tawasol-Technology') }}</title>
+<title>{{ __('Tinktree') }}</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta charset="utf-8" />
 <meta name="description"
@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://keenthemes.com/metronic" />
 <meta property="og:site_name" content="Keenthemes | Metronic" />
 <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-<link rel="shortcut icon" href="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" />
+<link rel="shortcut icon" href="{{ asset('placeholder_images/favicon.svg') }}" />
 <!--begin::Fonts-->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">

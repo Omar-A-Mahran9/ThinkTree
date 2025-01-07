@@ -57,18 +57,7 @@
                             <div class="fs-4  ">{{ $count_cities }}</div>
                         </div>
                         <!--end::Due-->
-                        <!--begin::Budget-->
-                        <div class="rounded min-w-125px py-1 px-4 ">
-                            <div class="fs-2 fw-bold text-success">{{ __('visited count') }}</div>
-                            <div class="fs-4 text-success ">{{ $visited_site }}</div>
-                        </div>
-                        <!--end::Budget-->
-                        <!--begin::Budget-->
-                        <div class="rounded min-w-125px py-1 px-4 ">
-                            <div class="fs-2 fw-bold text-danger">{{ __('visited count') }}</div>
-                            <div class="fs-4 text-danger ">{{ $visited_site }}</div>
-                        </div>
-                        <!--end::Budget-->
+
 
                     </div>
                     <!--end::Info-->
@@ -193,8 +182,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-15"
-                        placeholder="{{ __('Search for cities') }}">
+                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for cities') }}">
                 </div>
                 <!--end::Search-->
 
@@ -252,6 +240,12 @@
                     </div>
 
                     <div class="modal-body">
+                        <div class="d-flex flex-column justify-content-center">
+                            <label for="image_inp"
+                                class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Image') }}</label>
+                            <x-dashboard.upload-image-inp name="image" :image="null" :directory="null"
+                                placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
+                        </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
                             <label for="name_ar_inp"
                                 class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>

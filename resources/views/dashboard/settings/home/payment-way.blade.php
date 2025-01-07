@@ -71,7 +71,7 @@
                                                         style="border-top: 1px dotted rgb(0, 0, 0); margin: 5px 0;"></div>
 
                                                     <!-- Description -->
-                                                    <div class="payment-description" style="color:#136387;">
+                                                    <div class="payment-description" style="color:#125D12;">
                                                         {{ $pay->description_ar }}
                                                         <!-- Adjust according to language, e.g., $pay->description_en -->
                                                     </div>
