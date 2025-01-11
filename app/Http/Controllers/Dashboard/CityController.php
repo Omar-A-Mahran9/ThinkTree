@@ -25,6 +25,8 @@ class CityController extends Controller
     public function store(StoreCityRequest $request)
     {
         $data = $request->validated();
+        $data['image'] = uploadImageToDirectory($request->file('image'), "city"); 
+
         City::create($data);
 
         return response(["city created successfully"]);
@@ -33,6 +35,8 @@ class CityController extends Controller
     public function update(UpdateCityRequest $request, City $city)
     {
         $data = $request->validated();
+        $data['image'] = uploadImageToDirectory($request->file('image'), "city"); 
+
         $city->update($data);
 
         return response(["city updated successfully"]);

@@ -209,6 +209,8 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
+                        <th>{{ __('Image') }}</th>
+
                         <th>{{ __('Created at') }}</th>
                         <th class=" min-w-100px">{{ __('Actions') }}</th>
                     </tr>

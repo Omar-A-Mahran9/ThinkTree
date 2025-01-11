@@ -2,8 +2,8 @@
 
 var datatable;
 // Class definition
-var KTDatatablesServerSide = function () {
-    let dbTable = 'cities';
+var KTDatatablesServerSide = (function () {
+    let dbTable = "cities";
     // Private functions
     var initDatatable = function () {
         datatable = $("#kt_datatable").DataTable({
@@ -14,17 +14,19 @@ var KTDatatablesServerSide = function () {
             order: [],
             stateSave: saveState,
             select: {
-                style: 'multi',
+                style: "multi",
                 selector: 'td:first-child input[type="checkbox"]',
-                className: 'row-selected'
+                className: "row-selected",
             },
             ajax: {
                 url: `/dashboard/${dbTable}`,
             },
             columns: [
-                { data: 'id' },
-                { data: 'name' },
-                { data: 'created_at' },
+                { data: "id" },
+                { data: "name" },
+                { data: "image" },
+
+                { data: "created_at" },
                 { data: null },
             ],
             columnDefs: [
@@ -36,7 +38,7 @@ var KTDatatablesServerSide = function () {
                             <div class="form-check form-check-sm form-check-custom form-check-solid">
                                 <input class="form-check-input" type="checkbox" value="${data}" />
                             </div>`;
-                    }
+                    },
                 },
                 {
                     targets: 1,
@@ -50,10 +52,33 @@ var KTDatatablesServerSide = function () {
                                 <!--end::Info-->
                             </div>
                         `;
-                    }
+                    },
                 },
                 {
                     targets: 2,
+                    orderable: false,
+                    render: function (data, type, row) {
+                        return `
+                            <!--begin::Overlay-->
+                            <a class="d-block overlay" data-action="preview_attachments" href="#">
+                                <!--begin::Image-->
+                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-100px"
+                                    style="background-image:url('${row.full_image_path}')">
+                                </div>
+                                <!--end::Image-->
+
+                                <!--begin::Action-->
+                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                    <i class="bi bi-eye-fill text-white fs-3x"></i>
+                                </div>
+                                <!--end::Action-->
+                            </a>
+                            <!--end::Overlay-->
+                        `;
+                    },
+                },
+                {
+                    targets: 3,
                     render: function (data, type, row) {
                         return `
                             <div>
@@ -64,7 +89,7 @@ var KTDatatablesServerSide = function () {
                                 <!--end::Info-->
                             </div>
                         `;
-                    }
+                    },
                 },
                 {
                     targets: -1,
@@ -85,7 +110,7 @@ var KTDatatablesServerSide = function () {
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
                                     <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="edit_row">
-                                        ${__('Edit')}
+                                        ${__("Edit")}
                                     </a>
                                 </div>
                                 <!--end::Menu item-->
@@ -93,7 +118,7 @@ var KTDatatablesServerSide = function () {
                                 ${`<!--begin::Menu item-->
                                 <div class="menu-item px-3">
                                     <a href="#" class="menu-link px-3" data-kt-docs-table-filter="delete_row">
-                                        ${__('Delete')}
+                                        ${__("Delete")}
                                     </a>
                                 </div>
                                 <!--end::Menu item-->`}
@@ -107,45 +132,84 @@ var KTDatatablesServerSide = function () {
             // Add data-filter attribute
             createdRow: function (row, data, dataIndex) {
                 // $(row).find('td:eq(4)').attr('data-filter', data.CreditCardType);
-            }
+            },
         });
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
-        datatable.on('draw', function () {
+        datatable.on("draw", function () {
             initToggleToolbar();
             toggleToolbars();
             handleEditRows();
             deleteRowWithURL(`/dashboard/${dbTable}/`);
             deleteSelectedRowsWithURL({
                 url: `/dashboard/${dbTable}/delete-selected`,
-                restoreUrl: `/dashboard/${dbTable}/restore-selected`
+                restoreUrl: `/dashboard/${dbTable}/restore-selected`,
             });
             KTMenu.createInstances();
         });
-    }
+    };
 
     var handleEditRows = () => {
         // Select all edit buttons
-        const editButtons = document.querySelectorAll('[data-kt-docs-table-filter="edit_row"]');
+        const editButtons = document.querySelectorAll(
+            '[data-kt-docs-table-filter="edit_row"]'
+        );
 
-        editButtons.forEach(d => {
+        editButtons.forEach((d) => {
             // edit button on click
-            d.addEventListener('click', function (e) {
+            d.addEventListener("click", function (e) {
                 e.preventDefault();
 
-                let currentBtnIndex = $(editButtons).index(d)
+                let currentBtnIndex = $(editButtons).index(d);
                 let data = datatable.row(currentBtnIndex).data();
 
-                $("#form_title").text(__('Edit city'));
+                $("#form_title").text(__("Edit city"));
+                $(".image-input-wrapper").css(
+                    "background-image",
+                    `url('${data.full_image_path}')`
+                );
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
-                $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
-                $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
-                $("#crud_modal").modal('show');
-            })
+                $("#crud_form").attr(
+                    "action",
+                    `/dashboard/${dbTable}/${data.id}`
+                );
+                $("#crud_form").prepend(
+                    `<input type="hidden" name="_method" value="PUT">`
+                );
+                $("#crud_modal").modal("show");
+            });
         });
-    }
+    };
 
+    var handlePreviewAttachments = () => {
+        // Select all edit buttons
+        const previewButtons = $('[data-action="preview_attachments"]');
+
+        $.each(previewButtons, function (indexInArray, button) {
+            $(button).on("click", function (e) {
+                e.preventDefault();
+
+                let data = datatable.row(indexInArray).data();
+                $(".attachments").html("");
+
+                $(".attachments").append(`
+                    <!--begin::Overlay-->
+                    <a class="d-block overlay" data-fslightbox="lightbox-basic" href="${data.full_image_path}">
+                        <!--begin::Action-->
+                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                            <i class="bi bi-eye-fill text-white fs-3x"></i>
+                        </div>
+                        <!--end::Action-->
+
+                    </a>
+                    <!--end::Overlay-->
+                `);
+                refreshFsLightbox();
+                $("[data-fslightbox='lightbox-basic']:first").trigger("click");
+            });
+        });
+    };
     // Public methods
     return {
         init: function () {
@@ -157,11 +221,12 @@ var KTDatatablesServerSide = function () {
 
             deleteSelectedRowsWithURL({
                 url: `/dashboard/${dbTable}/delete-selected`,
-                restoreUrl: `/dashboard/${dbTable}/restore-selected`
+                restoreUrl: `/dashboard/${dbTable}/restore-selected`,
             });
-        }
-    }
-}();
+            handlePreviewAttachments();
+        },
+    };
+})();
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {

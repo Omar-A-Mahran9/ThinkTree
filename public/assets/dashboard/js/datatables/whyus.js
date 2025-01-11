@@ -151,7 +151,6 @@ var KTDatatablesServerSide = (function () {
     };
 
     var handleEditRows = () => {
-        console.log("omamamamamamamama");
         // Select all edit buttons
         const editButtons = document.querySelectorAll(
             '[data-kt-docs-table-filter="edit_row"]'
