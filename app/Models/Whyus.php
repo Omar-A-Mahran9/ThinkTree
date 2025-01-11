@@ -42,7 +42,7 @@ class Whyus extends Model
 
     public function getFullIconPathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->icon, 'Why_uses', "default.svg"));
+         return asset(getImagePathFromDirectory($this->icon, 'Why_uses', "default.svg"));
     }
 
     

@@ -15,6 +15,7 @@ use App\Http\Resources\Api\Rate;
 use App\Http\Resources\Api\RateResource;
 use App\Http\Resources\Api\ServiceResource;
 use App\Http\Resources\Api\SkinColorResource;
+use App\Http\Resources\Api\whyusResources;
 use App\Models\AddonService;
 use App\Models\Brand;
 use App\Models\Category;
@@ -22,9 +23,11 @@ use App\Models\City;
 use App\Models\customers_rates;
 use App\Models\Gallary;
 use App\Models\Ourhero;
+use App\Models\Ourlevel;
 use App\Models\PackageCategory;
 use App\Models\partener;
 use App\Models\SkinColor;
+use App\Models\Whyus;
 use Illuminate\Http\Request;
 
 class GeneralInvokableController extends Controller
@@ -37,10 +40,21 @@ class GeneralInvokableController extends Controller
         $ourheroes = Ourhero::with('city')->select('id', 'name_ar', 'name_en', 'image', 'age', 'city_id')
         ->limit(10)
         ->get();
+
+        $whyus = Whyus::select('id', 'name_ar', 'name_en', 'description_ar', 'description_en', 'image','icon' )
+        ->limit(10)
+        ->get();
+
+        $levels = Ourlevel::select('id', 'name_ar', 'name_en', 'description_ar', 'description_en', 'image','icon' )
+        ->limit(10)
+        ->get();
      
             return $this->success('', [
           
             "ourheroes"=>HeroesResource::collection($ourheroes),
+            "whythinktree"=>whyusResources::collection($whyus),
+            "Ourlevel"=>whyusResources::collection($whyus),
+
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),
