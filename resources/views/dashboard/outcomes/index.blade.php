@@ -54,7 +54,7 @@
                         <!--begin::Due-->
                         <div class=" rounded min-w-125px py-1 px-4 me-7">
                             <div class="fs-2 fw-bold">{{ __('Outcomes count') }}</div>
-                            <div class="fs-4  ">{{ $count_Outcoume }}</div>
+                            <div class="fs-4  ">{{ $count_Outcome }}</div>
                         </div>
                         <!--end::Due-->
 
@@ -298,7 +298,7 @@
                 $("#form_title").text(__('Add new Outcome'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/cities`);
+                $("#crud_form").attr('action', `/dashboard/outcomes`);
             });
 
 

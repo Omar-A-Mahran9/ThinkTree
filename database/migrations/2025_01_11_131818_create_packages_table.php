@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('discount_price', 10, 2)->nullable(); // Nullable if no discount
             $table->boolean('have_discount')->default(false); // Boolean for true/false discount
             $table->decimal('price_per_session', 10, 2)->nullable(); // Nullable if price per session isn't applicable
-            $table->integer('duration_per_month'); // Integer for numeric values
+            $table->integer('duration_monthly'); // Integer for numeric values
             $table->integer('number_of_session_per_week');
             $table->integer('number_of_levels');
             $table->integer('number_of_sessions');

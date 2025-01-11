@@ -8,6 +8,7 @@ use App\Http\Resources\Api\CategoryResource;
 use App\Http\Resources\Api\CityResource;
 use App\Http\Resources\Api\CustomerRateResource;
 use App\Http\Resources\Api\GallariesResource;
+use App\Http\Resources\Api\HeroesResource;
 use App\Http\Resources\Api\packagesCategoryResources;
 use App\Http\Resources\Api\PartenersResource;
 use App\Http\Resources\Api\Rate;
@@ -20,6 +21,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\customers_rates;
 use App\Models\Gallary;
+use App\Models\Ourhero;
 use App\Models\PackageCategory;
 use App\Models\partener;
 use App\Models\SkinColor;
@@ -32,22 +34,13 @@ class GeneralInvokableController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $gallary   = Gallary::select('id', 'name_ar', 'name_en','image')->get();
-        $ourservices = AddonService::select('id', 'name_ar', 'name_en', 'image', 'description_ar', 'description_en')
-        ->orderBy('created_at', 'asc') // Order by the oldest created records
+        $ourheroes = Ourhero::with('city')->select('id', 'name_ar', 'name_en', 'image', 'age', 'city_id')
+        ->limit(10)
         ->get();
-    
-            $allCities     = City::select('id', 'name_ar', 'name_en')->get();
-         $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
-         $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();
+     
             return $this->success('', [
           
-            'allCities' => CityResource::collection($allCities),
-            'gallary'=>GallariesResource::collection($gallary),
-
-            'Rate' => RateResource::collection( $rate),
-            'services'=> ServiceResource::collection($ourservices),
-            'partners'=>PartenersResource::collection($parteners),
+            "ourheroes"=>HeroesResource::collection($ourheroes),
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),

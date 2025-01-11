@@ -6,9 +6,10 @@ use App\Models\Scopes\SortingScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Outcoume extends Model
+class Feature extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
     protected $appends = [ 'name', 'full_image_path' ];
     protected $casts = [
@@ -30,6 +31,6 @@ class Outcoume extends Model
 
     public function getFullImagePathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->image, 'Outcomes', "default.svg"));
+        return asset(getImagePathFromDirectory($this->image, 'Feature', "default.svg"));
     }
 }

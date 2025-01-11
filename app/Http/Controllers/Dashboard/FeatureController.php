@@ -3,28 +3,26 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\StoreOutcomesRequest;
-use App\Models\Outcoume;
+use App\Http\Requests\Dashboard\StoreFeatureRequest;
+use App\Models\Feature;
 use Illuminate\Http\Request;
 
-class OutcoumeController extends Controller
+class FeatureController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-   
-     
-
+ 
     public function index(Request $request)
     {
-        $count_Outcoume = Outcoume::count(); // Get the count of blogs
+        $count_feature = Feature::count(); // Get the count of blogs
   
         $this->authorize('view_packages');
 
         if ($request->ajax())
-            return response(getModelData(model: new Outcoume()));
+            return response(getModelData(model: new Feature()));
         else
-            return view('dashboard.outcomes.index',compact('count_Outcoume' ));
+            return view('dashboard.features.index',compact('count_feature' ));
     }
 
 
@@ -39,19 +37,19 @@ class OutcoumeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOutcomesRequest $request)
+    public function store(StoreFeatureRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = uploadImageToDirectory($request->file('image'), "Outcomes"); 
+        $data['image'] = uploadImageToDirectory($request->file('image'), "Feature"); 
 
-        Outcoume::create($data);
+        Feature::create($data);
 
-        return response(["outcome created successfully"]);
+        return response(["city created successfully"]);
     }
     /**
      * Display the specified resource.
      */
-    public function show(Outcoume $outcoume)
+    public function show(Feature $Feature)
     {
         //
     }
@@ -59,7 +57,7 @@ class OutcoumeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Outcoume $outcoume)
+    public function edit(Feature $Feature)
     {
         //
     }
@@ -67,7 +65,7 @@ class OutcoumeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Outcoume $outcoume)
+    public function update(Request $request, Feature $Feature)
     {
         //
     }
@@ -75,7 +73,7 @@ class OutcoumeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Outcoume $outcoume)
+    public function destroy(Feature $Feature)
     {
         //
     }

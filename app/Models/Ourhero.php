@@ -31,6 +31,10 @@ class Ourhero extends Model
     }
 
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
     public function getFullImagePathAttribute()
     {
         return asset(getImagePathFromDirectory($this->image, 'heroes', "default.svg"));

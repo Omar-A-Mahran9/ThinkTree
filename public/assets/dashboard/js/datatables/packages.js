@@ -25,7 +25,10 @@ var KTDatatablesServerSide = (function () {
             columns: [
                 { data: "id" },
                 { data: "name" },
-                { data: "car" },
+                { data: "price" },
+                { data: "available" },
+                { data: "featured" },
+
                 { data: "created_at" },
                 { data: null },
             ],
@@ -61,77 +64,7 @@ var KTDatatablesServerSide = (function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.cars.name}</a>
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                        `;
-                    },
-                },
-                {
-                    targets: 3,
-                    render: function (data, type, row) {
-                        return `
-                            <div>
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.price}</a>
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                        `;
-                    },
-                },
-                {
-                    targets: 4,
-                    render: function (data, type, row) {
-                        return `
-                            <div>
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.from.name}</a>
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                        `;
-                    },
-                },
-                {
-                    targets: 5,
-                    render: function (data, type, row) {
-                        return `
-                            <div>
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.to.name}</a>
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                        `;
-                    },
-                },
-                {
-                    targets: 6,
-                    render: function (data, type, row) {
-                        return `
-                            <div>
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.from_time}</a>
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                        `;
-                    },
-                },
-                {
-                    targets: 7,
-                    render: function (data, type, row) {
-                        return `
-                            <div>
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.to_time}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.FinalPrice}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
@@ -140,7 +73,7 @@ var KTDatatablesServerSide = (function () {
                 },
 
                 {
-                    targets: 8,
+                    targets: 3,
                     render: function (data, type, row) {
                         return `
                         <div>
@@ -148,9 +81,13 @@ var KTDatatablesServerSide = (function () {
                             <div class="d-flex flex-column justify-content-center">
                                 <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">
                                     ${
-                                        row.statue == 1
-                                            ? `<span class="badge bg-success text-white">Active</span>` // Green badge for active
-                                            : `<span class="badge bg-danger text-white">Inactive</span>` // Red badge for inactive
+                                        row.available == 1
+                                            ? `<span class="badge bg-success text-white">${__(
+                                                  "Active"
+                                              )}</span>` // Green badge for active
+                                            : `<span class="badge bg-danger text-white">${__(
+                                                  "Inactive"
+                                              )}</span>` // Red badge for inactive
                                     }
                                 </a>
                             </div>
@@ -159,9 +96,32 @@ var KTDatatablesServerSide = (function () {
                     `;
                     },
                 },
-
                 {
-                    targets: 9,
+                    targets: 4,
+                    render: function (data, type, row) {
+                        return `
+                        <div>
+                            <!--begin::Info-->
+                            <div class="d-flex flex-column justify-content-center">
+                                <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">
+                                    ${
+                                        row.featured == 1
+                                            ? `<span class="badge bg-success text-white">          ${__(
+                                                  "Featured"
+                                              )}</span>` // Green badge for active
+                                            : `<span class="badge bg-danger text-white">${__(
+                                                  "UnFeatured"
+                                              )}</span>` // Red badge for inactive
+                                    }
+                                </a>
+                            </div>
+                            <!--end::Info-->
+                        </div>
+                    `;
+                    },
+                },
+                {
+                    targets: 5,
                     render: function (data, type, row) {
                         return `
                             <div>
@@ -175,7 +135,7 @@ var KTDatatablesServerSide = (function () {
                     },
                 },
                 {
-                    targets: 10,
+                    targets: 6,
                     data: null,
                     orderable: false,
                     render: function (data, type, row) {

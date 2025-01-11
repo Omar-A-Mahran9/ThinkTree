@@ -10,7 +10,6 @@
     "Add new Outcome": "اضافة نتيجة جديدة",
     "Outcomes count": "عدد النتائج",
     "Search for outcomes": "البحث عن نتائج",
-
     "Add level": "اضافة مستوى",
     "Add new level": "اضافة مستوى جديد",
     "Our Heros": "أبطالنا",
@@ -56,11 +55,28 @@
     "from time": "بداية الباقة",
     "to time": "بداية الباقة",
     "Why us": "من نحن",
-    "Why us list": "قائمة من نحن",
+    "Why us list": "قائمة لماذا نحن",
     "Statue": "الحالة",
     "Contact requests list": "طلبات التواصل",
     "Search for contact requests": "طلبات التواصل البحث",
-    "Add package sub category": "اضافة فئة فرعية الباقة",
+
+    "Price": "السعر",
+    "Discount price": "السعر مع الخصم",
+    "Price per session": "السعر لكل جلسة",
+    "Duration (\"Monthly\")": "المدة (شهريًا)",
+    "number of session per week": "عدد الجلسات في الأسبوع",
+    "number of levels": "عدد المستويات",
+    "number of sessions": "عدد الجلسات",
+    "Available": "متاح",
+    "Featured": "مميز",
+    "Choose outcomes": "اختر النتائج",
+    "Choose features": "اختر المميزات",
+
+    "Enter the price": "أدخل السعر",
+    "Enter the discount price": "أدخل سعر الخصم",
+    "Enter the Duration": "أدخل المدة",
+    "Enter the number of session per week": "أدخل عدد الجلسات في الأسبوع",
+    "Enter the number of levels": "أدخل عدد المستويات",
 
     "Packages Sub Categories": "فئات فرعية للباقات",
 

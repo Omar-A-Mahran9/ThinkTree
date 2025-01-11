@@ -178,7 +178,11 @@ let translations = {
         "Un Blocked successfully": "تم الحظر بنجاح",
         Blocking: "حظر",
         "Edit Outcome": "تعديل نتيجة",
-
+        "Add new package": "اضافة باقة جديدة",
+        Featured: "مميز",
+        Inactive: "غير نشط",
+        Active: "نشط",
+        UnFeatured: "غير مميز",
         Unblocking: "رفع الحظر",
         "You must add shipping details first":
             "يجب عليك إضافة بيانات الشحن أولاً",

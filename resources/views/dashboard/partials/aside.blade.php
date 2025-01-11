@@ -92,25 +92,25 @@
                 @endcan
                 <!--end:Menu item-->
                 @canany(['view_packages'])
-                    <div class="menu-item">
+                    {{-- <div class="menu-item">
                         <div class="menu-content pt-5 pb-0">
                             <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Packages') }}</span>
                         </div>
 
-                    </div>
-                    <div class="ms-2">
-                        <x-dashboard.aside-item :slug="'features'" :route="route('dashboard.features.index')" :title="__('Features')" class="">
-                            <i class="ki-outline ki-star fs-2"></i>
-                        </x-dashboard.aside-item>
+                    </div> --}}
+                    {{-- <div class="ms-2"> --}}
+                    <x-dashboard.aside-item :slug="'features'" :route="route('dashboard.features.index')" :title="__('Features')" class="">
+                        <i class="ki-outline ki-star fs-2"></i>
+                    </x-dashboard.aside-item>
 
-                        <x-dashboard.aside-item :slug="'outcomes'" :route="route('dashboard.outcomes.index')" :title="__('Outcomes')">
-                            <i class="fas fa-certificate fs-2"></i>
-                        </x-dashboard.aside-item>
+                    <x-dashboard.aside-item :slug="'outcomes'" :route="route('dashboard.outcomes.index')" :title="__('Outcomes')">
+                        <i class="fas fa-certificate fs-2"></i>
+                    </x-dashboard.aside-item>
 
-                        <x-dashboard.aside-item :slug="'packages'" :route="route('dashboard.packages.index')" :title="__('Packages')">
-                            <i class="ki-outline ki-abstract-26 fs-2"></i>
-                        </x-dashboard.aside-item>
-                    </div>
+                    <x-dashboard.aside-item :slug="'packages'" :route="route('dashboard.packages.index')" :title="__('Packages')">
+                        <i class="ki-outline ki-abstract-26 fs-2"></i>
+                    </x-dashboard.aside-item>
+                    {{-- </div> --}}
                 @endcanany
                 <!--begin:Menu item-->
                 @can('view_customersRate')

@@ -14,7 +14,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('Why us list') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Packages list') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -38,7 +38,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for Why us') }}">
+                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for packages') }}">
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->
@@ -57,7 +57,7 @@
                                     fill="currentColor"></rect>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->{{ __('Add Why us') }}</button>
+                        <!--end::Svg Icon-->{{ __('Add new package') }}</button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
@@ -84,7 +84,11 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
-                        <th>{{ __('Image') }}</th>
+                        <th>{{ __('Price') }}</th>
+
+                        <th>{{ __('Available') }}</th>
+                        <th>{{ __('Featured') }}</th>
+
                         <th>{{ __('Created at') }}</th>
                         <th class=" min-w-100px">{{ __('Actions') }}</th>
                     </tr>
@@ -102,10 +106,10 @@
         data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
-            <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="form_title">{{ __('Add new why us') }}</h5>
+                        <h5 class="modal-title" id="form_title">{{ __('Add new package') }}</h5>
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
@@ -115,7 +119,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <div class="d-flex flex-row justify-content-between  align-items-center px-10">
+                        <div class="d-flex flex-row justify-content-center align-items-center px-10 mb-5">
                             <!-- Image Upload Field -->
                             <div class="text-center">
                                 <label for="image_upload"
@@ -124,67 +128,270 @@
                                     :directory="null" placeholder="default_image.svg" type="editable">
                                 </x-dashboard.upload-image-inp>
                             </div>
+                        </div>
 
-                            <!-- Icon Upload Field -->
-                            <div class="text-center">
-                                <label for="icon_upload"
-                                    class="form-label required fs-6 fw-bold mb-2">{{ __('Icon') }}</label>
-                                <x-dashboard.upload-icon-inp id="icon_upload" name="icon" :image="null"
-                                    :directory="null" placeholder="default_icon.svg" type="editable">
-                                </x-dashboard.upload-icon-inp>
+
+
+
+                        <!-- begin :: Row -->
+                        <div class="row mb-10">
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label for="name_ar_inp"
+                                    class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
+                                <input type="text" name="name_ar"
+                                    class="form-control form-control-lg form-control-solid" id="name_ar_inp"
+                                    placeholder="{{ __('Name ar') }}">
+                                <div class="fv-plugins-message-container invalid-feedback" id="name_ar"></div>
+
+                            </div>
+                            <!-- end   :: Column -->
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <label for="name_en_inp"
+                                    class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
+                                <input type="text" name="name_en"
+                                    class="form-control form-control-lg form-control-solid" id="name_en_inp"
+                                    placeholder="{{ __('Name en') }}">
+                                <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
+                            </div>
+                            <!-- end   :: Column -->
+                        </div>
+
+
+
+                        <div class="row mb-10">
+
+                            <!-- Description AR -->
+                            <div class="col-md-6 fv-row">
+                                <label for="description_ar_inp"
+                                    class="form-label required fs-6 fw-bold mb-3">{{ __('Description ar') }}</label>
+                                <textarea name="description_ar" class="form-control form-control-lg form-control-solid" id="description_ar_inp"
+                                    placeholder="{{ __('Description ar') }}" rows="4"></textarea>
+                                <div class="fv-plugins-message-container invalid-feedback" id="description_ar"></div>
+                            </div>
+
+                            <!-- Description EN -->
+                            <div class="col-md-6 fv-row">
+                                <label for="description_en_inp"
+                                    class="form-label required fs-6 fw-bold mb-3">{{ __('Description en') }}</label>
+                                <textarea name="description_en" class="form-control form-control-lg form-control-solid" id="description_en_inp"
+                                    placeholder="{{ __('Description en') }}" rows="4"></textarea>
+                                <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
                             </div>
                         </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <!--end::Label-->
+                            <label class="required fs-5 fw-semibold mb-2">{{ __('Features') }}</label>
+                            <!--end::Label-->
 
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="name_ar_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
-                            <input type="text" name="name_ar" class="form-control form-control-lg form-control-solid"
-                                id="name_ar_inp" placeholder="{{ __('Name ar') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="name_ar"></div>
-                        </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="name_en_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
-                            <input type="text" name="name_en" class="form-control form-control-lg form-control-solid"
-                                id="name_en_inp" placeholder="{{ __('Name en') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
-                        </div>
-
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="description_ar_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Description ar') }}</label>
-                            <textarea name="description_ar" class="form-control form-control-lg form-control-solid" id="description_ar_inp"
-                                placeholder="{{ __('Description ar') }}" rows="4"></textarea>
-                            <div class="fv-plugins-message-container invalid-feedback" id="description_ar"></div>
+                            <select class="form-select" data-control="select2" id="features_inp" name="features[]"
+                                multiple="multiple" data-placeholder="{{ __('Choose features') }}"
+                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                <option value="" disabled></option>
+                                @foreach ($features as $feature)
+                                    <option value="{{ $feature->id }}">{{ $feature->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback" id="features"></div>
                         </div>
 
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="description_en_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Description en') }}</label>
-                            <textarea name="description_en" class="form-control form-control-lg form-control-solid" id="description_en_inp"
-                                placeholder="{{ __('Description en') }}" rows="4"></textarea>
-                            <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
+                        <!--end::Col-->
+
+                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                            <!--end::Label-->
+                            <label class="required fs-5 fw-semibold mb-2">{{ __('Outcomes') }}</label>
+                            <!--end::Label-->
+
+                            <select class="form-select" data-control="select2" id="outcomes_inp" name="outcomes[]"
+                                multiple="multiple" data-placeholder="{{ __('Choose outcomes') }}"
+                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                <option value="" disabled></option>
+                                @foreach ($outcomes as $outcome)
+                                    <option value="{{ $outcome->id }}">{{ $outcome->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback" id="outcomes"></div>
+                        </div>
+
+                        <!-- begin :: Row -->
+                        <div class="row mb-10">
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">{{ __('Price') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control" id="price_inp"
+                                        name="price" placeholder="example" />
+                                    <label for="price_inp">{{ __('Enter the price') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="price"></p>
+
+
+                            </div>
+                            <!-- end   :: Column -->
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <div class="form-check form-switch form-check-custom form-check-solid mb-2">
+                                    <label class="fs-5 fw-bold">{{ __('Discount price') }}</label>
+
+                                    <!-- Hidden input to send default value when unchecked -->
+                                    <input type="hidden" name="have_discount" value="0">
+
+                                    <!-- Checkbox input -->
+                                    <input class="form-check-input mx-2" style="height: 18px; width: 36px;"
+                                        type="checkbox" name="have_discount" id="discount-price-switch"
+                                        value="1" />
+                                    <label class="form-check-label" for="discount-price-switch"></label>
+                                </div>
+
+
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control" id="discount_price_inp"
+                                        name="discount_price" disabled placeholder="example" />
+                                    <label for="discount_price_inp">{{ __('Enter the discount price') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="discount_price"></p>
+
+
+                            </div>
+                            <!-- end   :: Column -->
+                        </div>
+
+                        <div class="row mb-10">
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">{{ __('Price per session') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control" id="price_per_session_inp"
+                                        name="price_per_session" placeholder="example" />
+                                    <label for="price_per_session_inp">{{ __('Enter the price') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="price_per_session"></p>
+
+
+                            </div>
+                            <!-- end   :: Column -->
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <label class="fs-5 fw-bold mb-2">{{ __('Duration ("Monthly")') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control" id="duration_monthly_inp"
+                                        name="duration_monthly" placeholder="example" />
+                                    <label for="duration_monthly_inp">{{ __('Enter the Duration') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="duration_monthly"></p>
+
+                            </div>
+
+                        </div>
+                        <!-- end   :: Column -->
+                        <div class="row mb-10">
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <label class="fs-5 fw-bold mb-2">{{ __('number of session per week') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control"
+                                        id="number_of_session_per_week_inp" name="number_of_session_per_week"
+                                        placeholder="example" />
+                                    <label
+                                        for="number_of_session_per_week_inp">{{ __('Enter the number of session per week') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="number_of_session_per_week"></p>
+
+                            </div>
+                            <!-- end   :: Column -->
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <label class="fs-5 fw-bold mb-2">{{ __('number of levels') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control" id="number_of_levels_inp"
+                                        name="number_of_levels" placeholder="example" />
+                                    <label for="number_of_levels_inp">{{ __('Enter the number of levels') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="number_of_levels"></p>
+
+                            </div>
+                            <!-- end   :: Column -->
+                        </div>
+
+                        <!-- end   :: Column -->
+                        <div class="row mb-10">
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <label class="fs-5 fw-bold mb-2">{{ __('number of sessions') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control" id="number_of_session_inp"
+                                        name="number_of_sessions" placeholder="example" />
+                                    <label
+                                        for="number_of_sessions_inp">{{ __('Enter the number of session per week') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="number_of_sessions"></p>
+
+                            </div>
+                            <!-- end   :: Column -->
+
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <div class="row mb-10 mt-10 align-items-center">
+                                    <!-- begin :: Column for Available -->
+                                    <div class="col-md-6 fv-row">
+                                        <label class="fs-5 fw-bold">{{ __('Available') }}</label>
+                                        <input type="hidden" name="available" value="0">
+                                        <div class="form-check form-switch form-check-custom form-check-solid mb-2">
+                                            <input class="form-check-input mx-2" style="height: 18px; width: 36px;"
+                                                type="checkbox" name="available" id="available-switch" value="1" />
+                                            <label class="form-check-label" for="available-switch"></label>
+                                        </div>
+                                        <p class="invalid-feedback" id="available"></p>
+
+                                    </div>
+                                    <!-- end :: Column -->
+
+                                    <!-- begin :: Column for Featured -->
+                                    <div class="col-md-6 fv-row">
+                                        <label class="fs-5 fw-bold">{{ __('Featured') }}</label>
+                                        <input type="hidden" name="featured" value="0">
+                                        <div class="form-check form-switch form-check-custom form-check-solid mb-2">
+                                            <input class="form-check-input mx-2" style="height: 18px; width: 36px;"
+                                                type="checkbox" name="featured" id="featured-switch" value="1" />
+                                            <label class="form-check-label" for="featured-switch"></label>
+                                        </div>
+                                        <p class="invalid-feedback" id="featured"></p>
+
+                                    </div>
+                                    <!-- end :: Column -->
+                                </div>
+                            </div>
+                            <!-- end   :: Column -->
                         </div>
 
 
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light"
-                            data-bs-dismiss="modal">{{ __('Close') }}</button>
-                        <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">
-                                {{ __('Save') }}
-                            </span>
-                            <span class="indicator-progress">
-                                {{ __('Please wait....') }} <span
-                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                            </span>
-                        </button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light"
+                                data-bs-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="indicator-label">
+                                    {{ __('Save') }}
+                                </span>
+                                <span class="indicator-progress">
+                                    {{ __('Please wait....') }} <span
+                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </form>
     <div class="row attachments">
     </div>
@@ -192,19 +399,20 @@
 @push('scripts')
     <script src="{{ asset('assets/dashboard/js/global/datatable-config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/datatables/whyus.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/datatables/packages.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/global/crud-operations.js') }}"></script>
     <script src="{{ asset('assets/dashboard/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/forms/packages/create.js') }}"></script>
 
     <script>
         $(document).ready(function() {
             $("#add_btn").click(function(e) {
                 e.preventDefault();
 
-                $("#form_title").text(__('Add new '));
+                $("#form_title").text(__('Add new package'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/whyus`);
+                $("#crud_form").attr('action', `/dashboard/packages`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
 
