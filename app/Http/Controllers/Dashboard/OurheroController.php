@@ -36,7 +36,11 @@ class OurheroController extends Controller
      */
     public function store(StoreHeroesRequest $request)
     {
-       dd($request);
+        $data          = $request->validated();
+        $data['image'] = uploadImageToDirectory($request->file('image'), "heroes"); 
+        Ourhero::create($data);
+
+        return response(["Hero created successfully"]);
     }
 
     /**
