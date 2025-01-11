@@ -48,7 +48,13 @@
                 <!--end:Menu item-->
                 @can('view_admins')
                     <x-dashboard.aside-item :slug="'admins'" :route="route('dashboard.admins.index')" :title="__('Admins')">
-                        <i class="ki-outline ki-security-user fs-2"></i>
+                        <i class="fas fa-user-shield fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
+                @can('view_ourlevels')
+                    <x-dashboard.aside-item :slug="'ourlevels'" :route="route('dashboard.ourlevels.index')" :title="__('Our Level')">
+                        <i class="ki-outline ki-chart-line fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
@@ -58,11 +64,7 @@
                     </x-dashboard.aside-item>
                 @endcan
 
-                @can('view_ourlevels')
-                    <x-dashboard.aside-item :slug="'ourlevels'" :route="route('dashboard.ourlevels.index')" :title="__('Our Level')">
-                        <i class="ki-outline ki-chart-line fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
+
                 <!--begin:Menu item-->
                 @can('view_cities')
                     <x-dashboard.aside-item :slug="'cities'" :route="route('dashboard.cities.index')" :title="__('Cities')">
@@ -70,6 +72,17 @@
                     </x-dashboard.aside-item>
                 @endcan
                 <!--end:Menu item-->
+
+
+
+
+                @can('view_ourheros')
+                    <x-dashboard.aside-item :slug="'ourheros'" :route="route('dashboard.ourheros.index')" :title="__('Our Heros')">
+                        <i class="fas fa-dumbbell fs-2"></i>
+
+                    </x-dashboard.aside-item>
+                @endcan
+
 
                 <!--begin:Menu item-->
                 @can('view_customers')

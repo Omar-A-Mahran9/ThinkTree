@@ -51,6 +51,7 @@ Route::get("ourlevels/restore-selected", "OurlevelController@restoreSelected");
  Route::resource('admins', 'AdminController')->except(['create', 'edit']);
  Route::resource('whyus', 'WhyUsController')->except(['create', 'edit']);
  Route::resource('ourlevels', 'OurlevelController')->except(['create', 'edit']);
+ Route::resource('ourheros', 'OurheroController')->except(['create', 'edit']);
 
 Route::resource('booking', 'BookingController')->except(['create', 'edit']);
 Route::resource('brands', 'BrandController')->except(['create', 'edit']);

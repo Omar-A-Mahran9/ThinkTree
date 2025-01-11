@@ -473,11 +473,7 @@ return [
         'btn_link' => 'رابط الزر',
         'confirm_email_password' => 'أكد بكلمة السر',
         'background' => 'الخلفية',
-        "gold" => "الذهب",
-        "silver" => "الفضة",
-        "diamond" => "الماس",
-        "watches" => "الساعات",
-        "alloys" => "السبائك",
+        
         "User" => "المستخدم",
         "commercial_register" => "السجل الضريبي",
         "cover" => "الغلاف",

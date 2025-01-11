@@ -24,6 +24,9 @@ class Role extends Model
         'admins',
         'whyus',
         'ourlevels',
+
+        'ourheros',
+
         'contact_us',
         'cities',
 
