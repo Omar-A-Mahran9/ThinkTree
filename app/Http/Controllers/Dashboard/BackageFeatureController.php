@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\StoreFeatureRequest;
 use App\Models\BackageFeature;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class BackageFeatureController extends Controller
     {
         $count_feature = BackageFeature::count(); // Get the count of blogs
   
-        $this->authorize('view_cities');
+        $this->authorize('view_packages');
 
         if ($request->ajax())
             return response(getModelData(model: new BackageFeature()));
@@ -36,11 +37,15 @@ class BackageFeatureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFeatureRequest $request)
     {
-        //
-    }
+        $data = $request->validated();
+        $data['image'] = uploadImageToDirectory($request->file('image'), "Feature"); 
 
+        BackageFeature::create($data);
+
+        return response(["city created successfully"]);
+    }
     /**
      * Display the specified resource.
      */

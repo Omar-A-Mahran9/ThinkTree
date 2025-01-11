@@ -11,9 +11,14 @@ class PackagesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $this->authorize('view_packages');
+        if ($request->ajax()){
+            return response(getModelData(model: new Whyus()));
+        }
+        else
+            return view('dashboard.whyus.index');
     }
 
     /**

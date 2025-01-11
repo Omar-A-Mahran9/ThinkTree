@@ -5,6 +5,12 @@
     "Why Us": "لماذا نحن",
     "Search for Our level": "البحث عن مستوياتنا",
     "Icon": "الرمز",
+    "Add Outcome": "اضافة نتيجة جديدة",
+    "Outcomes list": "قائمة النتائج",
+    "Add new Outcome": "اضافة نتيجة جديدة",
+    "Outcomes count": "عدد النتائج",
+    "Search for outcomes": "البحث عن نتائج",
+
     "Add level": "اضافة مستوى",
     "Add new level": "اضافة مستوى جديد",
     "Our Heros": "أبطالنا",
@@ -17,6 +23,11 @@
     "Age": "العمر",
     "Features": "المميزات",
     "Outcomes": "النتائج",
+    "Add new feature": "أضف ميزة جديدة",
+    "Features count": "عدد المميزات",
+    "Add feature": "أضف ميزة",
+    "Features list": "قائمة المميزات",
+    "Search for feature": "البحث عن مميزات",
 
     "Add Why us": "اضافة لماذا نحن",
     "Search for Why us": "البحث  لماذا نحن",
@@ -152,7 +163,7 @@
     "Oldest": "الأقدم",
     "Newest": "الأحدث",
     "Search...": "بحث...",
-    
+
     "Logo": "اللوجو",
     "Commercial register": "السجل الضريبي",
     "Cover": "الغلاف",
@@ -209,7 +220,7 @@
     "Select tags": "اختر الكلمات المفتاحية",
     "Brand": "الماركة",
     "Choose the brand": "اختر الماركة",
- 
+
     "Video link": "رابط الفيديو",
     "Discount Price": "سعر الخصم",
     "Pick date & time": "اختر التاريخ و الوقت",
@@ -315,7 +326,7 @@
     "Total": "المجموع",
     "Confirm Payment": "تأكيد عملية الدفع",
     "Prepare Products": "تحضير المنتجات",
- 
+
     "Go to products page": "اذهب لصفحة المنتجات",
     "Cities list": "قائمة المدن",
     "Name": "الاسم",
@@ -574,7 +585,7 @@
     "The": "قيمة",
     "sub": "قسم فرعي",
     "The parent ID is required when the category type is sub-category": "يكون القسم الرئيسي مطلوباّ عندما يكون نوع الفئة قسم فرعي",
- 
+
     "and more ...": "وأكثر ...",
     "Admin permissions": "أذونات المسؤول",
     "Select all": "تحديد الكل",
@@ -625,7 +636,7 @@
     "TOTAL PRICE": "السعر الاجمالي",
     "Top Selling Products": "المنتجات الأكثر مبيعا",
     "All": "الجميع",
-    
+
     "User": "المستخدم",
     "View All": "مشاهدة الجميع",
     "Top Vendors": "أفضل البائعين",

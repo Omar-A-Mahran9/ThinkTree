@@ -34,7 +34,7 @@
                                     stroke="#1C1D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <h4 class="fw-bold me-auto px-4 py-3">{{ __('cities') }}</h4>
+                        <h4 class="fw-bold me-auto px-4 py-3">{{ __('Features') }}</h4>
 
                         <!--end::Avatar-->
                     </div>
@@ -53,7 +53,7 @@
                     <div class="d-flex  justify-content-between flex-wrap ">
                         <!--begin::Due-->
                         <div class=" rounded min-w-125px py-1 px-4 me-7">
-                            <div class="fs-2 fw-bold">{{ __('cities count') }}</div>
+                            <div class="fs-2 fw-bold">{{ __('Features count') }}</div>
                             <div class="fs-4  ">{{ $count_feature }}</div>
                         </div>
                         <!--end::Due-->
@@ -97,7 +97,7 @@
                                     stroke="#1C1D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <h4 class="fw-bold me-auto px-4 py-3">{{ __('cities') }}</h4>
+                        <h4 class="fw-bold me-auto px-4 py-3">{{ __('Features') }}</h4>
 
                         <!--end::Avatar-->
                     </div>
@@ -132,7 +132,7 @@
                                             fill="currentColor"></rect>
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->{{ __('Add city') }}
+                                <!--end::Svg Icon-->{{ __('Add feature') }}
                             </button>
                             <!--end::Add customer-->
                         </div>
@@ -158,7 +158,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('Cities list') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Features list') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -182,7 +182,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for cities') }}">
+                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for feature') }}">
                 </div>
                 <!--end::Search-->
 
@@ -225,14 +225,14 @@
     <!--end::Basic info-->
 
     {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.cities.store') }}" method="post"
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.features.store') }}" method="post"
         data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="form_title">{{ __('Add new city') }}</h5>
+                        <h5 class="modal-title" id="form_title">{{ __('Add new feature') }}</h5>
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
@@ -286,7 +286,7 @@
 @push('scripts')
     <script src="{{ asset('assets/dashboard/js/global/datatable-config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/datatables/cities.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/datatables/features.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/global/crud-operations.js') }}"></script>
 
     <script>
@@ -294,10 +294,10 @@
             $("#add_btn").click(function(e) {
                 e.preventDefault();
 
-                $("#form_title").text(__('Add new city'));
+                $("#form_title").text(__('Add new Feature'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/cities`);
+                $("#crud_form").attr('action', `/dashboard/features`);
             });
 
 
