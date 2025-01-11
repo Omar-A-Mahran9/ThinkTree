@@ -206,7 +206,7 @@
                 $("#form_title").text(__('Add new hero'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/ourheros`);
+                $("#crud_form").attr('action', `/dashboard/ourheroes`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
 

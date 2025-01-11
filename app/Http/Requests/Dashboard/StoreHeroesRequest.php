@@ -14,7 +14,7 @@ class StoreHeroesRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('create_ourheros');
+        return abilities()->contains('create_ourheroes');
     }
 
     /**

@@ -25,7 +25,7 @@ class Role extends Model
         'whyus',
         'ourlevels',
 
-        'ourheros',
+        'ourheroes',
 
         'contact_us',
         'cities',
@@ -36,8 +36,8 @@ class Role extends Model
         'settings',
         'roles',
       
-        // 'vendors',
-        // 'partener',
+         'home_content',
+         'payment_ways',
         // 'awards',
         // 'gallary',
      

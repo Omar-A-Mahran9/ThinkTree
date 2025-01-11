@@ -51,7 +51,7 @@ Route::get("ourlevels/restore-selected", "OurlevelController@restoreSelected");
  Route::resource('admins', 'AdminController')->except(['create', 'edit']);
  Route::resource('whyus', 'WhyUsController')->except(['create', 'edit']);
  Route::resource('ourlevels', 'OurlevelController')->except(['create', 'edit']);
- Route::resource('ourheros', 'OurheroController')->except(['create', 'edit']);
+ Route::resource('ourheroes', 'OurheroController')->except(['create', 'edit']);
 
 Route::resource('booking', 'BookingController')->except(['create', 'edit']);
 Route::resource('brands', 'BrandController')->except(['create', 'edit']);
@@ -124,6 +124,7 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::match(['get', 'post'], 'general/contact', 'SettingController@contact')->name('general.contact');
     Route::match(['get', 'post'], 'general/mobile-app', 'SettingController@mobileApp')->name('general.mobile_app');
     Route::match(['get', 'post'], 'general/tax', 'SettingController@tax')->name('general.tax');
+    Route::match(['get', 'post'], 'general/landing', 'SettingController@landingPageContent')->name('general.landing');
 
     Route::resource('roles', 'RoleController');
     Route::get('role/{role}/admins', 'RoleController@admins');

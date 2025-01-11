@@ -76,8 +76,8 @@
 
 
 
-                @can('view_ourheros')
-                    <x-dashboard.aside-item :slug="'ourheros'" :route="route('dashboard.ourheros.index')" :title="__('Our Heros')">
+                @can('view_ourheroes')
+                    <x-dashboard.aside-item :slug="'ourheroes'" :route="route('dashboard.ourheroes.index')" :title="__('Our Heros')">
                         <i class="fas fa-dumbbell fs-2"></i>
 
                     </x-dashboard.aside-item>

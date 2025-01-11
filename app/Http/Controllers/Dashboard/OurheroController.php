@@ -13,14 +13,14 @@ class OurheroController extends Controller
  
     public function index(Request $request)
     {
-        $this->authorize('view_ourheros');
+        $this->authorize('view_ourheroes');
         if ($request->ajax()){
             return response(getModelData(model: new Ourhero()));
         }
         else
         $cities    = City::select('id', 'name_ar', 'name_en','image')->get();
  
-             return view('dashboard.ourheros.index', compact('cities' ));
+             return view('dashboard.ourheroes.index', compact('cities' ));
     }
 
     /**

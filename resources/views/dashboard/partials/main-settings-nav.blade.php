@@ -9,6 +9,12 @@
     <!--begin:::Tab item-->
     <li class="nav-item">
         <a class="nav-link text-active-primary pb-4  {{ getClassIfUrlContains('active', 'mobile-app') }}"
+            href="{{ route('dashboard.settings.general.landing') }}">{{ __('Application links') }}</a>
+    </li>
+    <!--end:::Tab item-->
+    <!--begin:::Tab item-->
+    <li class="nav-item">
+        <a class="nav-link text-active-primary pb-4  {{ getClassIfUrlContains('active', 'mobile-app') }}"
             href="{{ route('dashboard.settings.general.mobile_app') }}">{{ __('Application links') }}</a>
     </li>
     <!--end:::Tab item-->
