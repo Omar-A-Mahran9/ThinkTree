@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Packages;
+use App\Http\Controllers\Controller;
+use App\Models\Outcoume;
 use Illuminate\Http\Request;
 
-class PackagesController extends Controller
+class OutcoumeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class PackagesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Packages $packages)
+    public function show(Outcoume $outcoume)
     {
         //
     }
@@ -42,7 +43,7 @@ class PackagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Packages $packages)
+    public function edit(Outcoume $outcoume)
     {
         //
     }
@@ -50,7 +51,7 @@ class PackagesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Packages $packages)
+    public function update(Request $request, Outcoume $outcoume)
     {
         //
     }
@@ -58,7 +59,7 @@ class PackagesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Packages $packages)
+    public function destroy(Outcoume $outcoume)
     {
         //
     }

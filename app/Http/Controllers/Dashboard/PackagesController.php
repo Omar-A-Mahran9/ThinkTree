@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\BackageFeature;
+use App\Http\Controllers\Controller;
+use App\Models\Packages;
 use Illuminate\Http\Request;
 
-class BackageFeatureController extends Controller
+class PackagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class BackageFeatureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BackageFeature $backageFeature)
+    public function show(Packages $packages)
     {
         //
     }
@@ -42,7 +43,7 @@ class BackageFeatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BackageFeature $backageFeature)
+    public function edit(Packages $packages)
     {
         //
     }
@@ -50,7 +51,7 @@ class BackageFeatureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BackageFeature $backageFeature)
+    public function update(Request $request, Packages $packages)
     {
         //
     }
@@ -58,7 +59,7 @@ class BackageFeatureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BackageFeature $backageFeature)
+    public function destroy(Packages $packages)
     {
         //
     }

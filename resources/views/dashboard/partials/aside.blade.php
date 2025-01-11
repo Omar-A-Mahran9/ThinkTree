@@ -91,6 +91,27 @@
                     </x-dashboard.aside-item>
                 @endcan
                 <!--end:Menu item-->
+                @canany(['view_packages'])
+                    <div class="menu-item">
+                        <div class="menu-content pt-5 pb-0">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Packages') }}</span>
+                        </div>
+
+                    </div>
+                    <div class="ms-2">
+                        <x-dashboard.aside-item :slug="'features'" :route="route('dashboard.features.index')" :title="__('Features')" class="">
+                            <i class="ki-outline ki-star fs-2"></i>
+                        </x-dashboard.aside-item>
+
+                        <x-dashboard.aside-item :slug="'outcomes'" :route="route('dashboard.outcomes.index')" :title="__('Outcomes')">
+                            <i class="fas fa-certificate fs-2"></i>
+                        </x-dashboard.aside-item>
+
+                        <x-dashboard.aside-item :slug="'packages'" :route="route('dashboard.packages.index')" :title="__('Packages')">
+                            <i class="ki-outline ki-abstract-26 fs-2"></i>
+                        </x-dashboard.aside-item>
+                    </div>
+                @endcanany
                 <!--begin:Menu item-->
                 @can('view_customersRate')
                     <x-dashboard.aside-item :slug="'customers_rates'" :route="route('dashboard.customers_rates.index')" :title="__('Customers Rates')">
@@ -182,7 +203,8 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-3 my-0">
-                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="dark">
+                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
+                                data-kt-value="dark">
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="ki-outline ki-moon fs-2"></i>
                                 </span>

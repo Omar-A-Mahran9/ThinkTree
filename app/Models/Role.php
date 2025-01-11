@@ -38,7 +38,7 @@ class Role extends Model
       
          'home_content',
          'payment_ways',
-        // 'awards',
+        'packages',
         // 'gallary',
      
         // 'addonService', 
