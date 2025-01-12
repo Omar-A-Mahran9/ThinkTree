@@ -44,20 +44,20 @@ class WhyUsController extends Controller
      * Update the specified resource in storage.
      */
  
-     public function update(UpdatePrtnerRequest $request, partener $partener)
-     {
-         $data = $request->validated();
-         $partener = request()->route('partner');
+    //  public function update(UpdatePrtnerRequest $request, partener $partener)
+    //  {
+    //      $data = $request->validated();
+    //      $partener = request()->route('partner');
 
-             $partenerData=partener::find($partener);
+    //          $partenerData=partener::find($partener);
 
-         if ($request->has('image'))
-             $data['image'] = uploadImageToDirectory($request->file('image'), "Why us");
+    //      if ($request->has('image'))
+    //          $data['image'] = uploadImageToDirectory($request->file('image'), "Why us");
  
-         $partenerData->update($data);
+    //      $partenerData->update($data);
  
-         return response(["partner updated successfully"]);
-     }
+    //      return response(["partner updated successfully"]);
+    //  }
 
     public function destroy( $Whyus)
     {

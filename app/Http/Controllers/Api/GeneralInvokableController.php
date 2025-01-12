@@ -9,7 +9,9 @@ use App\Http\Resources\Api\CityResource;
 use App\Http\Resources\Api\CustomerRateResource;
 use App\Http\Resources\Api\GallariesResource;
 use App\Http\Resources\Api\HeroesResource;
+use App\Http\Resources\Api\OurlevelResources;
 use App\Http\Resources\Api\packagesCategoryResources;
+use App\Http\Resources\Api\PackagesResources;
 use App\Http\Resources\Api\PartenersResource;
 use App\Http\Resources\Api\Rate;
 use App\Http\Resources\Api\RateResource;
@@ -25,6 +27,7 @@ use App\Models\Gallary;
 use App\Models\Ourhero;
 use App\Models\Ourlevel;
 use App\Models\PackageCategory;
+use App\Models\Packages;
 use App\Models\partener;
 use App\Models\SkinColor;
 use App\Models\Whyus;
@@ -45,16 +48,22 @@ class GeneralInvokableController extends Controller
         ->limit(10)
         ->get();
 
-        $levels = Ourlevel::select('id', 'name_ar', 'name_en', 'description_ar', 'description_en', 'image','icon' )
+        $levels = Ourlevel::select('id', 'name_ar', 'name_en', 'description_ar', 'description_en', 'image')
+        ->orderBy('id', 'ASC') // Replace 'id' with the column you want to sort by
         ->limit(10)
+        ->get();
+
+        $packages = Packages::where('available', 1) // Ensures only rows where available = 1 are selected
+        ->orderBy('id', 'ASC') // Orders the results by the 'id' column in ascending order
+        ->limit(3) // Limits the results to 3 rows
         ->get();
      
             return $this->success('', [
           
             "ourheroes"=>HeroesResource::collection($ourheroes),
             "whythinktree"=>whyusResources::collection($whyus),
-            "Ourlevel"=>whyusResources::collection($whyus),
-
+            "Ourlevel"=>OurlevelResources::collection($levels),
+            "Packages"=>PackagesResources::collection($packages),
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),

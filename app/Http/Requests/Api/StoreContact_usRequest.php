@@ -22,12 +22,11 @@ class StoreContact_usRequest extends FormRequest
      */
     public function rules(): array
     {
+ 
         return [
-            'name' => ['required'],
+            'parent_name' => ['required'],
+            'child_name' => ['required'],
             'phone' => ['required', new PhoneNumber()],
-            'email' => ['nullable', 'string', 'email:rfc,dns'],
-             'addon_service_id' => ['required_if:main_contactUs,true', 'numeric'],
-
             'message' => ['required']
         ];
     }

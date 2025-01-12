@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  
     Route::get('general', 'GeneralInvokableController');
     Route::get('ourheroes', 'dataController@ourheroes');
+    Route::get('packages', 'dataController@packages');
 
     Route::post('contact_us', 'ContactUsController@store');
     Route::get('blogs', 'HomeController@getblogs');
