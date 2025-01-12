@@ -40,8 +40,9 @@ class UpdateSettingsRequest extends FormRequest
                 'privacy_en' => 'required|string',
             ],
             "contact" => [
-                'whatsapp_number' => ['required', 'regex:/^[0-9]+$/', 'max:20'],
-                'sms_number' => ['required', 'regex:/^[0-9]+$/', 'max:20'],
+           'whatsapp_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
+'sms_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
+
                 'delay_time_seconds' => ['required'],
                 'whatsapp_notification_enabled' => [ 'in:0,1'],
                 'whatsapp_message' => ['required'],

@@ -64,6 +64,9 @@ class GeneralInvokableController extends Controller
             "whythinktree"=>whyusResources::collection($whyus),
             "Ourlevel"=>OurlevelResources::collection($levels),
             "Packages"=>PackagesResources::collection($packages),
+            "footer"=>[
+
+            ],
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),
