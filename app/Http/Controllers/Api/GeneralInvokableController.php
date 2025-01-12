@@ -57,16 +57,27 @@ class GeneralInvokableController extends Controller
         ->orderBy('id', 'ASC') // Orders the results by the 'id' column in ascending order
         ->limit(3) // Limits the results to 3 rows
         ->get();
-     
+        $rate = customers_rates::with(['customer.chields']) // Eager load customer and their chields
+        ->select('id', 'customer_id', 'comment', 'rate', 'status')
+        ->where('status', 'approve')
+        ->get();
+
+    
             return $this->success('', [
-          
+                "herosection"=>[
+                'image'=> asset(getImagePathFromDirectory(setting('herosection_image'), 'Settings', "default.svg")),
+                'title' => setting('landing_page.main_section_title_' . request()->header('Content-language', 'ar')),
+                'description' => setting('landing_page.main_section_description_' . request()->header('Content-language', 'ar')),
+ 
+                ],
             "ourheroes"=>HeroesResource::collection($ourheroes),
             "whythinktree"=>whyusResources::collection($whyus),
             "Ourlevel"=>OurlevelResources::collection($levels),
             "Packages"=>PackagesResources::collection($packages),
-            "footer"=>[
 
-            ],
+            'Customer_rate' => RateResource::collection( $rate),
+
+            "Certificate Image"=> asset(getImagePathFromDirectory(setting('certificate_image'), 'Settings', "default.svg")),
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),

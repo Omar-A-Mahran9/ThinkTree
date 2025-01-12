@@ -33,6 +33,18 @@ class UpdateSettingsRequest extends FormRequest
                 'description' => 'required|string:255',
                 'sound_status' => 'required|in:stop,active',
             ],
+            "landing" => [
+                'herosection_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
+                'certificate_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
+
+                'landing_page.main_section_title_ar' => 'required|string|max:255',
+                'landing_page.main_section_title_en' => 'required|string|max:255',
+                'landing_page.main_section_description_ar' => 'required|string|max:600',
+                'landing_page.main_section_description_en' => 'required|string|max:600',
+
+            ],
+
+
             "terms" => [
                 'terms_ar' => 'required|string',
                 'terms_en' => 'required|string',
@@ -41,7 +53,7 @@ class UpdateSettingsRequest extends FormRequest
             ],
             "contact" => [
            'whatsapp_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
-'sms_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
+            'sms_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
 
                 'delay_time_seconds' => ['required'],
                 'whatsapp_notification_enabled' => [ 'in:0,1'],

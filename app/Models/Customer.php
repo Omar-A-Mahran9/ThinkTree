@@ -40,15 +40,12 @@ class Customer extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function addresses()
+    public function chields()
     {
-        return $this->HasMany(Address::class);
+        return $this->HasMany(Chield::class);
     }
 
-    public function orders()
-    {
-        return $this->HasMany(Order::class);
-    }
+ 
 
     public function rates()
     {
@@ -61,12 +58,12 @@ class Customer extends Authenticatable
         return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
 
-    public function sendOTP(){
-        $this->otp = rand(111111, 999999);
-        $appName = setting("website_name") ?? "Platin";
-        // $this->sendSMS("$appName: $this->otp هو رمز الحماية,لا تشارك الرمز");
-        $this->save();
-    }
+    // public function sendOTP(){
+    //     $this->otp = rand(111111, 999999);
+    //     $appName = setting("website_name") ?? "Platin";
+    //     // $this->sendSMS("$appName: $this->otp هو رمز الحماية,لا تشارك الرمز");
+    //     $this->save();
+    // }
 
     public function getFullImagePathAttribute()
     {

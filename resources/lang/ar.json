@@ -211,6 +211,8 @@
     "Allowed file types: png, jpg, jpeg.": "أنواع الملفات المسموح بها : png, jpg, jpeg",
     "Successfully done.": ".تمت العملية بنجاح",
     "Now": "الأن",
+    "Certificate Image": "صورة الشهادة",
+
     "Dashboard | Vendor": "لوحة التحكم | التاجر",
     "Password is incorrect": "كلمة المرور غير صحيحة",
     "Create Product": "اضافة منتج",
@@ -536,6 +538,9 @@
     " but in the trash ": " ولكن في سلة المهملات ",
     "do you want to restore ?": "هل تريد الاسترجاع ؟",
     "name_ar": "الاسم بالعربية",
+    "Main Setting": "الإعدادات العامة",
+    "hero section": "القسم الرئيسي",
+
     "Type your WhatsApp message here": "ادخل محتوى الرسالة المنبثقة",
 
     "Message whatsapp": "الرسالة المنبثقة",
@@ -545,6 +550,7 @@
     "Enter time in seconds": "ادهل الوقت بالثانية",
     "whatsapp_notification_enabled": "تشغبل الرسائل المنبثقة",
     "On/Off": "تشغيل / ايقاف",
+    "Image hero section": "صورة القسم الرئيسي",
 
     "name_en": "الاسم بالانجليزية",
     "Cancel Order": "رفض الطلب",

@@ -147,53 +147,7 @@
                                     <div class="fv-plugins-message-container invalid-feedback" id="description"></div>
                                     <!--end::Description-->
                                 </div>
-                                <!--end::Input group-->
-                                <div class="fv-row mb-10">
-                                    <!--begin::Label-->
-                                    <label class="fs-6 fw-semibold mb-2">{{ __('اصوات التنبيه في النظام') }}
-                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="{{ __('حدد إذا كنت ترغب بإيقاف او تشغيل اصوات التنبيه') }}"></i></label>
-                                    <!--End::Label-->
-                                    <!--begin::Row-->
-                                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
-                                        <!--begin::Col-->
-                                        <div class="col">
-                                            <!--begin::Option-->
-                                            <label class="btn btn-outline btn-outline-dashed btn-active-light-primary {{ setting('sound_status') == 'stop'? 'active': '' }} d-flex text-start p-6" data-kt-button="true">
-                                                <!--begin::Radio-->
-                                                <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                    <input class="form-check-input" type="radio" name="sound_status" value="stop" @if(setting('sound_status') == 'stop') checked="checked" @endif />
-                                                </span>
-                                                <!--end::Radio-->
-                                                <!--begin::Info-->
-                                                <span class="ms-5">
-                                                    <span class="fs-4 fw-bold text-gray-800 d-block">{{ __('إيقاف') }}</span>
-                                                </span>
-                                                <!--end::Info-->
-                                            </label>
-                                            <!--end::Option-->
-                                        </div>
-                                        <!--end::Col-->
-                                        <!--begin::Col-->
-                                        <div class="col">
-                                            <!--begin::Option-->
-                                            <label class="btn btn-outline btn-outline-dashed btn-active-light-primary {{ setting('sound_status') == 'active'? 'active': '' }} d-flex text-start p-6" data-kt-button="true">
-                                                <!--begin::Radio-->
-                                                <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                    <input class="form-check-input" type="radio" name="sound_status" value="active" @if(setting('sound_status') == 'active') checked="checked" @endif />
-                                                </span>
-                                                <!--end::Radio-->
-                                                <!--begin::Info-->
-                                                <span class="ms-5">
-                                                    <span class="fs-4 fw-bold text-gray-800 d-block">{{ __('تشغيل') }}</span>
-                                                </span>
-                                                <!--end::Info-->
-                                            </label>
-                                            <!--end::Option-->
-                                        </div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Row-->
-                                </div>
+                      
                             </div>
                             <!--end::Card header-->
                         </div>

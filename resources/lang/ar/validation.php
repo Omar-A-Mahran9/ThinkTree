@@ -336,6 +336,9 @@ return [
         'payment_receipt' => 'صورة التحويل',
         'website_name' => 'إسم الموقع',
         'description' => 'الوصف',
+        'herosection_image' => 'صورة القسم الرئيسي',
+        'certificate_image' => 'صورة الشهادة',
+
         'commercial_register_number' => 'رقم السجل التجاري',
         'national_id' => 'الرقم الهوية',
         'national_single_sign_on' => 'رقم النفاذ الوطني',

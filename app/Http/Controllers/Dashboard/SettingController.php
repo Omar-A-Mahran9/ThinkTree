@@ -101,8 +101,18 @@ class SettingController extends Controller
 
     public function landingPageContent(UpdateSettingsRequest $request)
     {
-        if ($request->isMethod('post')) {
-            setting($request->validated())->save();
+     
+         if ($request->isMethod('post')) {
+           $data= $request->validated();
+           if ($request->hasFile('herosection_image')) {
+            deleteImageFromDirectory(setting('herosection_image'), "Settings");
+            $data['herosection_image'] =  uploadImageToDirectory($request->herosection_image, "Settings");
+        }
+        if ($request->hasFile('certificate_image')) {
+            deleteImageFromDirectory(setting('certificate_image'), "Settings");
+            $data['certificate_image'] =  uploadImageToDirectory($request->certificate_image, "Settings");
+        }
+            setting($data)->save();
         } else {
             $this->authorize('view_settings');
             return view('dashboard.settings.general-settings.landing-page-content');
