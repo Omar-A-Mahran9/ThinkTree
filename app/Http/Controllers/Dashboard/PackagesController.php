@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StorePackageRequest;
+use App\Http\Requests\Dashboard\UpdatePackageRequest;
 use App\Models\Feature;
 use App\Models\Outcome;
 use App\Models\Packages;
@@ -21,7 +22,7 @@ class PackagesController extends Controller
         $outcomes    = Outcome::select('id', 'name_ar', 'name_en','image')->get();
 
         if ($request->ajax()){
-            return response(getModelData(model: new Packages()));
+            return response(getModelData(model: new Packages(), relations: ['features' => ['id', 'name_ar', 'name_en','created_at'],'outcomes' => ['id', 'name_ar', 'name_en','created_at']]));
         }
         else
             return view('dashboard.packages.index',compact('features','outcomes'));
@@ -64,35 +65,70 @@ class PackagesController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Packages $packages)
-    {
-        //
+ 
+/**
+ * Update the specified resource in storage.
+ */
+public function update(UpdatePackageRequest $request, $id)
+{
+    $packages =Packages::find($id);
+     // Validate and retrieve validated data
+    $validatedData = $request->validated();
+
+    // Handle image upload if a new image is provided
+    if ($request->hasFile('image')) {
+        // Delete the old image if needed
+        if ($packages->image) {
+            deleteImageFromDirectory($packages->image, "Packages"); // Implement this helper to remove the old image
+        }
+
+        // Upload the new image
+        $validatedData['image'] = uploadImageToDirectory($request->file('image'), "Packages");
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Packages $packages)
-    {
-        //
+    // Extract specific fields
+    $features = $validatedData['features'] ?? [];
+    $outcomes = $validatedData['outcomes'] ?? [];
+
+    // Remove features and outcomes from the main data
+    unset($validatedData['features'], $validatedData['outcomes']);
+
+    // Update the package using the remaining validated data
+    $packages->update($validatedData);
+
+    // Sync features and outcomes with the package
+    $packages->features()->sync($features);
+    $packages->outcomes()->sync($outcomes);
+
+    // Redirect or respond with success
+    return response(["Package updated successfully"], 200);
+}
+
+public function destroy($id)
+{
+    // Find the package by its ID
+    $package = Packages::find($id);
+
+    // Check if the package exists
+    if (!$package) {
+        return response(["Package not found"], 404);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Packages $packages)
-    {
-        //
+    // Delete related features and outcomes (if any)
+    $package->features()->detach();
+    $package->outcomes()->detach();
+
+    // Handle image deletion if the package has an associated image
+    if ($package->image) {
+        deleteImageFromDirectory($package->image, "Packages");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Packages $packages)
-    {
-        //
-    }
+    // Delete the package
+    $package->delete();
+
+    // Return success response
+    return response(["Package deleted successfully"], 200);
+}
+
+        
 }

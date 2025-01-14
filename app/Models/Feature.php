@@ -29,6 +29,11 @@ class Feature extends Model
         return $this->attributes['name_' . app()->getLocale()];
     }
 
+    public function packages()
+    {
+        return $this->belongsToMany(Packages::class, 'package_feature', 'package_id', 'feature_id');
+    }
+
     public function getFullImagePathAttribute()
     {
         return asset(getImagePathFromDirectory($this->image, 'Feature', "default.svg"));

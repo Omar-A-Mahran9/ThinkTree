@@ -28,11 +28,14 @@ class Packages extends Model
     {
         return $this->belongsToMany(Feature::class, 'package_feature', 'package_id', 'feature_id');
     }
+ 
+    
 
     public function outcomes()
     {
         return $this->belongsToMany(Outcome::class, 'package_outcome', 'package_id', 'outcome_id');
     }
+
     public function getFullImagePathAttribute()
     {
         return asset(getImagePathFromDirectory($this->image, 'Packages', "default.svg"));

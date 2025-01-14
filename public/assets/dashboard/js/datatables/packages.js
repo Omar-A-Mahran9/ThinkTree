@@ -1,5 +1,4 @@
 "use strict";
-"use strict";
 
 var datatable;
 // Class definition
@@ -199,14 +198,16 @@ var KTDatatablesServerSide = (function () {
             '[data-kt-docs-table-filter="edit_row"]'
         );
 
-        editButtons.forEach((d) => {
+        editButtons.forEach((button) => {
             // edit button on click
-            d.addEventListener("click", function (e) {
+            button.addEventListener("click", function (e) {
                 e.preventDefault();
 
-                let currentBtnIndex = $(editButtons).index(d);
+                // Get the current button's index and corresponding data
+                let currentBtnIndex = $(editButtons).index(button);
                 let data = datatable.row(currentBtnIndex).data();
 
+                // Update modal fields dynamically
                 $("#form_title").text(__("Edit package"));
                 $(".image-input-wrapper").css(
                     "background-image",
@@ -214,13 +215,34 @@ var KTDatatablesServerSide = (function () {
                 );
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
+                $("#description_ar_inp").val(data.description_ar);
+                $("#description_en_inp").val(data.description_en);
                 $("#price_inp").val(data.price);
-                $("#to_time_inp").val(data.to_time);
-                $("#from_time_inp").val(data.from_time);
-                $("#from_inp").val(data.from);
-                $("#to_inp").val(data.from_time);
-                $("#statue_inp").val(data.statue);
+                $("#discount_price_inp").val(data.discount_price);
+                $("#discount-price-switch").prop(
+                    "checked",
+                    data.have_discount === 1
+                );
+                // Get the discount input element
+                let discountInp = $("#discount_price_inp");
 
+                // Enable or disable the discount input based on the initial value of `have_discount`
+                if (data.have_discount === 1) {
+                    discountInp.prop("disabled", false); // Enable input
+                } else {
+                    discountInp.prop("disabled", true); // Disable input
+                }
+                $("#price_per_session_inp").val(data.price_per_session);
+                $("#duration_monthly_inp").val(data.duration_monthly);
+                $("#number_of_session_per_week_inp").val(
+                    data.number_of_session_per_week
+                );
+                $("#number_of_levels_inp").val(data.number_of_levels);
+                $("#number_of_sessions_inp").val(data.number_of_sessions);
+                $("#featured-switch").prop("checked", data.featured === 1);
+                $("#available-switch").prop("checked", data.available === 1);
+
+                // Set the form's action attribute and add the hidden input for PUT method
                 $("#crud_form").attr(
                     "action",
                     `/dashboard/${dbTable}/${data.id}`
@@ -229,6 +251,24 @@ var KTDatatablesServerSide = (function () {
                     `<input type="hidden" name="_method" value="PUT">`
                 );
                 $("#crud_modal").modal("show");
+
+                // Handle the features dropdown
+                if (data.features && data.features.length > 0) {
+                    // Set selected features
+                    let selectedFeatures = data.features.map(
+                        (feature) => feature.id
+                    ); // Assuming `data.features` is an array of feature objects with `id`
+                    $("#features_inp").val(selectedFeatures).trigger("change"); // Trigger select2 to update the selected options
+                }
+
+                // Handle the features dropdown
+                if (data.outcomes && data.outcomes.length > 0) {
+                    // Set selected features
+                    let selectedoutcomes = data.outcomes.map(
+                        (outcome) => outcome.id
+                    ); // Assuming `data.features` is an array of feature objects with `id`
+                    $("#outcomes_inp").val(selectedoutcomes).trigger("change"); // Trigger select2 to update the selected options
+                }
             });
         });
     };

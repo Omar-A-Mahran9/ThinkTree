@@ -109,6 +109,8 @@ let translations = {
         row: "صفوف ",
         rows: "صفوف ",
         " selected": "محددة",
+        "Edit package": "تعديل الباقة",
+
         male: "ذكر",
         female: "انثى",
         cash: "الدفع نقدي",

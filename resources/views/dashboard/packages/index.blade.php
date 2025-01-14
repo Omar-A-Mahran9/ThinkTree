@@ -102,8 +102,9 @@
     </div>
     <!--end::Basic info-->
 
-    <form id="crud_form modal-body" class="ajax-form" method="post" data-success-callback="onAjaxSuccess"
-        data-error-callback="onAjaxError">
+
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.packages.store') }}" method="post"
+        data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -330,10 +331,9 @@
                             <div class="col-md-6 fv-row">
                                 <label class="fs-5 fw-bold mb-2">{{ __('number of sessions') }}</label>
                                 <div class="form-floating">
-                                    <input type="number" min="1" class="form-control" id="number_of_session_inp"
-                                        name="number_of_sessions" placeholder="example" />
-                                    <label
-                                        for="number_of_sessions_inp">{{ __('Enter the number of session per week') }}</label>
+                                    <input type="number" min="1" class="form-control"
+                                        id="number_of_sessions_inp" name="number_of_sessions" placeholder="example" />
+                                    <label for="number_of_sessions_inp">{{ __('Enter the number of session') }}</label>
                                 </div>
                                 <p class="invalid-feedback" id="number_of_sessions"></p>
 

@@ -1,14 +1,12 @@
 let priceFieldInp = $("#price-field-val");
 let priceInp = $("#price_inp");
 let discountInp = $("#discount_price_inp");
-let discountdurationInp = $("#discount_duration_days_counts_inp");
 
 let previouslySelected = [];
 
 $(document).ready(() => {
     $("#discount-price-switch").change(function () {
         discountInp.prop("disabled", !$(this).prop("checked"));
-        discountdurationInp.prop("disabled", !$(this).prop("checked"));
     });
 
     $(".price-filed-radio:not(#other-radio-btn)").change(function () {
