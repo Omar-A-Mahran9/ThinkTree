@@ -99,8 +99,8 @@
     </div>
     <!--end::Basic info-->
 
-    <form id="crud_form modal-body" class="ajax-form" method="post" data-success-callback="onAjaxSuccess"
-        data-error-callback="onAjaxError">
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.ourlevels.store') }}" method="post"
+        data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">

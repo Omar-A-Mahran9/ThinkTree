@@ -170,14 +170,11 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
-                $(".icon-input-wrapper").css(
-                    "background-image",
-                    `url('${data.full_icon_path}')`
-                );
+
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
                 $("#description_ar_inp").val(data.description_ar);
-                $("#description_en_inp").val(data.description_ar);
+                $("#description_en_inp").val(data.description_en);
                 $("#crud_form").attr(
                     "action",
                     `/dashboard/${dbTable}/${data.id}`

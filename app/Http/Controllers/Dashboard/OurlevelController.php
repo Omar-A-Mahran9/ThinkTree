@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreLevelRequest;
+use App\Http\Requests\Dashboard\UpdateLevelRequest;
 use App\Models\Ourlevel;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,6 @@ class OurlevelController extends Controller
     
     public function store(StoreLevelRequest $request)
     {
-        dd($request);
          $data          = $request->validated();
         $data['image'] = uploadImageToDirectory($request->file('image'), "levels"); 
         Ourlevel::create($data);
@@ -33,30 +33,31 @@ class OurlevelController extends Controller
         return response(["Level created successfully"]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ourlevel $ourlevel)
+ 
+    public function update(UpdateLevelRequest $request, Ourlevel $ourlevel)
     {
-        //
+      
+        // Validate the incoming request
+        $data = $request->validated();
+    
+        // Handle the image upload if a new image is provided
+        if ($request->hasFile('image')) {
+            // Assuming the uploadImageToDirectory function will handle the image upload
+            $data['image'] = uploadImageToDirectory($request->file('image'), "levels");
+    
+            // Optionally delete the old image from storage if it exists
+            if ($ourlevel->image) {
+                deleteImageFromDirectory($ourlevel->image, "levels");
+            }
+        }
+    
+        // Update the existing 'Ourlevel' model with the validated data
+        $ourlevel->update($data);
+    
+        // Return a success response
+        return response(["Level updated successfully"], 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Ourlevel $ourlevel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Ourlevel $ourlevel)
-    {
-        dd("omar");
-
-    }
+    
 
     /**
      * Remove the specified resource from storage.
