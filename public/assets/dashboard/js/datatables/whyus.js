@@ -169,7 +169,7 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
-                $(".icon-input-wrapper").css(
+                $(".icon").css(
                     "background-image",
                     `url('${data.full_icon_path}')`
                 );

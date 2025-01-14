@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Whyus extends Model
 {
     use HasFactory;
-    protected $fillable = ['icon','image','name_ar','name_en','description_ar','description_en']; // Add this array to allow mass assignment of the 'image' attribute
+    protected $guarded = [];
     protected $appends = ['description','name', 'full_image_path','full_icon_path'];
     protected $casts   = [
         'created_at' => 'date:Y-m-d',

@@ -35,6 +35,8 @@ class CityController extends Controller
     public function update(UpdateCityRequest $request, City $city)
     {
         $data = $request->validated();
+        
+        if($request->file('image'))
         $data['image'] = uploadImageToDirectory($request->file('image'), "city"); 
 
         $city->update($data);

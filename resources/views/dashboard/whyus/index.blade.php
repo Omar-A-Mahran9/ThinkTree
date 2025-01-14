@@ -98,8 +98,8 @@
     </div>
     <!--end::Basic info-->
 
-    <form id="crud_form modal-body" class="ajax-form" method="post" data-success-callback="onAjaxSuccess"
-        data-error-callback="onAjaxError">
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.whyus.store') }}" method="post"
+        data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -201,11 +201,12 @@
             $("#add_btn").click(function(e) {
                 e.preventDefault();
 
-                $("#form_title").text(__('Add new '));
+                $("#form_title").text(__('Add new why us'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/whyus`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
+
             });
 
 

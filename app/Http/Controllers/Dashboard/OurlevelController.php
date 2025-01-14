@@ -25,6 +25,7 @@ class OurlevelController extends Controller
     
     public function store(StoreLevelRequest $request)
     {
+        dd($request);
          $data          = $request->validated();
         $data['image'] = uploadImageToDirectory($request->file('image'), "levels"); 
         Ourlevel::create($data);
@@ -53,7 +54,8 @@ class OurlevelController extends Controller
      */
     public function update(Request $request, Ourlevel $ourlevel)
     {
-        //
+        dd("omar");
+
     }
 
     /**

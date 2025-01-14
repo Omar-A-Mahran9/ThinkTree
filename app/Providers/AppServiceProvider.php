@@ -23,28 +23,21 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('dashboard.partials.master', function ($view) {
-            $unreadNotifications = auth()->user()->unreadNotifications();
-            $allNotifications    = auth()->user()->notifications();
-            // dd($unreadNotifications);
-            $view->with(['unreadNotifications' => $unreadNotifications, "allNotifications" => $allNotifications]);
+    
         });
 
         View::composer('dashboard.partials.sidebar', function ($view) {
-            $unreadNotifications = auth()->user()->unreadNotifications()->take(5)->get();
-            $view->with(['unreadNotifications' => $unreadNotifications]);
+          
         });
 
         View::composer('vendor-dashboard.partials.master', function ($view) {
-            $unreadNotifications = auth()->user()->unreadNotifications();
-            $allNotifications    = auth()->user()->notifications();
+           
             // dd($unreadNotifications);
 
-            $view->with(['unreadNotifications' => $unreadNotifications, "allNotifications" => $allNotifications]);
-        });
+         });
 
         View::composer('vendor-dashboard.partials.sidebar', function ($view) {
-            $unreadNotifications = auth()->user()->unreadNotifications()->take(5)->get();
-            $view->with(['unreadNotifications' => $unreadNotifications]);
+         
         });
     }
 }

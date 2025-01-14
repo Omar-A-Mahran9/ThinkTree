@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreWhyusRequest;
 use App\Http\Requests\Dashboard\UpdatePrtnerRequest;
- use App\Models\Whyus;
+use App\Http\Requests\Dashboard\UpdateWhyusRequest;
+use App\Models\Whyus;
 use Illuminate\Http\Request;
 
 class WhyUsController extends Controller
@@ -40,24 +41,32 @@ class WhyUsController extends Controller
  
 
  
-    /**
-     * Update the specified resource in storage.
-     */
+    public function update(UpdateWhyusRequest $request,   $id)
+    {
+        $whyus=Whyus::find($id);
+         // Validate and retrieve the validated data
+        $data = $request->validated();
+        
+        // Handle image file upload (if provided)
+        if ($request->hasFile('image')) {
+            $data['image'] = uploadImageToDirectory($request->file('image'), "Why_us");
+        }
+        
+        // Handle icon file upload (if provided)
+        if ($request->hasFile('icon')) {
+            $data['icon'] = uploadImageToDirectory($request->file('icon'), "Why_us");
+        }
  
-    //  public function update(UpdatePrtnerRequest $request, partener $partener)
-    //  {
-    //      $data = $request->validated();
-    //      $partener = request()->route('partner');
-
-    //          $partenerData=partener::find($partener);
-
-    //      if ($request->has('image'))
-    //          $data['image'] = uploadImageToDirectory($request->file('image'), "Why us");
- 
-    //      $partenerData->update($data);
- 
-    //      return response(["partner updated successfully"]);
-    //  }
+        // Update the Whyus model with validated data
+        $whyus->update($data);
+    
+        // Return a JSON response with a success message and the updated model
+        return response()->json([
+            'message' => 'Why Us updated successfully',
+         ], 200);
+    }
+    
+    
 
     public function destroy( $Whyus)
     {

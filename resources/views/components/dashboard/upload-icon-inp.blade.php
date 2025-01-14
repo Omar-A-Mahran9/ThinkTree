@@ -3,7 +3,7 @@
     <div class="image-input image-input-outline" data-kt-image-input="true">
 
         <!-- begin :: Image preview wrapper -->
-        <div class="icon-input-wrapper w-125px h-125px" id="{{ $name . '_inp' }}"
+        <div class="image-input-wrapper icon w-90px h-90px" id="{{ $name . '_inp' }}"
             style="background-image: url('{{ $image }}')"></div>
         <!-- end   :: Image preview wrapper -->
 
