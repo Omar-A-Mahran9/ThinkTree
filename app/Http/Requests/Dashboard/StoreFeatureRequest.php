@@ -25,8 +25,8 @@ class StoreFeatureRequest extends FormRequest
     {
         return [
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            "name_ar" => ["required", "string:255", 'regex:/^[ء-ي]+/', 'unique:cities'],
-            "name_en" => ["required", "string:255", 'regex:/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/', 'unique:cities'],
+            "name_ar" => ["required", "string:255", 'regex:/^[ء-ي]+/' ],
+            "name_en" => ["required", "string:255", 'regex:/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/' ],
         ];
     }
 }

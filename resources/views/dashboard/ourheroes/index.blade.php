@@ -85,6 +85,8 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
+                        <th>{{ __('Age') }}</th>
+
                         <th>{{ __('Image') }}</th>
                         <th>{{ __('Created at') }}</th>
                         <th class=" min-w-100px">{{ __('Actions') }}</th>
@@ -99,8 +101,8 @@
     </div>
     <!--end::Basic info-->
 
-    <form id="crud_form modal-body" class="ajax-form" method="post" data-success-callback="onAjaxSuccess"
-        data-error-callback="onAjaxError">
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.ourheroes.store') }}" method="post"
+        data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -145,10 +147,10 @@
                         </div>
 
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="name_en_inp"
+                            <label for="age_inp"
                                 class="form-label required fs-6 fw-bold mb-3">{{ __('Age') }}</label>
                             <input type="number" name="age" class="form-control form-control-lg form-control-solid"
-                                id="name_en_inp" placeholder="{{ __('Age') }}">
+                                id="age_inp" placeholder="{{ __('Age') }}">
                             <div class="fv-plugins-message-container invalid-feedback" id="age"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">

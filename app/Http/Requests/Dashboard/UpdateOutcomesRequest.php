@@ -4,7 +4,7 @@ namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOutcomesRequest extends FormRequest
+class UpdateOutcomesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreOutcomesRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('create_packages');
+        return abilities()->contains('update_packages');
     }
 
     /**
@@ -24,8 +24,8 @@ class StoreOutcomesRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            "name_ar" => ["required", "string:255", 'regex:/^[ء-ي]+/' ],
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            "name_ar" => ["required", "string:255", 'regex:/^[ء-ي]+/', ],
             "name_en" => ["required", "string:255", 'regex:/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/'],
         ];
     }

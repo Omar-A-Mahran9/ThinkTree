@@ -299,6 +299,8 @@
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/outcomes`);
+                $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
+
             });
 
 

@@ -24,6 +24,8 @@ var KTDatatablesServerSide = (function () {
             columns: [
                 { data: "id" },
                 { data: "name" },
+                { data: "age" },
+
                 { data: "image" },
                 { data: "created_at" },
                 { data: null },
@@ -55,6 +57,20 @@ var KTDatatablesServerSide = (function () {
                 },
                 {
                     targets: 2,
+                    render: function (data, type, row) {
+                        return `
+                            <div>
+                                <!--begin::Info-->
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.age}</a>
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                        `;
+                    },
+                },
+                {
+                    targets: 3,
                     orderable: false,
                     render: function (data, type, row) {
                         return `
@@ -78,7 +94,7 @@ var KTDatatablesServerSide = (function () {
                 },
 
                 {
-                    targets: 3,
+                    targets: 4,
                     render: function (data, type, row) {
                         return `
                             <div>
@@ -170,11 +186,11 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
-                $(".icon-input-wrapper").css(
-                    "background-image",
-                    `url('${data.full_icon_path}')`
-                );
+
                 $("#name_ar_inp").val(data.name_ar);
+                $("#age_inp").val(data.age);
+                $("#city_id_inp").val(data.city_id).trigger("change"); // Set the city value and trigger change to update select2
+
                 $("#name_en_inp").val(data.name_en);
                 $("#description_ar_inp").val(data.description_ar);
                 $("#description_en_inp").val(data.description_ar);

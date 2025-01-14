@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreOutcomesRequest;
+use App\Http\Requests\Dashboard\UpdateOutcomesRequest;
 use App\Models\Outcome;
 use Illuminate\Http\Request;
 
@@ -45,35 +46,46 @@ class OutcomeController extends Controller
 
         return response(["outcome created successfully"]);
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Outcome $Outcome)
+ 
+    public function update(UpdateOutcomesRequest $request, Outcome $Outcome)
     {
-        //
+        // Validate the incoming data
+        $data = $request->validated();
+        
+        // If a new image is uploaded, handle it
+        if ($request->hasFile('image')) {
+            // You can upload the new image and replace the old one, or handle it as needed
+            $data['image'] = uploadImageToDirectory($request->file('image'), "Outcomes");
+        }
+    
+        // Update the Outcome record with the validated data
+        $Outcome->update($data);
+    
+        // Return a response indicating the update was successful
+        return response(["Outcome updated successfully"]);
     }
+    
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Outcome $Outcome)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Outcome $Outcome)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Outcome $Outcome)
     {
-        //
+        $this->authorize('delete_packages');
+        $Outcome->delete();
+        return response(["Outcome deleted successfully"]);
+    }
+
+
+    public function deleteSelected(Request $request)
+    {
+        $this->authorize('delete_packages');
+        Outcome::whereIn('id', $request->selected_items_ids)->delete();
+        return response(["Outcome deleted successfully"]);
+    }
+
+    public function restoreSelected(Request $request)
+    {
+        $this->authorize('delete_packages');
+        Outcome::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
+
+        return response(["Outcome restored successfully"]);
     }
 }

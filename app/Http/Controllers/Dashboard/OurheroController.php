@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreHeroesRequest;
+use App\Http\Requests\Dashboard\UpdateHeroesRequest;
 use App\Models\City;
 use App\Models\Ourhero;
 use Illuminate\Http\Request;
@@ -42,36 +43,56 @@ class OurheroController extends Controller
 
         return response(["Hero created successfully"]);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ourhero $ourhero)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Ourhero $ourhero)
-    {
-        //
-    }
-
+ 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ourhero $ourhero)
+    public function update(UpdateHeroesRequest $request, Ourhero $ourhero)
     {
-        //
+        // Validate the incoming request
+        $data = $request->validated();
+    
+        // Handle the image upload if a new image is provided
+        if ($request->hasFile('image')) {
+            // Upload the new image
+            $data['image'] = uploadImageToDirectory($request->file('image'), "heroes");
+    
+            // Optionally, delete the old image from storage if it exists
+            if ($ourhero->image) {
+                deleteImageFromDirectory($ourhero->image, "heroes");
+            }
+        }
+    
+        // Update the existing 'Ourhero' model with the validated data
+        $ourhero->update($data);
+    
+        // Return a success response
+        return response(["Hero updated successfully"], 200);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ourhero $ourhero)
+    public function destroy(Ourhero $Ourhero)
     {
-        //
+        $this->authorize('delete_ourheroes');
+        $Ourhero->delete();
+        return response(["Ourhero deleted successfully"]);
+    }
+
+
+    public function deleteSelected(Request $request)
+    {
+        $this->authorize('delete_ourheroes');
+        Ourhero::whereIn('id', $request->selected_items_ids)->delete();
+        return response(["Ourhero deleted successfully"]);
+    }
+
+    public function restoreSelected(Request $request)
+    {
+        $this->authorize('delete_ourheroes');
+        Ourhero::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
+
+        return response(["Ourhero restored successfully"]);
     }
 }
