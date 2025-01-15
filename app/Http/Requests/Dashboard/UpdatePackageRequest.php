@@ -41,8 +41,8 @@ class UpdatePackageRequest extends FormRequest
                  new NotNumbersOnly()
             ],
             
-            "description_ar" => ["required", "string", "max:255"],
-            "description_en" => ["required", "string", "max:255"],
+            "description_ar" => ["required", "string" ],
+            "description_en" => ["required", "string" ],
             
             "features" => ["required", "array", "min:1"],
             "features.*" => ["integer", "exists:features,id"],
