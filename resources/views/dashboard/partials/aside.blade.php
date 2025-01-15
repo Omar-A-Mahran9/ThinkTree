@@ -99,6 +99,12 @@
 
                     </div> --}}
                     {{-- <div class="ms-2"> --}}
+                    <x-dashboard.aside-item :slug="'days'" :route="route('dashboard.days.index')" :title="__('Days')">
+                        <i class="ki-outline ki-calendar-2 fs-2"></i>
+                    </x-dashboard.aside-item>
+                    <x-dashboard.aside-item :slug="'times'" :route="route('dashboard.times.index')" :title="__('Times')">
+                        <i class="ki-outline ki-time fs-2"></i>
+                    </x-dashboard.aside-item>
                     <x-dashboard.aside-item :slug="'groups'" :route="route('dashboard.groups.index')" :title="__('Groups')">
                         <i class="ki-outline ki-people fs-2"></i>
                     </x-dashboard.aside-item>

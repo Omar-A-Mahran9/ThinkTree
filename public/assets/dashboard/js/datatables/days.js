@@ -3,7 +3,7 @@
 var datatable;
 // Class definition
 var KTDatatablesServerSide = (function () {
-    let dbTable = "CommonQuestion";
+    let dbTable = "days";
     // Private functions
     var initDatatable = function () {
         datatable = $("#kt_datatable").DataTable({
@@ -23,8 +23,9 @@ var KTDatatablesServerSide = (function () {
             },
             columns: [
                 { data: "id" },
-                { data: "question" },
-                { data: "answer" },
+                { data: "name" },
+                { data: "date" },
+
                 { data: "created_at" },
                 { data: null },
             ],
@@ -46,14 +47,13 @@ var KTDatatablesServerSide = (function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.question}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.name}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
                         `;
                     },
                 },
-
                 {
                     targets: 2,
                     render: function (data, type, row) {
@@ -61,13 +61,14 @@ var KTDatatablesServerSide = (function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.answer}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.date}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
                         `;
                     },
                 },
+
                 {
                     targets: 3,
                     render: function (data, type, row) {
@@ -137,7 +138,6 @@ var KTDatatablesServerSide = (function () {
                 restoreUrl: `/dashboard/${dbTable}/restore-selected`,
             });
             KTMenu.createInstances();
-            handlePreviewAttachments();
         });
     };
 
@@ -155,12 +155,10 @@ var KTDatatablesServerSide = (function () {
                 let currentBtnIndex = $(editButtons).index(d);
                 let data = datatable.row(currentBtnIndex).data();
 
-                $("#form_title").text(__("Edit Question"));
+                $("#form_title").text(__("Edit day"));
 
-                $("#question_ar_inp").val(data.question_ar);
-                $("#question_en_inp").val(data.question_en);
-                $("#answer_ar_inp").val(data.answer_ar);
-                $("#answer_en_inp").val(data.answer_en);
+                $("#name_ar_inp").val(data.name_ar);
+                $("#name_en_inp").val(data.name_en);
                 $("#crud_form").attr(
                     "action",
                     `/dashboard/${dbTable}/${data.id}`
@@ -201,7 +199,6 @@ var KTDatatablesServerSide = (function () {
             });
         });
     };
-
     // Public methods
     return {
         init: function () {
@@ -210,6 +207,7 @@ var KTDatatablesServerSide = (function () {
             initToggleToolbar();
             handleEditRows();
             deleteRowWithURL(`/dashboard/${dbTable}/`);
+
             deleteSelectedRowsWithURL({
                 url: `/dashboard/${dbTable}/delete-selected`,
                 restoreUrl: `/dashboard/${dbTable}/restore-selected`,

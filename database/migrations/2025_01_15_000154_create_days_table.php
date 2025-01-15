@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ar')->unique();
-            $table->string('name_en')->unique();
-            $table->date('date'); // Add the date column here
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->date('date')->unique(); // Add the date column here
             $table->timestamps();
         });
     }

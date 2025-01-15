@@ -8,6 +8,17 @@
     "Groups list": "قائمة المجموعات",
     "Search for groups": "البحث في المجموعات",
     "Add new group": "اضافة مجموعة جديدة",
+    "Days": "الأيام",
+    "Add day": "إضافة يوم",
+    "Days List": "قائمة الأيام",
+    "Search for day": "البحث في لأيام",
+    "Add new day": " إضافة يوم جديد",
+    "Select Date": "حدد التاريخ",
+    "Times": "الفترات",
+    "times count": "عدد الفترات المتاحة",
+    "Add Time": "اضافة فترة جديدة",
+    "Times List": "قائمة الفترات",
+    "Search for time": "البحث في قائمة الفترات",
 
     "Add Outcome": "اضافة نتيجة جديدة",
     "Outcomes list": "قائمة النتائج",
@@ -18,6 +29,13 @@
     "Add new level": "اضافة مستوى جديد",
     "Our Heros": "أبطالنا",
     "Our Level": "مستوياتنا",
+    "Days count": "عدد الأيام المتاحة",
+    "The :attribute must be after the from time.": "يجب أن يكون :attribute بعد وقت البداية.",
+    "attributes": {
+        "from": "بداية الفترة",
+        "to": "نهاية الفترة"
+    },
+
     "our levels list": "قائمة مستوياتنا",
     "our heroes list": "قائمة أبطالنا",
     "Search for Our heroes": "البحث  عن أبطالنا",

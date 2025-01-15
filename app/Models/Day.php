@@ -12,7 +12,7 @@ class Day extends Model
 
 
     protected $guarded = [];
-    protected $appends = [];
+    protected $appends = [ 'name' ];
     protected $casts = [
         'created_at' => 'date:Y-m-d',
         'updated_at' => 'date:Y-m-d',
@@ -25,7 +25,10 @@ class Day extends Model
     {
         static::addGlobalScope(new SortingScope);
     }
- 
+    public function getNameAttribute()
+    {
+        return $this->attributes['name_' . app()->getLocale()];
+    }
     public function groups()
     {
         return $this->belongsToMany(Group::class, 'group_day_time');

@@ -111,6 +111,10 @@ let translations = {
         " selected": "محددة",
         "Edit package": "تعديل الباقة",
         "Add new groups": "اضافة مجموعة جديدة",
+        "Add new day": " إضافة يوم جديد",
+        "Edit day": "تعديل يوم ",
+        "Add new time": "اضافة فترة جديدة ",
+        "Edit time": "تعديل الفترة",
 
         male: "ذكر",
         female: "انثى",
