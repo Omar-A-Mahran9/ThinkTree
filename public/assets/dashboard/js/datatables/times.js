@@ -157,8 +157,16 @@ var KTDatatablesServerSide = (function () {
 
                 $("#form_title").text(__("Edit time"));
 
-                $("#from_inp").val(data.from);
-                $("#to_inp").val(data.to);
+                $("#from_inp").val(formatTime(data.from));
+                $("#to_inp").val(formatTime(data.to));
+
+                // Function to ensure the time format is in HH:MM (even if it is in HH:MM:SS)
+                function formatTime(time) {
+                    var timeParts = time.split(":"); // Split the time into hours, minutes, and seconds
+                    return timeParts.length >= 2
+                        ? timeParts[0] + ":" + timeParts[1]
+                        : time;
+                }
                 $("#crud_form").attr(
                     "action",
                     `/dashboard/${dbTable}/${data.id}`

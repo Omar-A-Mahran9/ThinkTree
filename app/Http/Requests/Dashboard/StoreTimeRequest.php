@@ -4,7 +4,7 @@ namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTimeRequest extends FormRequest
+class StoreTimeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
