@@ -48,6 +48,7 @@ Route::resource('features', 'FeatureController')->except(['create', 'edit']);
 Route::resource('customers', 'CustomerController')->except(['create', 'edit']);
 Route::resource('customers_rates', 'CustomersRatesController')->except(['create', 'edit']);
 Route::resource('packages', 'PackagesController')->except(['create', 'edit']);
+Route::resource('groups', 'GroupsController')->except(['create', 'edit']);
 
 Route::get('customers/blocking/{customer}', 'CustomerController@blocked')->name('customers.blocked');
 Route::get('customers/blocked-selected', 'CustomerController@blockedSelected');

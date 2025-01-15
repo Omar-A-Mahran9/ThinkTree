@@ -99,6 +99,9 @@
 
                     </div> --}}
                     {{-- <div class="ms-2"> --}}
+                    <x-dashboard.aside-item :slug="'groups'" :route="route('dashboard.groups.index')" :title="__('Groups')">
+                        <i class="ki-outline ki-people fs-2"></i>
+                    </x-dashboard.aside-item>
                     <x-dashboard.aside-item :slug="'features'" :route="route('dashboard.features.index')" :title="__('Features')" class="">
                         <i class="ki-outline ki-star fs-2"></i>
                     </x-dashboard.aside-item>
@@ -110,6 +113,8 @@
                     <x-dashboard.aside-item :slug="'packages'" :route="route('dashboard.packages.index')" :title="__('Packages')">
                         <i class="ki-outline ki-abstract-26 fs-2"></i>
                     </x-dashboard.aside-item>
+
+
                     {{-- </div> --}}
                 @endcanany
                 <!--begin:Menu item-->

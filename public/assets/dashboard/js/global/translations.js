@@ -110,6 +110,7 @@ let translations = {
         rows: "صفوف ",
         " selected": "محددة",
         "Edit package": "تعديل الباقة",
+        "Add new groups": "اضافة مجموعة جديدة",
 
         male: "ذكر",
         female: "انثى",

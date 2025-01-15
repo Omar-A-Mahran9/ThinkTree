@@ -28,8 +28,8 @@ class StorePackageRequest extends FormRequest
             "name_en" => ["required", "string", "max:255", "unique:packages", new NotNumbersOnly()],
             
             // Validate description_ar and description_en as optional strings with a max length of 255
-            "description_ar" => ["required", "string", "max:255"],
-            "description_en" => ["required", "string", "max:255"],
+            "description_ar" => ["required", "string",  ],
+            "description_en" => ["required", "string", ],
             
             // Validate features as an array and each item in the array should be a valid integer (assuming feature IDs are integers)
             "features" => ["required", "array", "min:1"],

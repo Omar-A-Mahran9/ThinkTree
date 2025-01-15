@@ -182,7 +182,8 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for feature') }}">
+                        class="form-control form-control-solid w-250px ps-15"
+                        placeholder="{{ __('Search for feature') }}">
                 </div>
                 <!--end::Search-->
 
@@ -298,6 +299,8 @@
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/features`);
+                $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
+
             });
 
 
