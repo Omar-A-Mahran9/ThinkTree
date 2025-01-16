@@ -24,4 +24,6 @@ use Illuminate\Support\Facades\Route;
     Route::get('packages', 'dataController@packages');
     Route::post('contact_us', 'ContactUsController@store');
     Route::post('/order/store/{step}', [OrderController::class, 'store'])->name('order.store');
+
+    
  

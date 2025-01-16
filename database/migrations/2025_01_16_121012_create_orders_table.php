@@ -32,7 +32,7 @@ return new class extends Migration
 
             $table->enum('Payment_statue', ["Pending",'Paid', 'Rejected'])->default("Pending"); // Define enum and make it unique
 
-            $table->enum('type_of_pay', ["Card",'Paid', 'Rejected'])->default("Pending"); // Define enum and make it unique
+            // $table->enum('type_of_pay', ["Card",'Paid', 'Rejected'])->default("Pending"); // Define enum and make it unique
 
 
             $table->timestamps();
