@@ -24,10 +24,8 @@ var KTDatatablesServerSide = (function () {
             columns: [
                 { data: "id" },
                 { data: "name" },
-                { data: "price" },
+                { data: "day" },
                 { data: "available" },
-                { data: "featured" },
-
                 { data: "created_at" },
                 { data: null },
             ],
@@ -63,7 +61,7 @@ var KTDatatablesServerSide = (function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.FinalPrice}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.day.name}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
@@ -95,32 +93,9 @@ var KTDatatablesServerSide = (function () {
                     `;
                     },
                 },
+
                 {
                     targets: 4,
-                    render: function (data, type, row) {
-                        return `
-                        <div>
-                            <!--begin::Info-->
-                            <div class="d-flex flex-column justify-content-center">
-                                <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">
-                                    ${
-                                        row.featured == 1
-                                            ? `<span class="badge bg-success text-white">          ${__(
-                                                  "Featured"
-                                              )}</span>` // Green badge for active
-                                            : `<span class="badge bg-danger text-white">${__(
-                                                  "UnFeatured"
-                                              )}</span>` // Red badge for inactive
-                                    }
-                                </a>
-                            </div>
-                            <!--end::Info-->
-                        </div>
-                    `;
-                    },
-                },
-                {
-                    targets: 5,
                     render: function (data, type, row) {
                         return `
                             <div>
@@ -134,7 +109,7 @@ var KTDatatablesServerSide = (function () {
                     },
                 },
                 {
-                    targets: 6,
+                    targets: 5,
                     data: null,
                     orderable: false,
                     render: function (data, type, row) {
@@ -188,7 +163,6 @@ var KTDatatablesServerSide = (function () {
                 restoreUrl: `/dashboard/${dbTable}/restore-selected`,
             });
             KTMenu.createInstances();
-            handlePreviewAttachments();
         });
     };
 
@@ -209,37 +183,11 @@ var KTDatatablesServerSide = (function () {
 
                 // Update modal fields dynamically
                 $("#form_title").text(__("Edit package"));
-                $(".image-input-wrapper").css(
-                    "background-image",
-                    `url('${data.full_image_path}')`
-                );
+
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
-                $("#description_ar_inp").val(data.description_ar);
-                $("#description_en_inp").val(data.description_en);
-                $("#price_inp").val(data.price);
-                $("#discount_price_inp").val(data.discount_price);
-                $("#discount-price-switch").prop(
-                    "checked",
-                    data.have_discount === 1
-                );
-                // Get the discount input element
-                let discountInp = $("#discount_price_inp");
+                $("#days_inp").val(data.day.id).trigger("change");
 
-                // Enable or disable the discount input based on the initial value of `have_discount`
-                if (data.have_discount === 1) {
-                    discountInp.prop("disabled", false); // Enable input
-                } else {
-                    discountInp.prop("disabled", true); // Disable input
-                }
-                $("#price_per_session_inp").val(data.price_per_session);
-                $("#duration_monthly_inp").val(data.duration_monthly);
-                $("#number_of_session_per_week_inp").val(
-                    data.number_of_session_per_week
-                );
-                $("#number_of_levels_inp").val(data.number_of_levels);
-                $("#number_of_sessions_inp").val(data.number_of_sessions);
-                $("#featured-switch").prop("checked", data.featured === 1);
                 $("#available-switch").prop("checked", data.available === 1);
 
                 // Set the form's action attribute and add the hidden input for PUT method
@@ -253,51 +201,12 @@ var KTDatatablesServerSide = (function () {
                 $("#crud_modal").modal("show");
 
                 // Handle the features dropdown
-                if (data.features && data.features.length > 0) {
+                if (data.times && data.times.length > 0) {
                     // Set selected features
-                    let selectedFeatures = data.features.map(
-                        (feature) => feature.id
-                    ); // Assuming `data.features` is an array of feature objects with `id`
-                    $("#features_inp").val(selectedFeatures).trigger("change"); // Trigger select2 to update the selected options
+                    let selectedtimes = data.times.map((time) => time.id); // Assuming `data.features` is an array of feature objects with `id`
+
+                    $("#time_ids_inp").val(selectedtimes).trigger("change"); // Trigger select2 to update the selected options
                 }
-
-                // Handle the features dropdown
-                if (data.outcomes && data.outcomes.length > 0) {
-                    // Set selected features
-                    let selectedoutcomes = data.outcomes.map(
-                        (outcome) => outcome.id
-                    ); // Assuming `data.features` is an array of feature objects with `id`
-                    $("#outcomes_inp").val(selectedoutcomes).trigger("change"); // Trigger select2 to update the selected options
-                }
-            });
-        });
-    };
-
-    var handlePreviewAttachments = () => {
-        // Select all edit buttons
-        const previewButtons = $('[data-action="preview_attachments"]');
-
-        $.each(previewButtons, function (indexInArray, button) {
-            $(button).on("click", function (e) {
-                e.preventDefault();
-
-                let data = datatable.row(indexInArray).data();
-                $(".attachments").html("");
-
-                $(".attachments").append(`
-                    <!--begin::Overlay-->
-                    <a class="d-block overlay" data-fslightbox="lightbox-basic" href="${data.full_image_path}">
-                        <!--begin::Action-->
-                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
-                            <i class="bi bi-eye-fill text-white fs-3x"></i>
-                        </div>
-                        <!--end::Action-->
-
-                    </a>
-                    <!--end::Overlay-->
-                `);
-                refreshFsLightbox();
-                $("[data-fslightbox='lightbox-basic']:first").trigger("click");
             });
         });
     };
@@ -314,7 +223,6 @@ var KTDatatablesServerSide = (function () {
                 url: `/dashboard/${dbTable}/delete-selected`,
                 restoreUrl: `/dashboard/${dbTable}/restore-selected`,
             });
-            handlePreviewAttachments();
         },
     };
 })();

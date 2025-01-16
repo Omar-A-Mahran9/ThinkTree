@@ -110,7 +110,7 @@ let translations = {
         rows: "صفوف ",
         " selected": "محددة",
         "Edit package": "تعديل الباقة",
-        "Add new groups": "اضافة مجموعة جديدة",
+        "Add new groups": "اضافة مجموعات جديدة",
         "Add new day": " إضافة يوم جديد",
         "Edit day": "تعديل يوم ",
         "Add new time": "اضافة فترة جديدة ",

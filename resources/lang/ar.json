@@ -7,8 +7,10 @@
     "Icon": "الرمز",
     "Groups list": "قائمة المجموعات",
     "Search for groups": "البحث في المجموعات",
-    "Add new group": "اضافة مجموعة جديدة",
+    "Add new group": "اضافة مجموعات جديدة",
     "Days": "الأيام",
+    "Day": "اليوم",
+
     "Add day": "إضافة يوم",
     "Days List": "قائمة الأيام",
     "Search for day": "البحث في لأيام",
@@ -577,7 +579,7 @@
 
     "name_en": "الاسم بالانجليزية",
     "Cancel Order": "رفض الطلب",
-    "Our degital platform is the place that brings together gold and jewelry merchants in the Kingdom. We pride ourselves on providing a safe and seamless purchasing experience, with a wide selection that caters to the demographic's needs.": "منصتنا الالكترونية هي المكان الذي يجمع تجار الذهب والمجوهرات في المملكة. نحن نفخر بتقديم تجربة شراء آمنة وسلسة، مع مجموعة واسعة تلبي احتياجات التركيبة السكانية.",
+    "Our degital platform is the place that brings together gold and jewelry merchants in the Kingdom. We pride ourselves on providing a safe and seamless purchasing experience, with a wide selection that caters to the demographic's needs.": "منصتنا الالكترونية هي المكان الذي يجمع تجار الذهب والمجوهرات في المملكة. نحن نفخر بتقديم تجربة شراء آمنة وسلسة، مع مجموعات واسعة تلبي احتياجات التركيبة السكانية.",
     "In Stock": "في المخزن",
     "Out Stock": "خارج المخزن",
     "There is no result try another search method": "لا يوجد نتائج بحث حاول البحث بطريقة أخري",

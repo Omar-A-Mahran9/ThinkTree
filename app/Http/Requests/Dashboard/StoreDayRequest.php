@@ -26,7 +26,7 @@ class StoreDayRequest extends FormRequest
         return [
              "name_ar" => ["required", "string:255", 'regex:/^[ء-ي]+/' ],
             "name_en" => ["required", "string:255", 'regex:/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/' ],
-            "date" => ["required", "date"],  // Validation for the date field
+            "date" => ["required", "date",'unique:days'],  // Validation for the date field
 
         ];
     }

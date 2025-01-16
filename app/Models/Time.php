@@ -28,11 +28,8 @@ class Time extends Model
 
     public function groups()
     {
-        return $this->belongsToMany(Group::class, 'group_day_time');
+        return $this->belongsToMany(Group::class, 'group_time');
     }
 
-    public function days()
-    {
-        return $this->belongsToMany(Day::class, 'group_day_time');
-    }
+   
 }

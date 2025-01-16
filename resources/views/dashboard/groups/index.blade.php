@@ -84,10 +84,9 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
-                        <th>{{ __('Price') }}</th>
+                        <th>{{ __('Day') }}</th>
 
                         <th>{{ __('Available') }}</th>
-                        <th>{{ __('Featured') }}</th>
 
                         <th>{{ __('Created at') }}</th>
                         <th class=" min-w-100px">{{ __('Actions') }}</th>
@@ -121,6 +120,44 @@
 
                     <div class="modal-body">
 
+                        <div class="row mb-10">
+                            <div class="col-md-6 ">
+
+                                <label class="required fs-5 fw-semibold mb-2">{{ __('Days') }}</label>
+                                <!--end::Label-->
+
+                                <select class="form-select" data-control="select2" id="days_inp" name="day_id"
+                                    data-placeholder="{{ __('Choose day') }}"
+                                    data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                    <option value=""></option>
+                                    @foreach ($days as $day)
+                                        <option value="{{ $day->id }}">{{ $day->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="fv-plugins-message-container invalid-feedback" id="day_id"></div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-semibold mb-2">{{ __('Times') }}</label>
+                                <!--end::Label-->
+
+                                <select class="form-select" data-control="select2" id="time_ids_inp" name="time_ids[]"
+                                    multiple="multiple" data-placeholder="{{ __('Choose times') }}"
+                                    data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                    <option value="" disabled></option>
+                                    @foreach ($times as $time)
+                                        <option value="{{ $time->id }}">{{ $time->from }} - {{ $time->to }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="fv-plugins-message-container invalid-feedback" id="time_ids"></div>
+                            </div>
+
+
+                        </div>
+
                         <!-- begin :: Row -->
                         <div class="row mb-10">
                             <!-- begin :: Column -->
@@ -147,134 +184,22 @@
                             </div>
                             <!-- end   :: Column -->
                         </div>
-                        <!-- Begin :: Col -->
-                        <div class="col-md-12">
-
-                            <h3 class="text-center font-bold">{{ __('consultation Date') }}
-                            </h3>
-                            <hr>
-                            <br>
-                            <div id="form_repeater">
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <div data-repeater-list="time_list">
-                                        <div data-repeater-item>
-                                            <div class="form-group row mt-5 mb-10">
-
-
-                                                <!-- Date Field -->
-                                                <div class="col-md-4">
-                                                    <label class="form-label">{{ __('Date') }}</label>
-                                                    <input type="date" class="form-control mb-2 mb-md-0"
-                                                        name="date" value="" />
-                                                    <p class="invalid-feedback" id="time_list_0_date"></p>
-                                                </div>
-
-                                                <!-- Time Field -->
-                                                <div class="col-md-4">
-                                                    <label class="form-label">{{ __('Time') }}</label>
-                                                    <input type="time" class="form-control mb-2 mb-md-0"
-                                                        name="time" value="" />
-                                                    <p class="invalid-feedback" id="time_list_0_time"></p>
-                                                </div>
-
-                                                <!-- Available Toggle -->
-                                                <div class="col-md-2 mt-3 text-center pt-5">
-                                                    <label
-                                                        class="mt-1 form-check form-check-sm form-check-custom form-check-solid">
-                                                        <span class="form-label fs-3">{{ __('available') }}</span>
-                                                        <!-- Hidden input to ensure available is set to 'false' when unchecked -->
-                                                        <input type="hidden" name="available" value="false">
-                                                        <!-- Checkbox input, checked will override hidden input -->
-                                                        <input class="form-check-input ms-3" type="checkbox"
-                                                            name="available" value="true">
-                                                    </label>
-                                                    <p class="invalid-feedback" id="time_list_0_available"></p>
-                                                </div>
-
-
-                                                <!-- Delete Button -->
-                                                <div class="col-md-3">
-                                                    <a href="javascript:" data-repeater-delete
-                                                        class="btn btn-light-danger mb-4 mt-md-4">
-                                                        <i class="la la-trash-o"></i>{{ __('Delete') }}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end::Form group-->
-
-                                <!--begin::Form group-->
-                                <div class="form-group mt-5">
-                                    <a href="javascript:" data-repeater-create class="btn btn-light-primary">
-                                        <i class="la la-plus"></i>{{ __('Add time') }}
-                                    </a>
-                                </div>
-                                <!--end::Form group-->
-                            </div>
-                            <!--end::Repeater-->
-
-                        </div>
-                        <!-- End   :: Col -->
-
-
-
-                        {{-- <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <!--end::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">{{ __('Features') }}</label>
-                            <!--end::Label-->
-
-                            <select class="form-select" data-control="select2" id="features_inp" name="features[]"
-                                multiple="multiple" data-placeholder="{{ __('Choose features') }}"
-                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
-                                <option value="" disabled></option>
-                                @foreach ($features as $feature)
-                                    <option value="{{ $feature->id }}">{{ $feature->name }}</option>
-                                @endforeach
-                            </select>
-                            <div class="fv-plugins-message-container invalid-feedback" id="features"></div>
-                        </div> --}}
-
-                        <!--end::Col-->
-
-                        {{-- <div class="fv-row mb-10 fv-plugins-icon-container">
-                            <!--end::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">{{ __('Outcomes') }}</label>
-                            <!--end::Label-->
-
-                            <select class="form-select" data-control="select2" id="outcomes_inp" name="outcomes[]"
-                                multiple="multiple" data-placeholder="{{ __('Choose outcomes') }}"
-                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
-                                <option value="" disabled></option>
-                                @foreach ($outcomes as $outcome)
-                                    <option value="{{ $outcome->id }}">{{ $outcome->name }}</option>
-                                @endforeach
-                            </select>
-                            <div class="fv-plugins-message-container invalid-feedback" id="outcomes"></div>
-                        </div> --}}
-
                         <!-- end   :: Column -->
                         <div class="row mb-10">
-
-
                             <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
-                                <div class="row mb-10 mt-10 align-items-center">
-                                    <!-- begin :: Column for Available -->
-                                    <div class="col-md-6 fv-row">
-                                        <label class="fs-5 fw-bold">{{ __('Available') }}</label>
-                                        <input type="hidden" name="available" value="0">
-                                        <div class="form-check form-switch form-check-custom form-check-solid mb-2">
-                                            <input class="form-check-input mx-2" style="height: 18px; width: 36px;"
-                                                type="checkbox" name="available" id="available-switch" value="1" />
-                                            <label class="form-check-label" for="available-switch"></label>
-                                        </div>
-                                        <p class="invalid-feedback" id="available"></p>
-
+                                <!-- begin :: Column for Available -->
+                                <div class="col-md-6 fv-row">
+                                    <label class="fs-5 fw-bold">{{ __('Available') }}</label>
+                                    <input type="hidden" name="available" value="0">
+                                    <div class="form-check form-switch form-check-custom form-check-solid mb-2">
+                                        <input class="form-check-input mx-2" style="height: 18px; width: 36px;"
+                                            type="checkbox" name="available" id="available-switch" value="1" />
+                                        <label class="form-check-label" for="available-switch"></label>
                                     </div>
-                                    <!-- end :: Column -->
+                                    <p class="invalid-feedback" id="available"></p>
+
+
 
 
                                 </div>
@@ -312,6 +237,8 @@
 
     <script>
         $(document).ready(function() {
+            let days = @json($days);
+
             $("#add_btn").click(function(e) {
                 e.preventDefault();
 
@@ -321,6 +248,19 @@
                 $("#crud_form").attr('action', `/dashboard/groups`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
+
+            $("#days_inp").change(function() {
+                let val = this.value;
+                days.map(function(day) {
+                    if (val == day.id) {
+                        $("#name_ar_inp").val("مجموعات يوم" + " " + day.name_ar);
+                        $("#name_en_inp").val(day.name_en + " " + "Group");
+                    }
+                })
+
+
+            });
+
 
 
         });

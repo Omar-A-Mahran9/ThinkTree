@@ -29,13 +29,7 @@ class Day extends Model
     {
         return $this->attributes['name_' . app()->getLocale()];
     }
-    public function groups()
-    {
-        return $this->belongsToMany(Group::class, 'group_day_time');
-    }
+ 
 
-    public function times()
-    {
-        return $this->belongsToMany(Time::class, 'group_day_time');
-    }
+  
 }

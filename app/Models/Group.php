@@ -30,13 +30,15 @@ class Group extends Model
         return $this->attributes['name_' . app()->getLocale()];
     }
 
-    public function days()
-    {
-        return $this->belongsToMany(Day::class, 'group_day_time');
-    }
+ 
 
     public function times()
     {
-        return $this->belongsToMany(Time::class, 'group_day_time');
+        return $this->belongsToMany(Time::class, 'group_time');
+    }
+
+    public function day()
+    {
+        return $this->belongsTo(Day::class,'day_id');
     }
 }

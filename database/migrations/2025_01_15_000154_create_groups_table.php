@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ar')->unique();
-            $table->string('name_en')->unique();
-                $table->boolean('available')->default(true); // Availability of the group, true by default
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->unsignedBigInteger('day_id')->nullable();
+            $table->foreign('day_id')->references('id')->on('days');
+            $table->boolean('available')->default(true); // Availability of the group, true by default
             $table->timestamps();
         });
     }

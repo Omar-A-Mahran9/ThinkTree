@@ -20,10 +20,10 @@ return new class extends Migration {
             $table->string('phone')->unique();
 
             $table->enum('gender', ['male', 'female'])->nullable(); // Define enum and make it unique
-
+            
             $table->string('otp')->nullable();
-            $table->string('password')->nullable();
-            $table->boolean('block_flag')->defaultFalse();
+            $table->timestamp('verified_at')->nullable();
+   
             $table->rememberToken();
             $table->timestamps();
             
