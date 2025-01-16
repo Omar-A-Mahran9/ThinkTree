@@ -20,47 +20,44 @@ class OrderRequest extends FormRequest
  
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
-    {
-        $currentStep = request()->route('step');
+ 
+ public function rules(): array
+{
     
-        // Define validation rules for each step
-        $stepsRules = [
-            1 => [
-                "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
-                "email" => ['nullable', 'email'],
-                "child_name" => ['required', 'string', 'max:255'],
-                "phone" => [
-                    'required',
-                    'string',
-                    'max:20',
-                    new PhoneNumber(),
-                ],
-                "birth_date_of_child" => ['required', 'date'],
+    $currentStep = request()->route('step');
+
+    // Define validation rules for each step
+    $stepsRules = [
+        1 => [
+            "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
+            "email" => ['nullable', 'email'],
+            "child_name" => ['required', 'string', 'max:255'],
+            "phone" => [
+                'required',
+                'string',
+                'max:20',
+                new PhoneNumber(),
             ],
-            2 => [
-                "otp" => ['required', 'numeric', 'digits:6'], // Adjust digits as per requirement
-            ],
-            3 => [
-                "package_id" => ['required', 'numeric', 'exists:packages,id'],
-                "day_id" => ['required', 'numeric', 'exists:days,id'],
-                "time_id" => ['required', 'numeric', 'exists:times,id'],
-                "choose_duration_later" => ['required', 'boolean'],
-            ],
-        ];
-    
-        // Validate step existence
-        if (!array_key_exists($currentStep, $stepsRules)) {
-            abort(400, __('Invalid step provided.'));
-        }
-    
-        // Return validation rules for the current step
-        return $stepsRules[$currentStep];
+            "birth_date_of_child" => ['required', 'date'],
+        ],
+        2 => [
+            "otp" => ['required', 'numeric', 'digits:6'], // Adjust digits as per requirement
+        ],
+        3 => [
+            "package_id" => ['required', 'numeric', 'exists:packages,id'],
+            "day_id" => ['required', 'numeric', 'exists:days,id'],
+            "time_id" => ['required', 'numeric', 'exists:times,id'],
+            "choose_duration_later" => ['required', 'boolean'],
+        ],
+    ];
+
+    // Validate step existence
+    if (!array_key_exists($currentStep, $stepsRules)) {
+        abort(400, __('Invalid step provided.'));
     }
-    
+ 
+    // Return validation rules for the current step
+    return $stepsRules[$currentStep];
+}
+
 }
