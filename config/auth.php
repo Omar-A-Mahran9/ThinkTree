@@ -81,10 +81,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        'vendors' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Vendor::class,
-        ]
+    
 
         // 'users' => [
         //     'driver' => 'database',

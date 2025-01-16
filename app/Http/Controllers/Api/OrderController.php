@@ -30,8 +30,13 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request, $step = null)
     {
- dd($step);
-    }
+                $data = $request->validated();
+
+                $customerdata=[
+                    
+                ]
+
+     }
 
     /**
      * Display the specified resource.

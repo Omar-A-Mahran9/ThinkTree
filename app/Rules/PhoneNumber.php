@@ -14,9 +14,11 @@ class PhoneNumber implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!preg_match('/^0?5[0-9]{8}$/', $value))
-        {
-            $fail(__(":attribute") . ' ' . __('must start with 05 followed by 8 numbers'));
+        // Pattern for international phone numbers (E.164 format, optional '+', country code, and numbers)
+        $pattern = '/^\+?[1-9]\d{1,14}$/';
+
+        if (!preg_match($pattern, $value)) {
+            $fail(__(":attribute") . ' ' . __('must be a valid phone number in international format'));
         }
     }
 }

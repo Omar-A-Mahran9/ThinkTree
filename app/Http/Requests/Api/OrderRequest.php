@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests\Api;
 
-use App\Models\Customer;
-use App\Rules\PhoneNumber;
+ use App\Rules\PhoneNumber;
 use App\Rules\NotNumbersOnly;
 
 
@@ -23,7 +22,6 @@ class OrderRequest extends FormRequest
  
  public function rules(): array
 {
-    
     $currentStep = request()->route('step');
 
     // Define validation rules for each step
@@ -55,7 +53,7 @@ class OrderRequest extends FormRequest
     if (!array_key_exists($currentStep, $stepsRules)) {
         abort(400, __('Invalid step provided.'));
     }
- 
+
     // Return validation rules for the current step
     return $stepsRules[$currentStep];
 }
