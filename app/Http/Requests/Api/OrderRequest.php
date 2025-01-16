@@ -5,8 +5,8 @@ namespace App\Http\Requests\Api;
 use App\Models\Customer;
 use App\Rules\PhoneNumber;
 use App\Rules\NotNumbersOnly;
-use App\Enums\PayingOffStatus;
-use Illuminate\Validation\Rule;
+
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderRequest extends FormRequest
@@ -14,9 +14,10 @@ class OrderRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
+ 
     }
 
     /**
@@ -27,52 +28,39 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         $currentStep = request()->route('step');
-
+    
         // Define validation rules for each step
         $stepsRules = [
-            0 => [  // Step 1
-                "email" => ['nullable','email'],
+            1 => [
                 "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
-                "phone" => [
-                    'required',
-                    'string',
-                    'max:255',
-                    new PhoneNumber(),
-                    function ($attribute, $value, $fail) {
-                        $customer = Customer::where('email', request()->input('email'))->orWhere('phone', $value)->first();
-                        if ($customer && $customer->phone == $value && $customer->email != request()->input('email')) {
-                            $fail(__('There is an account with the same phone number'));
-                        }
-                    }
-                ],
-                'city_id'=>['required'],
-                "address" => ['required', 'string'],
-            ],
-        
-            3 => [  // Step 3 (combine the fields from steps 1 and 2)
                 "email" => ['nullable', 'email'],
-                "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
+                "child_name" => ['required', 'string', 'max:255'],
                 "phone" => [
                     'required',
                     'string',
-                    'max:255',
+                    'max:20',
                     new PhoneNumber(),
-                    function ($attribute, $value, $fail) {
-                        $customer = Customer::where('email', request()->input('email'))->orWhere('phone', $value)->first();
-                        if ($customer && $customer->phone == $value && $customer->email != request()->input('email')) {
-                            $fail(__('There is an account with the same phone number'));
-                        }
-                    }
                 ],
-                'city_id'=>['required'],
-                "address" => ['required', 'string'],
-                'date' => ['required','date'],
-                'addon_service_id' => ['required', 'numeric'],
-                'description'=>['required'],
-            ]
+                "birth_date_of_child" => ['required', 'date'],
+            ],
+            2 => [
+                "otp" => ['required', 'numeric', 'digits:6'], // Adjust digits as per requirement
+            ],
+            3 => [
+                "package_id" => ['required', 'numeric', 'exists:packages,id'],
+                "day_id" => ['required', 'numeric', 'exists:days,id'],
+                "time_id" => ['required', 'numeric', 'exists:times,id'],
+                "choose_duration_later" => ['required', 'boolean'],
+            ],
         ];
-
+    
+        // Validate step existence
+        if (!array_key_exists($currentStep, $stepsRules)) {
+            abort(400, __('Invalid step provided.'));
+        }
+    
         // Return validation rules for the current step
-        return $stepsRules[$currentStep] ?? [];
+        return $stepsRules[$currentStep];
     }
+    
 }

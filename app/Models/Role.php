@@ -39,16 +39,9 @@ class Role extends Model
          'home_content',
          'payment_ways',
         'packages',
-        // 'gallary',
+        'order',
      
-        // 'addonService', 
-        // 'tags',
-        // 'offers',
-        // 'products',
-        // 'newsletter',
-        
-        // 'orders',
-        // 'sliders',
+   
     ];
 
     protected static function booted()
