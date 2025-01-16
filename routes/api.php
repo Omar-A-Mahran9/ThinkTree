@@ -26,5 +26,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::post('contact_us', 'ContactUsController@store');
 
-    Route::get('order',[BookingController::class,'index']);
+    Route::get('order',[Orde::class,'index']);
  
