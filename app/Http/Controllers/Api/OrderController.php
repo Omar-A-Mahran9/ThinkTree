@@ -42,8 +42,9 @@ class OrderController extends Controller
         $customer = Customer::where('email', $data['email'])
         ->orWhere('phone', $data['phone'])
         ->first();
+        if ($customer) {
         $customer->sendOTP();
-        
+        }
         if (!$customer) {
             $customerdata = [
                 "first_name" => $firstName,
@@ -64,36 +65,34 @@ class OrderController extends Controller
         ];
     
         $child = Chield::create($childdata);
-    }elseif($step==2){
+    } elseif ($step == 2) {
+        // Find the customer by phone
         $customer = Customer::where('phone', $data['phone'])->first();
-        $data = $request->validated();
-        $customer->verify($data->otp);
-         
+        
+        // Ensure the customer exists
+        if ($customer) {
+            // Assuming the validated data is already available in $data
+            $otp = $data['otp']; // Access the OTP from the validated data
+    
+            // Call the verifiedOTP method with the OTP
+            $response = $customer->verfiedOTP($otp);
+             if( $response===true){
+                return $this->success("Validate OTP Success");
+
+            }else{
+                return $this->failure("Invalid OTP");
+
+            }
+          } else {
+            return response()->json(['message' => 'Customer not found.'], 404);
+        }
     }
+    elseif ($step == 3) {
+       dd('omamamaer');
+    }
+    
     }
     
    
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        //
-    }
+ 
 }

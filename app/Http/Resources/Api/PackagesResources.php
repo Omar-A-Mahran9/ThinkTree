@@ -45,6 +45,8 @@ class PackagesResources extends JsonResource
                     'id' => $group->id, // Assuming `full_image_path` is an accessor in the `Feature` model
                     'name' => $group->name, // Assuming the `Feature` model has a `name` attribute
                     'day' => [
+                        'id' => $group->day->id, // Assuming `full_image_path` is an accessor in the `Feature` model
+
                     'name' => $group->day->name, // Assuming `day` is a related model with a `name` attribute
                     'date' => $group->day->date // Assuming `day` is a related model with a `date` attribute
                 ],

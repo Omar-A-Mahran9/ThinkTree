@@ -64,14 +64,25 @@ class Customer extends Authenticatable
         // $this->sendSMS("$appName: $this->otp هو رمز الحماية,لا تشارك الرمز");
         $this->save();
     }
+    
+    public function verfiedOTP($inputOtp){
+        // Compare the input OTP with the stored OTP
+        if ($this->otp == $inputOtp) {
+            // OTP matches, verification successful
+            $this->otp = null; // Set OTP to null
+            $this->verified_at = now(); // Set verified_at to the current timestamp
+            $this->save(); // Save the updated user object
+    
+            // Return success response using the same structure
+            return true;
 
-    public function verfiedOTP(){
-        $this->otp = rand(1111, 9999);
-        $appName = setting("website_name") ?? "Thinktree";
-        // $this->sendSMS("$appName: $this->otp هو رمز الحماية,لا تشارك الرمز");
-        $this->save();
+        } else {
+            // OTP doesn't match
+            return false;
+
+        }
     }
-
+    
     public function getFullImagePathAttribute()
     {
         return asset(getImagePathFromDirectory($this->image, 'Customers', "default.svg"));

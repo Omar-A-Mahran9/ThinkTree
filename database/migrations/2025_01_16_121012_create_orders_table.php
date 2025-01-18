@@ -25,6 +25,10 @@ return new class extends Migration
             $table->unsignedBigInteger('day_id')->nullable();
             $table->foreign('day_id')->references('id')->on('days');
  
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->foreign('group_id')->references('id')->on('groups');
+ 
+
             $table->unsignedBigInteger('time_id')->nullable();
             $table->foreign('time_id')->references('id')->on('times');
 

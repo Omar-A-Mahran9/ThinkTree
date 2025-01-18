@@ -48,11 +48,12 @@ class OrderRequest extends FormRequest
             "otp" => ['required', 'numeric', 'digits:4'], // Adjust digits as per requirement
         ],
         3 => [
-            "package_id" => ['required', 'numeric', 'exists:packages,id'],
-            "day_id" => ['required', 'numeric', 'exists:days,id'],
-            "time_id" => ['required', 'numeric', 'exists:times,id'],
-            "choose_duration_later" => ['required', 'boolean'],
-        ],
+            'Choose_duration_later' => ['required', 'boolean'],
+            'package_id' => ['required_if:Choose_duration_later,1', 'numeric', 'exists:packages,id'],
+            'group_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:groups,id'],
+            'day_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:days,id'],
+            'time_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:times,id'],
+                ],
     ];
 
     // Validate step existence
