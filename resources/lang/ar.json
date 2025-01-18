@@ -55,12 +55,12 @@
 
     "Add Why us": "اضافة لماذا نحن",
     "Search for Why us": "البحث  لماذا نحن",
-    
+
     "Service": "الخدمة",
-    
+
     "Choose groups": "اختر المجموعة",
     "Add new why us": "اضافة من جديد",
-     "Common Question list": "قائمة الأسئلة الشائعة",
+    "Common Question list": "قائمة الأسئلة الشائعة",
     "Add new Common Question": "اضافة سؤال ",
     "Search for Common Question": "البحث عن الأسئلة الشائعة",
     "Add Common Question": "اضافة سؤال ",
@@ -141,13 +141,13 @@
 
     "Developed by": "تم تطويرها بواسطة",
     "Sign In": "تسجيل الدخول",
-     "Night mode": "الوضع الليلي",
+    "Night mode": "الوضع الليلي",
     "Notification sound": "صوت الإشعارات",
     "Profile": "الملف الشخصي",
     "Language": "اللغة",
-  
+
     "Pickup your location": "حدد عنوانك",
-     "Enter address": "أضف العنوان",
+    "Enter address": "أضف العنوان",
     "Add design type": "أضف نوع التصميم",
     "Logout": "تسجيل الخروج",
     "English": "انجليزي",
@@ -195,8 +195,8 @@
     "Phone": "رقم الهاتف",
     "Enter New Email Address": "أدخل بريد الكتروني جديد",
     "Save Changes": "حفظ التغييرات",
-     "National ID": "رقم الهوية",
-     "Sign-in Method": "طريقة تسجيل الدخول",
+    "National ID": "رقم الهوية",
+    "Sign-in Method": "طريقة تسجيل الدخول",
     "Email Address": "البريد الالكتروني",
     "Confirm Password": "أكد بكلمة السر",
     "Update Email": "تحديث الايميل",
@@ -282,6 +282,7 @@
     "Choose the tags": "اختر الكلمة المفتاحية",
     "discount price": "سعر الخصم",
     "video link": "رابط الفيديو",
+    "Add new groups": "اضافة مجموعات جديدة",
 
     "Allow only 5 photos": "يسمح لك برفع 5 صور",
     "Drop images here or click to download": "قم بإسقاط الصور هنا أو اضغط للتحميل",
