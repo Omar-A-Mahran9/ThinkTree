@@ -67,8 +67,11 @@ class OrderController extends Controller
             $child = Chield::create($childData);
     
    
-            return $this->success("Step 1 success");
-        } elseif ($step == 2) {
+            return $this->success("Step 1 success", [
+                'id' => $customer->id,
+                'otp' => $customer->otp,
+            ]);
+                    } elseif ($step == 2) {
             // Validate OTP
             $customer = Customer::where('phone', $data['phone'])->first();
     
