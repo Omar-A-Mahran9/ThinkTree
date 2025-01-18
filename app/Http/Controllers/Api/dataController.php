@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
  use App\Http\Resources\Api\HeroesResource;
 use App\Http\Resources\Api\PackagesResources;
+use App\Http\Resources\TimeResource;
 use App\Models\Group;
 use App\Models\Ourhero;
 use App\Models\Packages;
@@ -49,22 +50,29 @@ function timeslot(Request $request)
     ]);
 
     // Retrieve the Group based on package_id and matching date
-    $group = Group::with('packages')->find(1);
+    $group = Group::whereHas('packages', function ($query) use ($request) {
+        // Use the relationship with packages and filter by package_id
+        $query->where('packages.id', $request->package_id);
+    })
+    ->whereHas('day', function ($query) use ($request) {
+        // Filter by the provided date in the related Day model
+        $query->whereDate('date', $request->date);
+    })
+    ->first(); // Get the first matching group
 
     // If no matching group is found, return a 404 response
     if (!$group) {
-        return response()->json(['error' => 'Group not found for the provided package_id and date'], 404);
+        return $this->success("", []);
     }
 
     // Retrieve the times associated with the group
-    $times = $group;
+    $times = $group->times;
 
-    // Return the times as part of the response
-    return response()->json([
-        'success' => true,
-        'times' => $times, // Assuming you have a Times resource to format the times data
-    ]);
+ 
+    return $this->success("", TimeResource::collection($times));
+
 }
+
 
 
  

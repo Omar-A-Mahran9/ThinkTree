@@ -38,8 +38,9 @@ class Group extends Model
     }
     public function packages()
     {
-        return $this->belongsToMany(Packages::class, 'package_group');
+        return $this->belongsToMany(Packages::class, 'package_group', 'group_id', 'package_id');
     }
+    
     public function day()
     {
         return $this->belongsTo(Day::class,'day_id');
