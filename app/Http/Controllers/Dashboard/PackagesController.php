@@ -24,7 +24,7 @@ class PackagesController extends Controller
         $groups    = Group::select('id', 'name_ar', 'name_en')->get();
 
         if ($request->ajax()){
-            return response(getModelData(model: new Packages(), relations: ['features' => ['id', 'name_ar', 'name_en','created_at'],'outcomes' => ['id', 'name_ar', 'name_en','created_at']]));
+            return response(getModelData(model: new Packages(), relations: ['features' => ['id', 'name_ar', 'name_en','created_at'],'outcomes' => ['id', 'name_ar', 'name_en','created_at'],'groups' => ['id', 'name_ar', 'name_en','created_at']]));
         }
         else
             return view('dashboard.packages.index',compact('features','outcomes','groups'));
@@ -51,9 +51,10 @@ class PackagesController extends Controller
         // Extract specific fields
         $features = $validatedData['features'];
         $outcomes = $validatedData['outcomes'];
-    
+        $groups = $validatedData['groups'];
+
         // Remove features and outcomes from the main data
-        unset($validatedData['features'], $validatedData['outcomes']);
+        unset($validatedData['features'], $validatedData['outcomes'], $validatedData['groups']);
     
         // Create a new package using the remaining validated data
         $package = Packages::create($validatedData);
@@ -61,7 +62,8 @@ class PackagesController extends Controller
         // Attach features and outcomes to the package
         $package->features()->sync($features);
         $package->outcomes()->sync($outcomes);
-    
+        $package->groups()->sync($groups);
+
         // Redirect or respond with success
         return response(["Package created successfully"]);
 
@@ -91,9 +93,10 @@ public function update(UpdatePackageRequest $request, $id)
     // Extract specific fields
     $features = $validatedData['features'] ?? [];
     $outcomes = $validatedData['outcomes'] ?? [];
+    $groups = $validatedData['groups']?? [];
 
     // Remove features and outcomes from the main data
-    unset($validatedData['features'], $validatedData['outcomes']);
+    unset($validatedData['features'], $validatedData['outcomes'], $validatedData['groups']);
 
     // Update the package using the remaining validated data
     $packages->update($validatedData);
@@ -101,6 +104,7 @@ public function update(UpdatePackageRequest $request, $id)
     // Sync features and outcomes with the package
     $packages->features()->sync($features);
     $packages->outcomes()->sync($outcomes);
+    $packages->groups()->sync($groups);
 
     // Redirect or respond with success
     return response(["Package updated successfully"], 200);
@@ -119,6 +123,7 @@ public function destroy($id)
     // Delete related features and outcomes (if any)
     $package->features()->detach();
     $package->outcomes()->detach();
+    $package->groups()->detach();
 
     // Handle image deletion if the package has an associated image
     if ($package->image) {

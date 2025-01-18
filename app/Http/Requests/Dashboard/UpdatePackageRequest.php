@@ -50,6 +50,11 @@ class UpdatePackageRequest extends FormRequest
             "outcomes" => ["required", "array", "min:1"],
             "outcomes.*" => ["integer", "exists:outcomes,id"],
     
+                     // Validate features as an array and each item in the array should be a valid integer (assuming feature IDs are integers)
+                     "groups" => ["required", "array", "min:1"],
+                     "groups.*" => ["integer", "exists:groups,id"], // Assuming 'features' table with 'id' column
+    
+
             "price" => ["required", "numeric", "min:0"],
             "have_discount" => ["required", "boolean"],
             "discount_price" => ["nullable", "numeric", "min:0", "required_if:have_discount,1"],

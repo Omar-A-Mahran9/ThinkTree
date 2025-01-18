@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
  use App\Http\Resources\Api\HeroesResource;
 use App\Http\Resources\Api\PackagesResources;
- use App\Models\Ourhero;
+use App\Models\Group;
+use App\Models\Ourhero;
 use App\Models\Packages;
- 
+use Illuminate\Http\Request;
 
 class dataController extends Controller
 {
@@ -29,13 +30,42 @@ function packages(){
 }
 function package($id){
     $package = Packages::find($id); // Get a single record by ID
-    dd($package);
-
+ 
     if (!$package) {
         return $this->error("Package not found", 404);
     }
 
     return $this->success("", new PackagesResources($package));
 }
+ 
+
+ 
+function timeslot(Request $request)
+{
+    // Validate the input data
+    $data = $request->validate([
+        'package_id' => 'required|integer|exists:packages,id', // Ensure package_id is valid and exists in the database
+        'date' => 'required|date|after_or_equal:today', // Ensure date is a valid date and not in the past
+    ]);
+
+    // Retrieve the Group based on package_id and matching date
+    $group = Group::with('packages')->find(1);
+
+    // If no matching group is found, return a 404 response
+    if (!$group) {
+        return response()->json(['error' => 'Group not found for the provided package_id and date'], 404);
+    }
+
+    // Retrieve the times associated with the group
+    $times = $group;
+
+    // Return the times as part of the response
+    return response()->json([
+        'success' => true,
+        'times' => $times, // Assuming you have a Times resource to format the times data
+    ]);
+}
+
+
  
 }

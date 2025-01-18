@@ -35,6 +35,11 @@ class StorePackageRequest extends FormRequest
             "features" => ["required", "array", "min:1"],
             "features.*" => ["integer", "exists:features,id"], // Assuming 'features' table with 'id' column
     
+                  // Validate features as an array and each item in the array should be a valid integer (assuming feature IDs are integers)
+                  "groups" => ["required", "array", "min:1"],
+                  "groups.*" => ["integer", "exists:groups,id"], // Assuming 'features' table with 'id' column
+    
+                  
             // Validate outcomes as an array and each item in the array should be a valid integer (assuming outcome IDs are integers)
             "outcomes" => ["required", "array", "min:1"],
             "outcomes.*" => ["integer", "exists:outcomes,id"], // Assuming 'outcomes' table with 'id' column

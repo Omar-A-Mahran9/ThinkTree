@@ -27,7 +27,6 @@ var KTDatatablesServerSide = (function () {
                 { data: "price" },
                 { data: "available" },
                 { data: "featured" },
-
                 { data: "created_at" },
                 { data: null },
             ],
@@ -268,6 +267,12 @@ var KTDatatablesServerSide = (function () {
                         (outcome) => outcome.id
                     ); // Assuming `data.features` is an array of feature objects with `id`
                     $("#outcomes_inp").val(selectedoutcomes).trigger("change"); // Trigger select2 to update the selected options
+                }
+
+                if (data.groups && data.groups.length > 0) {
+                    // Set selected features
+                    let selectedgroups = data.groups.map((group) => group.id); // Assuming `data.features` is an array of feature objects with `id`
+                    $("#groups_inp").val(selectedgroups).trigger("change"); // Trigger select2 to update the selected options
                 }
             });
         });

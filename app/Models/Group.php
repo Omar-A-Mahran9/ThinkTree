@@ -36,7 +36,10 @@ class Group extends Model
     {
         return $this->belongsToMany(Time::class, 'group_time');
     }
-
+    public function packages()
+    {
+        return $this->belongsToMany(Packages::class, 'package_group');
+    }
     public function day()
     {
         return $this->belongsTo(Day::class,'day_id');

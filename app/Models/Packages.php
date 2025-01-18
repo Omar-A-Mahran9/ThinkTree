@@ -28,6 +28,11 @@ class Packages extends Model
     {
         return $this->belongsToMany(Feature::class, 'package_feature', 'package_id', 'feature_id');
     }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'package_group', 'package_id', 'group_id');
+    }
  
     
 

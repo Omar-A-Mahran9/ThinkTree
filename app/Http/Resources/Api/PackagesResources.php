@@ -40,6 +40,19 @@ class PackagesResources extends JsonResource
                 ];
             }),
 
+            'groups' => $this->groups->map(function ($group) {
+                return [
+                    'id' => $group->id, // Assuming `full_image_path` is an accessor in the `Feature` model
+                    'name' => $group->name, // Assuming the `Feature` model has a `name` attribute
+                    'day' => [
+                    'name' => $group->day->name, // Assuming `day` is a related model with a `name` attribute
+                    'date' => $group->day->date // Assuming `day` is a related model with a `date` attribute
+                ],
+
+
+                ];
+            }),
+
       
         ];
         
