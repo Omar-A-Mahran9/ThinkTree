@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('chields');
+            $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->unsignedBigInteger('chield_id');
             $table->foreign('chield_id')->references('id')->on('chields');
            
-            $table->unsignedBigInteger('package_id');
+            $table->unsignedBigInteger('package_id')->nullable();
             $table->foreign('package_id')->references('id')->on('packages');
         
             $table->unsignedBigInteger('day_id')->nullable();
