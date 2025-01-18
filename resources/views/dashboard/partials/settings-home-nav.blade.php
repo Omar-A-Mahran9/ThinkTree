@@ -6,7 +6,7 @@
             href="{{ route('dashboard.settings.home.about-us') }}">{{ __('About us') }}</a>
     </li>
     <!--end:::Tab item-->
-    <!--begin:::Tab item-->
+    {{-- <!--begin:::Tab item-->
     <li class="nav-item">
         <a class="nav-link text-active-primary pb-4 {{ getClassIfUrlContains('active', 'terms') }}"
             href="{{ route('dashboard.settings.home.terms') }}">{{ __('Terms and conditions') }}</a>
@@ -29,6 +29,6 @@
         <a class="nav-link text-active-primary pb-4 {{ getClassIfUrlContains('active', 'loyality') }}"
             href="{{ route('dashboard.settings.home.loyality') }}">{{ __('loyalty and rewards program') }}</a>
     </li>
-    <!--end:::Tab item-->
+    <!--end:::Tab item--> --}}
 </ul>
 <!--end:::Tabs-->

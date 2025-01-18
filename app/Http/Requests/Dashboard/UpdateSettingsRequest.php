@@ -31,8 +31,7 @@ class UpdateSettingsRequest extends FormRequest
                 'fav_icon' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
                 'website_name' => 'required|string:255',
                 'description' => 'required|string:255',
-                'sound_status' => 'required|in:stop,active',
-            ],
+             ],
             "landing" => [
                 'herosection_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
                 'certificate_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
@@ -55,9 +54,7 @@ class UpdateSettingsRequest extends FormRequest
            'whatsapp_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
             'sms_number' => ['required', 'regex:/^\d+(\.\d+)?$/', 'max:20'],
 
-                'delay_time_seconds' => ['required'],
-                'whatsapp_notification_enabled' => [ 'in:0,1'],
-                'whatsapp_message' => ['required'],
+         
                 'email' => ['required','email'],
                 'address_ar' => ['required'],
                 'address_en' => ['required'],
@@ -68,10 +65,7 @@ class UpdateSettingsRequest extends FormRequest
             "mobile-app" => [
                 'instagram_link' => 'required|max:255|url',
                 'facebook_link' => 'required|max:255|url',
-                'linkedin_link' => 'required|max:255|url',
-                'tiktok_link' => 'required|max:255|url',
-                'youtube_link' => 'required|max:255|url',
-                'twitter_link' => 'required|max:255|url',
+   
             ],
             'landing-page-content' => [
                 'landing_page.main_section_title_ar' => 'required|string|max:255',

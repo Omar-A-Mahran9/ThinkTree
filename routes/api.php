@@ -27,6 +27,7 @@
 
     Route::get('package/{id}', 'dataController@package');
     Route::get('timeslot', 'dataController@timeslot');
+    Route::get('footer', 'dataController@footer');
 
     Route::post('/order/store/{step}', [OrderController::class, 'store'])->name('order.store');
 

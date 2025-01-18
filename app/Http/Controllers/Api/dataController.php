@@ -74,6 +74,25 @@ function timeslot(Request $request)
 }
 
 
+public function footer(){
+    return $this->success('', [
+     
+        'website_name'=> setting('website_name'),
+        'website_description'=> setting('description'),
+        'logo'=> asset(getImagePathFromDirectory(setting('logo'), 'Settings', "default.svg")),
+        'fav_icon'=> asset(getImagePathFromDirectory(setting('fav_icon'), 'Settings', "default.svg")),
+
+        'instagram_link' => setting('instagram_link'),
+        'facebook_link' => setting('facebook_link'),
+        'whatsapp_number' => setting('whatsapp_number'),
+        'sms_number' => setting('sms_number'),
+        'email' => setting('email'),
+    
+
+]);
+}
+
+
 
  
 }
