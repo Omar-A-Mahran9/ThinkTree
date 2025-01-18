@@ -30,14 +30,7 @@ class GroupsController extends Controller
             return view('dashboard.groups.index',compact('times','days'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
+ 
     /**
      * Store a newly created resource in storage.
      */

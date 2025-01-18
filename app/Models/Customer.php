@@ -65,6 +65,13 @@ class Customer extends Authenticatable
         $this->save();
     }
 
+    public function verfiedOTP(){
+        $this->otp = rand(1111, 9999);
+        $appName = setting("website_name") ?? "Thinktree";
+        // $this->sendSMS("$appName: $this->otp هو رمز الحماية,لا تشارك الرمز");
+        $this->save();
+    }
+
     public function getFullImagePathAttribute()
     {
         return asset(getImagePathFromDirectory($this->image, 'Customers', "default.svg"));

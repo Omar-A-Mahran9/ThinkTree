@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\StoreBepartenerRequest;
-use App\Http\Resources\Api\HeroesResource;
+ use App\Http\Resources\Api\HeroesResource;
 use App\Http\Resources\Api\PackagesResources;
-use App\Models\Bepartener;
-use App\Models\Ourhero;
+ use App\Models\Ourhero;
 use App\Models\Packages;
-use App\Models\PaymentData;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+ 
 
 class dataController extends Controller
 {
@@ -30,6 +26,16 @@ function packages(){
  
 
     return $this->successWithPagination("", PackagesResources::collection($packages)->response()->getData(true));
+}
+function package($id){
+    $package = Packages::find($id); // Get a single record by ID
+    dd($package);
+
+    if (!$package) {
+        return $this->error("Package not found", 404);
+    }
+
+    return $this->success("", new PackagesResources($package));
 }
  
 }

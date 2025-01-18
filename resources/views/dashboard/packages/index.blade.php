@@ -183,6 +183,23 @@
                                 <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
                             </div>
                         </div>
+
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <!--end::Label-->
+                            <label class="required fs-5 fw-semibold mb-2">{{ __('Groups') }}</label>
+                            <!--end::Label-->
+
+                            <select class="form-select" data-control="select2" id="groups_inp" name="groups[]"
+                                multiple="multiple" data-placeholder="{{ __('Choose groups') }}"
+                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                <option value="" disabled></option>
+                                @foreach ($groups as $group)
+                                    <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback" id="groups"></div>
+                        </div>
+
                         <div class="fv-row mb-0 fv-plugins-icon-container">
                             <!--end::Label-->
                             <label class="required fs-5 fw-semibold mb-2">{{ __('Features') }}</label>

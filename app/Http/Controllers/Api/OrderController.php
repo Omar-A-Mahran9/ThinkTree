@@ -32,9 +32,8 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request, $step = null)
     {
-        // Get the validated data as an array
         $data = $request->validated();
-    
+        if($step==1){
         // If $data is an array, use array syntax instead of object syntax
         $nameParts = explode(' ', $data['name'], 2); // Split into two parts by the first space
         $firstName = $nameParts[0]; // The first part of the name
@@ -65,6 +64,12 @@ class OrderController extends Controller
         ];
     
         $child = Chield::create($childdata);
+    }elseif($step==2){
+        $customer = Customer::where('phone', $data['phone'])->first();
+        $data = $request->validated();
+        $customer->verify($data->otp);
+         
+    }
     }
     
    

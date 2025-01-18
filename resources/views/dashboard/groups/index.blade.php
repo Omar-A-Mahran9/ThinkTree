@@ -245,6 +245,7 @@
                 $("#form_title").text(__('Add new groups'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
+
                 $("#crud_form").attr('action', `/dashboard/groups`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });

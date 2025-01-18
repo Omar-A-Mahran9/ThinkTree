@@ -39,7 +39,13 @@ class OrderRequest extends FormRequest
             "birth_date_of_child" => ['required', 'date'],
         ],
         2 => [
-            "otp" => ['required', 'numeric', 'digits:6'], // Adjust digits as per requirement
+            "phone" => [
+                'required',
+                'string',
+                'max:20',
+                new PhoneNumber(),
+            ],
+            "otp" => ['required', 'numeric', 'digits:4'], // Adjust digits as per requirement
         ],
         3 => [
             "package_id" => ['required', 'numeric', 'exists:packages,id'],

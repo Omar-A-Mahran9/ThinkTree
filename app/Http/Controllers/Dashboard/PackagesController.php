@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StorePackageRequest;
 use App\Http\Requests\Dashboard\UpdatePackageRequest;
 use App\Models\Feature;
+use App\Models\Group;
 use App\Models\Outcome;
 use App\Models\Packages;
 use Illuminate\Http\Request;
@@ -20,12 +21,13 @@ class PackagesController extends Controller
         $this->authorize('view_packages');
         $features    = Feature::select('id', 'name_ar', 'name_en','image')->get();
         $outcomes    = Outcome::select('id', 'name_ar', 'name_en','image')->get();
+        $groups    = Group::select('id', 'name_ar', 'name_en')->get();
 
         if ($request->ajax()){
             return response(getModelData(model: new Packages(), relations: ['features' => ['id', 'name_ar', 'name_en','created_at'],'outcomes' => ['id', 'name_ar', 'name_en','created_at']]));
         }
         else
-            return view('dashboard.packages.index',compact('features','outcomes'));
+            return view('dashboard.packages.index',compact('features','outcomes','groups'));
     }
 
     /**
