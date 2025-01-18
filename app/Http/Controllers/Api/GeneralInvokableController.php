@@ -3,33 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\BrandResource;
-use App\Http\Resources\Api\CategoryResource;
-use App\Http\Resources\Api\CityResource;
-use App\Http\Resources\Api\CustomerRateResource;
-use App\Http\Resources\Api\GallariesResource;
+ 
 use App\Http\Resources\Api\HeroesResource;
 use App\Http\Resources\Api\OurlevelResources;
-use App\Http\Resources\Api\packagesCategoryResources;
-use App\Http\Resources\Api\PackagesResources;
-use App\Http\Resources\Api\PartenersResource;
-use App\Http\Resources\Api\Rate;
+ use App\Http\Resources\Api\PackagesResources;
+ 
 use App\Http\Resources\Api\RateResource;
-use App\Http\Resources\Api\ServiceResource;
-use App\Http\Resources\Api\SkinColorResource;
+ 
 use App\Http\Resources\Api\whyusResources;
-use App\Models\AddonService;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\City;
+ 
 use App\Models\customers_rates;
-use App\Models\Gallary;
-use App\Models\Ourhero;
+ use App\Models\Ourhero;
 use App\Models\Ourlevel;
-use App\Models\PackageCategory;
-use App\Models\Packages;
-use App\Models\partener;
-use App\Models\SkinColor;
+ use App\Models\Packages;
+ 
 use App\Models\Whyus;
 use Illuminate\Http\Request;
 

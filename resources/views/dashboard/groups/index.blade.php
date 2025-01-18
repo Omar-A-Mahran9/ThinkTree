@@ -148,9 +148,22 @@
                                     data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
                                     <option value="" disabled></option>
                                     @foreach ($times as $time)
-                                        <option value="{{ $time->id }}">{{ $time->from }} - {{ $time->to }}
+                                        <option value="{{ $time->id }}">
+                                            <div class="flex justify-between gap-6">
+                                                <p>
+                                                    {{ \Carbon\Carbon::parse($time->from)->format('g:i A') }}
+                                                </p>
+
+                                                <p>
+
+                                                    {{ \Carbon\Carbon::parse($time->to)->format('g:i A') }}
+                                                </p>
+
+                                            </div>
+
                                         </option>
                                     @endforeach
+
                                 </select>
                                 <div class="fv-plugins-message-container invalid-feedback" id="time_ids"></div>
                             </div>

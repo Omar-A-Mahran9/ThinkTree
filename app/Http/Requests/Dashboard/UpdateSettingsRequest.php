@@ -31,6 +31,8 @@ class UpdateSettingsRequest extends FormRequest
                 'fav_icon' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
                 'website_name' => 'required|string:255',
                 'description' => 'required|string:255',
+               'test_link' => 'required_if:available_test,1|max:255|url',
+               'available_test' => 'required|boolean',
              ],
             "landing" => [
                 'herosection_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
