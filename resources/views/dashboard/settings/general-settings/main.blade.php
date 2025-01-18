@@ -156,17 +156,17 @@
                                     <!--begin::Label-->
                                     <label class="form-label">{{ __('رابط الاختبار') }}</label>
                                     <!--end::Label-->
-                                    <!--begin::Switch Button-->
                                     <div class="form-check form-switch mb-3">
                                         <!-- Hidden input for the "off" value -->
                                         <input type="hidden" name="available_test" value="0">
                                         <!-- Checkbox for the "on" value -->
                                         <input class="form-check-input" type="checkbox" id="enable_test_link"
-                                            name="available_test" value="1" checked>
+                                            name="available_test" value="1"
+                                            {{ setting('available_test') == 1 ? 'checked' : '' }}>
                                         <label class="form-check-label"
                                             for="enable_test_link">{{ __('تفعيل رابط الاختبار') }}</label>
                                     </div>
-                                    <!--end::Switch Button-->
+
 
                                     <!--end::Switch Button-->
                                     <!--begin::Editor-->
