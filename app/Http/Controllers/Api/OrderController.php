@@ -74,8 +74,9 @@ class OrderController extends Controller
             ]);
                     } elseif ($step == 2) {
             // Validate OTP
-            $customer = Customer::where('phone', $data['phone'])->first();
-    
+            $customer = Customer::where('email', $data['email'])
+            ->orWhere('phone', $data['phone'])
+            ->first();
             if ($customer) {
                 $otp = $data['otp'];
                 $response = $customer->verfiedOTP($otp);
