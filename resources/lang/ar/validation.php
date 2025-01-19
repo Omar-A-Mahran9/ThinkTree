@@ -225,6 +225,8 @@ return [
     'attributes' => [
         'first_name' => 'الاسم الأول',
         'last_name' => 'اسم العائلة',
+        'Choose_duration_later' => 'الفترة في وقت لاحق',
+
         'message' => 'الرسالة',
         'package_id' => 'الباقة',
         'group_id' => 'المجموعة',

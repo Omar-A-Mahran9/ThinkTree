@@ -58,7 +58,7 @@ class OrderRequest extends FormRequest
                 new PhoneNumber(),
             ],
             'Choose_duration_later' => ['required', 'boolean'],
-            'package_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:packages,id'],
+            'package_id' => ['required', 'numeric', 'exists:packages,id'],
             'price' => [ 'numeric', 'exists:packages,id'],
 
             'group_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:groups,id'],
