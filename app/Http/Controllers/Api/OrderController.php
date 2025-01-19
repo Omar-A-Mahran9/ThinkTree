@@ -7,6 +7,7 @@ use App\Http\Requests\Api\OrderRequest;
 use App\Models\Chield;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Packages;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -100,7 +101,9 @@ class OrderController extends Controller
                     ->first();
             }
 
-    
+            $package=Packages::find($data['package_id']);
+            $data['price'] = $package->FinalPrice;
+
             // Handle optional duration selection
             if ($data['Choose_duration_later'] === 1) {
                 $data['package_id'] = null;

@@ -15,4 +15,9 @@ class Order extends Model
         'updated_at' => 'date:Y-m-d',
     ];
 
+    public function package()
+    {
+        return $this->belongsTo(Packages::class);
+    }
+
 }

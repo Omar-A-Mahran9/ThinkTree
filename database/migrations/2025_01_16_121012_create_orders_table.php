@@ -35,6 +35,8 @@ return new class extends Migration
             $table->boolean('Choose_duration_later')->default(false); // Availability of the group, true by default
 
             $table->enum('Payment_statue', ["Pending",'Paid', 'Rejected'])->default("Pending"); // Define enum and make it unique
+            
+            $table->string('price');
 
             // $table->enum('type_of_pay', ["Card",'Paid', 'Rejected'])->default("Pending"); // Define enum and make it unique
 

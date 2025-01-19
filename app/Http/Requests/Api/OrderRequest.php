@@ -57,6 +57,8 @@ class OrderRequest extends FormRequest
             ],
             'Choose_duration_later' => ['required', 'boolean'],
             'package_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:packages,id'],
+            'price' => [ 'numeric', 'exists:packages,id'],
+
             'group_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:groups,id'],
             'day_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:days,id'],
             'time_id' => ['required_if:Choose_duration_later,0', 'numeric', 'exists:times,id'],
