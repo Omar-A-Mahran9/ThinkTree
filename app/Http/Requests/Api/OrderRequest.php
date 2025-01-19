@@ -45,6 +45,8 @@ class OrderRequest extends FormRequest
                 'max:20',
                 new PhoneNumber(),
             ],
+            "email" => ['nullable', 'email'],
+
             "otp" => ['required', 'numeric', 'digits:4'], // Adjust digits as per requirement
         ],
         3 => [
