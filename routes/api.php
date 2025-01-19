@@ -25,6 +25,7 @@
     Route::get('packages', 'dataController@packages');
     Route::post('contact_us', 'ContactUsController@store');
     Route::get('test_link', 'TestInvokableController');
+    Route::post('news-letter', 'HomeController@newsLetter');
 
     Route::get('package/{id}', 'dataController@package');
     Route::get('timeslot', 'dataController@timeslot');
