@@ -152,6 +152,7 @@ let translations = {
         "Child Trip list": "قائمة رحلات الأطفال",
         "Add new child trip": "اضافة رحلة الطفل",
         "Add new vision": "أضف رؤية جديدة",
+        "Add new skill": "اضافة مهارة جديدة",
 
         "Edit city": "تعديل المدينة",
         "Deleting...": "جار الحذف...",

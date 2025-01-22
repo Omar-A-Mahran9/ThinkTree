@@ -39,7 +39,7 @@
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
                         class="form-control form-control-solid w-250px ps-15"
-                        placeholder="{{ __('Search for Our level') }}">
+                        placeholder="{{ __('Search for skills') }}">
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->
@@ -58,7 +58,7 @@
                                     fill="currentColor"></rect>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->{{ __('Add level') }}</button>
+                        <!--end::Svg Icon-->{{ __('Add skills') }}</button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
@@ -99,7 +99,7 @@
     </div>
     <!--end::Basic info-->
 
-    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.ourlevels.store') }}" method="post"
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.skills.store') }}" method="post"
         data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
@@ -195,7 +195,7 @@
             $("#add_btn").click(function(e) {
                 e.preventDefault();
 
-                $("#form_title").text(__('Add new level'));
+                $("#form_title").text(__('Add new skill'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/skills`);

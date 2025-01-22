@@ -241,7 +241,7 @@
     "Description In Arabic": "الوصف بالعربي",
     "description ar": "الوصف بالعربي",
     "description en": "الوصف بالانجليزي",
-    "Vendor": "التاجر",
+    "Add skills": "اضافة مهارة جديدة",
     "Choose the vendor": "اختر التاجر",
     "Category": "الفئة",
     "Choose the category": "اختر الفئة",
@@ -249,6 +249,8 @@
     "tags": "الكلمات المفتاحية",
     "Select tags": "اختر الكلمات المفتاحية",
     "Childern Trip": "رحلة الطفل",
+    "our skills list": "قائمة المهارات ",
+    "Search for skills": "البحث عن مهارات",
 
     "Cities": "المدن",
     "cities": "المدن",

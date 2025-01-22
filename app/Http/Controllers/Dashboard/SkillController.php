@@ -62,10 +62,10 @@ class SkillController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Skill $vision)
+    public function destroy(Skill $skill)
     {
-        $this->authorize('delete_vision');
-        $vision->delete();
+        $this->authorize('delete_skills');
+        $skill->delete();
         return response(["skill deleted successfully"]);
     }
 
