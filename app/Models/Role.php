@@ -24,8 +24,10 @@ class Role extends Model
         'admins',
         'whyus',
         'ourlevels',
-
+        'childern_trip',
         'ourheroes',
+        'skills',
+        'vision',
 
         'contact_us',
         'cities',

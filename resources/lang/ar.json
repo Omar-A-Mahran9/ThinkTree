@@ -10,6 +10,10 @@
     "Add new group": "اضافة مجموعات جديدة",
     "Days": "الأيام",
     "Day": "اليوم",
+    "vision list": "قائمة الرؤية",
+
+    "Add new vision": "أضف رؤية جديدة",
+    "Search for vision": "البحث عن رؤية",
 
     "Add day": "إضافة يوم",
     "Days List": "قائمة الأيام",
@@ -240,6 +244,7 @@
     "Tags": "الكلمات المفتاحية",
     "tags": "الكلمات المفتاحية",
     "Select tags": "اختر الكلمات المفتاحية",
+    "Childern Trip": "رحلة الطفل",
 
     "Cities": "المدن",
     "cities": "المدن",
@@ -403,6 +408,11 @@
     "Customer email": "البريد الالكتروني للعميل",
     "Selected item": "عنصر مختار",
     "delete": "حذف",
+    "Edit Chield Trip": "تعديل رحلة الطفل",
+    "Add new child trip": "اضافة رحلة الطفل",
+    "Child Trip list": "قائمة رحلات الأطفال",
+    "Search for Child Trip": "البحث في رحلة الطفل",
+
     "Vendors list": "قائمة التجار",
     "Search for vendors": "ابحث عن التجار",
     "Add vendor": "أضف تاجر",

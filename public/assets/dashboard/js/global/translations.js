@@ -108,6 +108,8 @@ let translations = {
         friday: "الجمعة",
         row: "صفوف ",
         rows: "صفوف ",
+        "Edit Chield Trip": "تعديل رحلة الطفل",
+
         " selected": "محددة",
         "Edit package": "تعديل الباقة",
         "Add new groups": "اضافة مجموعات جديدة",
@@ -147,6 +149,8 @@ let translations = {
         Yes: "نعم",
         No: "لا",
         "Add new city": "أضف مدينة جديدة",
+        "Child Trip list": "قائمة رحلات الأطفال",
+        "Add new child trip": "اضافة رحلة الطفل",
 
         "Edit city": "تعديل المدينة",
         "Deleting...": "جار الحذف...",

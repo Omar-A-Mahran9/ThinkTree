@@ -22,9 +22,19 @@ Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
 Route::delete("car_prices/delete-selected", "CarPriceController@deleteSelected");
 Route::delete("whyus/delete-selected", "WhyUsController@deleteSelected");
 Route::get("whyus/restore-selected", "WhyUsController@restoreSelected");
+Route::delete("trip/delete-selected", "TripController@deleteSelected");
+Route::get("trip/restore-selected", "TripController@restoreSelected");
 
 Route::delete("ourlevels/delete-selected", "OurlevelController@deleteSelected");
 Route::get("ourlevels/restore-selected", "OurlevelController@restoreSelected");
+
+
+Route::delete("skills/delete-selected", "SkillController@deleteSelected");
+Route::get("skills/restore-selected", "SkillController@restoreSelected");
+
+
+Route::delete("vision/delete-selected", "VisionController@deleteSelected");
+Route::get("vision/restore-selected", "VisionController@restoreSelected");
 
 Route::delete("ourheroes/delete-selected", "OurheroController@deleteSelected");
 Route::get("ourheroes/restore-selected", "OurheroController@restoreSelected");
@@ -39,7 +49,14 @@ Route::get("days/restore-selected", "DaysController@restoreSelected");
 
  Route::resource('admins', 'AdminController')->except(['create', 'edit']);
  Route::resource('whyus', 'WhyUsController')->except(['create', 'edit']);
+ Route::resource('trip', 'TripController')->except(['create', 'edit']);
+
  Route::resource('ourlevels', 'OurlevelController')->except(['create', 'edit']);
+
+ Route::resource('skills', 'SkillController')->except(['create', 'edit']);
+
+ Route::resource('vision', 'VisionController')->except(['create', 'edit']);
+
  Route::resource('ourheroes', 'OurheroController')->except(['create', 'edit']);
  
 Route::resource('cities', 'CityController')->except(['create', 'edit']);

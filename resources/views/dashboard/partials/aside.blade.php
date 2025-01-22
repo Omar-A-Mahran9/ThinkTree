@@ -58,11 +58,24 @@
                     </x-dashboard.aside-item>
                 @endcan
 
+                @can('view_skills')
+                    <x-dashboard.aside-item :slug="'skills'" :route="route('dashboard.skills.index')" :title="__('skills')">
+                        <i class="ki-outline ki-chart-line fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
+                @can('view_vision')
+                    <x-dashboard.aside-item :slug="'vision'" :route="route('dashboard.vision.index')" :title="__('vision')">
+                        <i class="ki-outline ki-chart-line fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
                 @can('view_whyus')
                     <x-dashboard.aside-item :slug="'whyus'" :route="route('dashboard.whyus.index')" :title="__('Why Us')">
                         <i class="fas fa-handshake fs-2   me-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
+
 
 
                 <!--begin:Menu item-->
@@ -80,6 +93,12 @@
                     <x-dashboard.aside-item :slug="'ourheroes'" :route="route('dashboard.ourheroes.index')" :title="__('Our Heros')">
                         <i class="fas fa-dumbbell fs-2"></i>
 
+                    </x-dashboard.aside-item>
+                @endcan
+
+                @can('view_childern_trip')
+                    <x-dashboard.aside-item :slug="'trip'" :route="route('dashboard.trip.index')" :title="__('Childern Trip')">
+                        <i class="fas fa-chess fs-2 me-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
