@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('visions', function (Blueprint $table) {
             $table->id();
+            $table->string('name_ar')->unique();
+            $table->string('name_en')->unique();
+            $table->longText('description_ar');
+            $table->longText('description_en');
+            $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

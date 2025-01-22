@@ -14,7 +14,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('our levels list') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('our skills list') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -186,7 +186,7 @@
 @push('scripts')
     <script src="{{ asset('assets/dashboard/js/global/datatable-config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/datatables/ourlevel.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/datatables/skills.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/global/crud-operations.js') }}"></script>
     <script src="{{ asset('assets/dashboard/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 
@@ -198,7 +198,7 @@
                 $("#form_title").text(__('Add new level'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/ourlevels`);
+                $("#crud_form").attr('action', `/dashboard/skills`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
 

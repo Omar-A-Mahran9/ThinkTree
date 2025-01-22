@@ -26,6 +26,7 @@ class Role extends Model
         'ourlevels',
         'childern_trip',
         'ourheroes',
+        
         'skills',
         'vision',
 

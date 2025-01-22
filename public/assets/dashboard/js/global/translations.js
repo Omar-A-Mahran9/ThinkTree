@@ -151,6 +151,7 @@ let translations = {
         "Add new city": "أضف مدينة جديدة",
         "Child Trip list": "قائمة رحلات الأطفال",
         "Add new child trip": "اضافة رحلة الطفل",
+        "Add new vision": "أضف رؤية جديدة",
 
         "Edit city": "تعديل المدينة",
         "Deleting...": "جار الحذف...",

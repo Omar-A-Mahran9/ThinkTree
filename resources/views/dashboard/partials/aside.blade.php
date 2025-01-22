@@ -59,14 +59,14 @@
                 @endcan
 
                 @can('view_skills')
-                    <x-dashboard.aside-item :slug="'skills'" :route="route('dashboard.skills.index')" :title="__('skills')">
-                        <i class="ki-outline ki-chart-line fs-2"></i>
+                    <x-dashboard.aside-item :slug="'skills'" :route="route('dashboard.skills.index')" :title="__('Skills')">
+                        <i class="fas fa-brain fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
                 @can('view_vision')
-                    <x-dashboard.aside-item :slug="'vision'" :route="route('dashboard.vision.index')" :title="__('vision')">
-                        <i class="ki-outline ki-chart-line fs-2"></i>
+                    <x-dashboard.aside-item :slug="'vision'" :route="route('dashboard.vision.index')" :title="__('Vision')">
+                        <i class="fas fa-eye fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
