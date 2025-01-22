@@ -21,6 +21,8 @@
 // });
  
     Route::get('general', 'GeneralInvokableController');
+    Route::get('about_us', 'AboutusInvokableController');
+
     Route::get('ourheroes', 'dataController@ourheroes');
     Route::get('packages', 'dataController@packages');
     Route::post('contact_us', 'ContactUsController@store');
