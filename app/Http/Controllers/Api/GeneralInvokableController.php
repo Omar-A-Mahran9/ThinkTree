@@ -51,9 +51,7 @@ class GeneralInvokableController extends Controller
 
     
             return $this->success('', [
-                'meta_home' => setting('metatags.description_home_' . request()->header('Content-language', 'ar')),
-                'meta_about_us' => setting('metatags.description_about_us_' . request()->header('Content-language', 'ar')),
-
+           
                 "herosection"=>[
                 'image'=> asset(getImagePathFromDirectory(setting('herosection_image'), 'Settings', "default.svg")),
                 'title' => setting('landing_page.main_section_title_' . request()->header('Content-language', 'ar')),

@@ -22,6 +22,7 @@
  
     Route::get('general', 'GeneralInvokableController');
     Route::get('about_us', 'AboutusInvokableController');
+    Route::get('meta_tags', 'metatagsInvokableController');
 
     Route::get('ourheroes', 'dataController@ourheroes');
     Route::get('packages', 'dataController@packages');
