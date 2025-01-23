@@ -88,8 +88,8 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::match(['get', 'post'], 'general/terms', 'SettingController@terms')->name('general.terms');
     Route::match(['get', 'post'], 'general/contact', 'SettingController@contact')->name('general.contact');
     Route::match(['get', 'post'], 'general/mobile-app', 'SettingController@mobileApp')->name('general.mobile_app');
-    Route::match(['get', 'post'], 'general/tax', 'SettingController@tax')->name('general.tax');
     Route::match(['get', 'post'], 'general/landing', 'SettingController@landingPageContent')->name('general.landing');
+    Route::match(['get', 'post'], 'general/metatags', 'SettingController@metatags')->name('general.metatags');
 
     Route::resource('roles', 'RoleController');
     Route::get('role/{role}/admins', 'RoleController@admins');

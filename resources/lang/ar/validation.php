@@ -359,8 +359,15 @@ return [
         'landing_page.how_we_are_title_en' => 'العنوان انجليزي',
         'landing_page.how_we_are_description_ar' => 'الوصف عربي',
         'landing_page.how_we_are_description_en' => 'الوصف انجليزي',
-
-        'landing_page.why_choose_us_title_1_ar' => 'العنوان عربي',
+        
+            "metatags.description_home_ar"=> "الجملة المفتاحية للصفحة الرئيسية",
+            "metatags.description_home_en"=> "الجملة المفتاحية للصفحة الرئيسية",
+            "metatags.description_about_us_ar"=> "الجملة المفتاحية لصفحة من نحن",
+            "metatags.description_about_us_en"=> "الجملة المفتاحية لصفحة من نحن",
+            "metatags.description_package_ar"=> "الجملة المفتاحية لصفحة الباقات",
+            "metatags.description_package_en"=> "الجملة المفتاحية لصفحة الباقات",
+          
+                  'landing_page.why_choose_us_title_1_ar' => 'العنوان عربي',
         'landing_page.why_choose_us_title_1_en' => 'العنوان انجليزي',
         'landing_page.why_choose_us_description_1_ar' => 'الوصف عربي',
         'landing_page.why_choose_us_description_1_en' => 'الوصف انجليزي',

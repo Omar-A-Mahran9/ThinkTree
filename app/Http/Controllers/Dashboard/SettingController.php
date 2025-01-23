@@ -68,14 +68,14 @@ class SettingController extends Controller
         }
     }
 
-    public function tax(UpdateSettingsRequest $request)
+    public function metatags(UpdateSettingsRequest $request)
     {
         if ($request->isMethod('post')) {
             setting($request->validated())->save();
         } else {
 
             $this->authorize('view_settings');
-            return view('dashboard.settings.general-settings.tax');
+            return view('dashboard.settings.general-settings.metatags');
         }
     }
 

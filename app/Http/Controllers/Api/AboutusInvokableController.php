@@ -46,6 +46,9 @@ class AboutusInvokableController extends Controller
  
     
             return $this->success('', [
+
+                 'meta_about_us' => setting('metatags.description_about_us_' . request()->header('Content-language', 'ar')),
+
          
                 "TripChild"=>whyusResources::collection($TripChild),
                 "skills"=>SkillsResources::collection($skills),

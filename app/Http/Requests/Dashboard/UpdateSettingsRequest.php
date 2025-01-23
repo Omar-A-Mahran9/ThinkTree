@@ -37,7 +37,6 @@ class UpdateSettingsRequest extends FormRequest
             "landing" => [
                 'herosection_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
                 'certificate_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
-
                 'landing_page.main_section_title_ar' => 'required|string|max:255',
                 'landing_page.main_section_title_en' => 'required|string|max:255',
                 'landing_page.main_section_description_ar' => 'required|string|max:600',
@@ -45,7 +44,18 @@ class UpdateSettingsRequest extends FormRequest
 
             ],
 
+            "metatags" => [
+               
+            'metatags.description_home_ar' => 'required|string|max:255',
+            'metatags.description_home_en' => 'required|string|max:255',
 
+            'metatags.description_about_us_ar' => 'required|string|max:255',
+            'metatags.description_about_us_en' => 'required|string|max:255',
+
+            'metatags.description_package_ar' => 'required|string|max:255',
+            'metatags.description_package_en' => 'required|string|max:255',
+
+            ],
             "terms" => [
                 'terms_ar' => 'required|string',
                 'terms_en' => 'required|string',

@@ -27,6 +27,18 @@
                 <!--end::Nav item-->
             @endcan
 
+
+            <!--end::Nav item-->
+            @can('view_home_content')
+                <!--begin::Nav item-->
+                <li class="nav-item mt-2">
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'home-content') }}"
+                        href="{{ route('dashboard.settings.general.metatags') }}">{{ __('Meta tags settings') }}</a>
+                </li>
+                <!--end::Nav item-->
+            @endcan
+            <!--begin::Nav item-->
+
         </ul>
         <!--begin::Navs-->
     </div>
