@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -40,20 +41,22 @@ class PackagesResources extends JsonResource
                 ];
             }),
 
-            'groups' => $this->groups->map(function ($group) {
-                return [
-                    'id' => $group->id, // Assuming `full_image_path` is an accessor in the `Feature` model
-                    'name' => $group->name, // Assuming the `Feature` model has a `name` attribute
-                    'day' => [
-                        'id' => $group->day->id, // Assuming `full_image_path` is an accessor in the `Feature` model
+        'groups' => $this->groups->filter(function ($group) {
+            $today = Carbon::today(); // Get today's date
 
-                    'name' => $group->day->name, // Assuming `day` is a related model with a `name` attribute
-                    'date' => $group->day->date // Assuming `day` is a related model with a `date` attribute
+            // Check if the group's day is today or in the future
+            return Carbon::parse($group->day->date)->gt($today); // Greater than today
+        })->map(function ($group) {
+            return [
+                'id' => $group->id,
+                'name' => $group->name,
+                'day' => [
+                    'id' => $group->day->id,
+                    'name' => $group->day->name,
+                    'date' => $group->day->date
                 ],
-
-
-                ];
-            }),
+            ];
+        }),
 
       
         ];
