@@ -8,9 +8,7 @@ use App\Models\Chield;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Packages;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -33,12 +31,13 @@ class OrderController extends Controller
     public function store(OrderRequest $request, $step = null)
     {
         $data = $request->validated();
+    
         if ($step == 1) {
             // Split name into first and last names
             $nameParts = explode(' ', $data['name'], 2);
             $firstName = $nameParts[0];
             $lastName = $nameParts[1] ?? '';
-
+    
             // Check if customer exists
             $customer = Customer::where('email', $data['email'])
                 ->orWhere('phone', $data['phone'])
@@ -65,7 +64,7 @@ class OrderController extends Controller
                 "birthdate" => $data['birth_date_of_child'],
                 "customer_id" => $customer->id,
             ];
-
+    
             $child = Chield::create($childData);
     
    
@@ -73,7 +72,7 @@ class OrderController extends Controller
                 'id' => $customer->id,
                 'otp' => $customer->otp,
             ]);
-        } elseif ($step == 2) {
+                    } elseif ($step == 2) {
             // Validate OTP
             $customer = Customer::where('email', $data['email'])
             ->orWhere('phone', $data['phone'])
@@ -97,13 +96,13 @@ class OrderController extends Controller
             ->first();
 
             if ($customer) {
+           
                     $lastChild = Chield::where('customer_id', $customer->id)
                     ->orderBy('created_at', 'desc') // Or order by 'id' if auto-incremented
                     ->first();
             }
 
             $package=Packages::find($data['package_id']);
-
             $data['price'] = $package->FinalPrice;
 
             // Handle optional duration selection
@@ -117,112 +116,16 @@ class OrderController extends Controller
                  $data['customer_id'] = $customer->id;
 
                  $data['chield_id'] = $lastChild->id;
-                 unset($data['email']);
-                 unset($data['phone']);
-                 
-             // Create the order record
-            $order = Order::create($data);
-             // Call Paymob to process payment
-            $paydata = $this->paymob($data);
-            $handelpaymenturl=$this->handlePaymentRequest( $paydata);
-           
 
-            return $this->success($handelpaymenturl);
-        }
-    }
-
-
-    private function paymob($data)
-    {
-        try {
-            $client = new Client();
-    
-            // Get API token from config
-            $authToken = env('API_TOKEN');
+                 unset($data['email'], $data['phone']);
  
-            // Validate required data
-            $package = Packages::findOrFail($data['package_id']);
-            $customer = Customer::findOrFail($data['customer_id']);
-             $headers = [
-                'Authorization' => 'Token ' . $authToken, // Correct format
-                'Content-Type'  => 'application/json',
-            ];
-    
-            // Replace "you can add Integration id..." with actual Integration ID from Paymob
-            $paymentMethods =  [4935783,4935866,4935867];
-    
-            $body = [
-                "amount" => (int) $package->FinalPrice * 100, // Convert to cents
-                "currency" => "EGP",
-                "payment_methods" => $paymentMethods,
-                "items" => [
-                    [
-                        "name" => $package->name,
-                        "image" => $package->getFullImagePathAttribute(),
-
-                        "amount" => (int) $package->FinalPrice * 100, // Convert to cents
-                        "description" => $package->description,
-                        "quantity" => 1,
-                    ],
-                ],
-                "billing_data" => [  // Fixed here: using => instead of :
-                    "apartment" => "sympl",
-                    "first_name" => "dumy",
-                    "last_name" => "dumy",
-                    "street" => "dumy",
-                    "building" => "dumy",
-                    "phone_number" => "+201003287527",
-                    "city" => "dumy",
-                    "country" => "EG",
-                    "email" => "dumy@dumy.com",
-                    "floor" => "dumy",
-                    "state" => "dumy"
-                ],
-                "customer" => [
-                    "first_name" => $customer->first_name,
-                    "last_name" => $customer->last_name,
-                    "email" => $customer->email,
-                    "phone" => ["number" => $customer->phone],
-                ],
-            ];
-            
-            // Send the request
-            $response = $client->post('https://accept.paymob.com/v1/intention/', [
-                'headers' => $headers,
-                'json'    => $body, // Use `json` instead of `json_encode($body)`
-            ]);
-    
-            // Decode response
-            $responseData = json_decode($response->getBody(), true);
-             return response()->json($responseData);
-        } catch (RequestException $e) {
-            // Handle API errors
-            return response()->json([
-                'error' => $e->getMessage(),
-                'response' => $e->hasResponse() ? json_decode($e->getResponse()->getBody(), true) : null,
-            ], 400);
-
-            return response()->json($responseData);
-
+            $order = Order::create($data);
+       
+            return $this->success("Step 3 success");
         }
     }
     
-    public function handlePaymentRequest($request)
-    {
-        // Step 1: Get the data from Paymob (assuming you've already obtained it)
-        $responseData = json_decode($request->content(), true);
-     
-        // Correctly access the order ID from payment_keys
-        $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
-        
-        // Step 3: Inject the public key and client secret into the URL
-        $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
-        $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
     
-        // Step 4: Return the URL
-        return response()->json(['paymob_url' => $paymobUrl]);
-    }
-    
-    
+   
  
 }
