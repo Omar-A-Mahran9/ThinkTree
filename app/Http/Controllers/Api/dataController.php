@@ -46,7 +46,7 @@ function timeslot(Request $request)
     // Validate the input data
     $data = $request->validate([
         'package_id' => 'required|integer|exists:packages,id', // Ensure package_id is valid and exists in the database
-        'date' => 'required|date|after_or_equal:today', // Ensure date is a valid date and not in the past
+        'date' => 'required|date', // Ensure date is a valid date and not in the past
     ]);
 
     // Retrieve the Group based on package_id and matching date
