@@ -5,7 +5,7 @@ namespace App\Services;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 
-class TapPaymentService
+class PaymobPaymentService
 {
     protected $client;
 
@@ -18,8 +18,8 @@ class TapPaymentService
     {
 
         $body = [
-            "amount" => $request->price,
-            "currency" => "SAR",
+            "amount" => $request->pach,
+            "currency" => "EGP",
             "customer_initiated" => true,
             "threeDSecure" => true,
             "save_card" => false,

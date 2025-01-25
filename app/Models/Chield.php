@@ -3,15 +3,13 @@
 namespace App\Models;
 
 use App\Models\Scopes\SortingScope;
-use App\Traits\SMSTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\HasApiTokens;
+ use Laravel\Sanctum\HasApiTokens;
 
 class Chield extends Authenticatable
 {
-    use HasFactory, HasApiTokens, SMSTrait;
+    use HasFactory, HasApiTokens;
 
     protected $appends = [  'full_image_path'];
     protected $guarded = [];

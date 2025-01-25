@@ -3,15 +3,14 @@
 namespace App\Models;
 
 use App\Models\Scopes\SortingScope;
-use App\Traits\SMSTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class Customer extends Authenticatable
 {
-    use HasFactory, HasApiTokens, SMSTrait;
+    use HasFactory, HasApiTokens;
 
     protected $appends = ['name', 'full_image_path'];
     protected $guarded = ["password_confirmation"];

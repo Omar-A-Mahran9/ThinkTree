@@ -18,6 +18,11 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'token' => env('token', 'Laravel'),
+    'public_key' => env('public_key', 'Laravel'),
+    'secret_key' => env('secret_key', 'Laravel'),
+
+   
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -146,6 +151,8 @@ return [
         'driver' => 'file',
         // 'store'  => 'redis',
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------

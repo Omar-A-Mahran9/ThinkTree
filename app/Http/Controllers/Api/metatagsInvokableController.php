@@ -4,14 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
  
- use App\Http\Resources\Api\SkillsResources;
-use App\Http\Resources\Api\VissionsResources;
-use App\Http\Resources\Api\whyusResources;
  
- 
-use App\Models\Skill;
-use App\Models\Trip;
-use App\Models\Vision;
  use Illuminate\Http\Request;
 
 class metatagsInvokableController extends Controller
