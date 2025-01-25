@@ -17,10 +17,10 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-         $this->authorize('view_orders');
+          $this->authorize('view_orders');
 
         if ($request->ajax()) {
-             return response(getModelData(model: new Order(), relations: ['customer' => ['id', 'first_name','last_name','phone'],'addon_service' => ['id', 'name_ar','name_en','description_en','description_ar']]));
+              return response(getModelData(model: new Order(), relations: ['customer' => ['id', 'first_name','last_name','phone'],'package' => ['id', 'name_ar','name_en','description_en','description_ar','price','discount_price','have_discount']]));
          }
 
         return view("dashboard.orders.index");

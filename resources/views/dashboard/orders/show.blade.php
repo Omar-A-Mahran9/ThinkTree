@@ -23,7 +23,7 @@
                                 href="#kt_ecommerce_sales_order_summary">{{ __('Order Summary') }}</a>
                         </li>
                         <!--end:::Tab item-->
-                       
+
                     </ul>
                     <!--end:::Tabs-->
                     <!--begin::Button-->
@@ -61,10 +61,29 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="fa-solid fa-wallet fs-4 me-2"></i>{{ __('Service') }}
+                                                    <i class="fa-solid fa-wallet fs-4 me-2"></i>{{ __('Package') }}
                                                 </div>
                                             </td>
-                                            <td class="fw-bold text-end"> {{ __('' . $order->addon_service->name) }} </td>
+                                            <td class="fw-bold text-end"> {{ __('' . $order->Package->name) }} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-wallet fs-4 me-2"></i>{{ __('Price') }}
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end"> {{ __('' . $order->Package->FinalPrice) }} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-wallet fs-4 me-2"></i>{{ __('Status') }}
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end"> {{ __('' . $order->Payment_statue) }}
+                                            </td>
                                         </tr>
 
 
@@ -142,50 +161,7 @@
 
                 </div>
                 <!--end::Order summary-->
-                <!--begin::Tab content-->
-                <div class="tab-content">
-                    <!--begin::Tab pane-->
-                    <div class="tab-pane fade show active" id="kt_ecommerce_sales_order_summary" role="tab-panel">
-                        <!--begin::Orders-->
-                        <div class="d-flex flex-column gap-7 gap-lg-10">
-                            <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
-                                <!--begin::Shipping address-->
-                                <div class="card card-flush py-4 flex-row-fluid position-relative">
-                                    <!--begin::Background-->
-                                    <div
-                                        class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
 
-                                        <i class="fa-solid fa-truck-fast" style="font-size: 13em"></i>
-                                    </div>
-                                    <!--end::Background-->
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>{{ __('Visited Data') }}</h2>
-                                        </div>
-                                    </div>
-                                    <!--end::Card header-->
-                                    <!--begin::Card body-->
-                                    <div class="card-body pt-0">
-
-                                     <h5 class="mb-5">{{ __('visit date') . ': ' . $order->date }}</h5>
-                                      <h5 class="mb-5">{{ __('City') . ': ' . $order->city->name }}</h5>
-                                      <h5 class="mb-5">{{ __('Address') . ': ' .  $order->address }}</h5>
-
- 
-                                    </div>
-                                    <!--end::Card body-->
-                                </div>
-                                <!--end::Shipping address-->
-                            </div>
-                   
-                        </div>
-                        <!--end::Orders-->
-                    </div>
-                    <!--end::Tab pane-->
-              
-                </div>
-                <!--end::Tab content-->
             </div>
             <!--end::Order details page-->
         </div>
