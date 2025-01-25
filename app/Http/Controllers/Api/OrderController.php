@@ -220,7 +220,7 @@ class OrderController extends Controller
         $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
     
         // Step 4: Return the URL
-        return response()->json(['paymob_url' => $paymobUrl]);
+        return   $paymobUrl ;
     }
     
     
