@@ -21,7 +21,7 @@ class metatagsInvokableController extends Controller
                 'meta_home' => setting('metatags.description_home_' . request()->header('Content-language', 'ar')),
                 'meta_about_us' => setting('metatags.description_about_us_' . request()->header('Content-language', 'ar')),
                 'meta_package' => setting('metatags.description_package_' . request()->header('Content-language', 'ar')),
-                'keys' => TagResource::collection(Tag::get()),
+                'keys' => Tag::pluck('name')->implode(', '),
             ]);
     }
 }
