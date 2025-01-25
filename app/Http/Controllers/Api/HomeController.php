@@ -24,12 +24,7 @@ class HomeController extends Controller
         return $this->success(__('Created Successfully'));
     }
 
-    public function getTags()
-    {
-        $tags = Tag::get();
-
-        return $this->success('', TagResource::collection($tags));
-    }
+   
 
  
 }
