@@ -26,10 +26,12 @@ class Role extends Model
         'ourlevels',
         'childern_trip',
         'ourheroes',
-        
+        'tags',
+
         'skills',
         'vision',
-
+        'orders',
+        
         'contact_us',
         'cities',
 

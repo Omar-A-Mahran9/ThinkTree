@@ -24,6 +24,8 @@ Route::delete("whyus/delete-selected", "WhyUsController@deleteSelected");
 Route::get("whyus/restore-selected", "WhyUsController@restoreSelected");
 Route::delete("trip/delete-selected", "TripController@deleteSelected");
 Route::get("trip/restore-selected", "TripController@restoreSelected");
+Route::delete("tags/delete-selected", "TagController@deleteSelected");
+Route::get("tags/restore-selected", "TagController@restoreSelected");
 
 Route::delete("ourlevels/delete-selected", "OurlevelController@deleteSelected");
 Route::get("ourlevels/restore-selected", "OurlevelController@restoreSelected");
@@ -70,6 +72,8 @@ Route::resource('packages', 'PackagesController')->except(['create', 'edit']);
 Route::resource('groups', 'GroupsController')->except(['create', 'edit']);
 Route::resource('days', 'DaysController')->except(['create', 'edit']);
 Route::resource('times', 'TimeController')->except(['create', 'edit']);
+Route::resource('tags', 'TagController')->except(['create', 'edit']);
+Route::resource('orders', 'OrderController');
 
 Route::get('customers/blocking/{customer}', 'CustomerController@blocked')->name('customers.blocked');
 Route::get('customers/blocked-selected', 'CustomerController@blockedSelected');

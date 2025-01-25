@@ -52,6 +52,12 @@
                     </x-dashboard.aside-item>
                 @endcan
 
+                {{-- @can('view_tags') --}}
+                <x-dashboard.aside-item :slug="'tags'" :route="route('dashboard.tags.index')" :title="__('Tags')">
+                    <i class="ki-outline ki-key fs-2"></i>
+                </x-dashboard.aside-item>
+                {{-- @endcan --}}
+
                 @can('view_ourlevels')
                     <x-dashboard.aside-item :slug="'ourlevels'" :route="route('dashboard.ourlevels.index')" :title="__('Our Level')">
                         <i class="ki-outline ki-chart-line fs-2"></i>
@@ -76,7 +82,13 @@
                     </x-dashboard.aside-item>
                 @endcan
 
-
+                <!--begin:Menu item-->
+                @can('view_orders')
+                    <x-dashboard.aside-item :slug="'orders'" :route="route('dashboard.orders.index')" :title="__('Orders')">
+                        <i class="ki-outline ki-parcel fs-1"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+                <!--end:Menu item-->
 
                 <!--begin:Menu item-->
                 @can('view_cities')
@@ -223,7 +235,8 @@
                         data-kt-menu="true" data-kt-element="theme-mode-menu">
                         <!--begin::Menu item-->
                         <div class="menu-item px-3 my-0">
-                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="light">
+                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
+                                data-kt-value="light">
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="ki-outline ki-night-day fs-2"></i>
                                 </span>
