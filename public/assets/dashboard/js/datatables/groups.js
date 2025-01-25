@@ -187,6 +187,9 @@ var KTDatatablesServerSide = (function () {
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
                 $("#days_inp").val(data.day.id).trigger("change");
+                $("#student_limit_per_group_inp").val(
+                    data.student_limit_per_group
+                );
 
                 $("#available-switch").prop("checked", data.available === 1);
 

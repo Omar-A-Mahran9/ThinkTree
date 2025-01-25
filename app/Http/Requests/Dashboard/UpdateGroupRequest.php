@@ -26,7 +26,8 @@ class UpdateGroupRequest extends FormRequest
             
             "time_ids" => ["required", "array", "min:1"],
             "time_ids.*" => ["integer", "exists:times,id"], // Assuming 'features' table with 'id' column
-    
+            "student_limit_per_group" => ["required", "integer", "min:1"],
+
              "day_id" => ["required", "integer", "min:1"],
         
             'available' => 'required|boolean',

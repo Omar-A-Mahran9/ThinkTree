@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Resources\Api\TagResource;
 use App\Models\NewsLetter;
-
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +22,13 @@ class HomeController extends Controller
         ]);
 
         return $this->success(__('Created Successfully'));
+    }
+
+    public function getTags()
+    {
+        $tags = Tag::get();
+
+        return $this->success('', TagResource::collection($tags));
     }
 
  

@@ -197,6 +197,20 @@
                             </div>
                             <!-- end   :: Column -->
                         </div>
+                        <div class="row mb-10">
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+                                <label class="fs-5 fw-bold mb-2">{{ __('Students limit') }}</label>
+                                <div class="form-floating">
+                                    <input type="number" min="1" class="form-control"
+                                        id="student_limit_per_group_inp" name="student_limit_per_group"
+                                        placeholder="example" />
+                                    <label for="student_limit_per_group_inp">{{ __('Enter the limit') }}</label>
+                                </div>
+                                <p class="invalid-feedback" id="student_limit_per_group"></p>
+
+                            </div>
+                        </div>
                         <!-- end   :: Column -->
                         <div class="row mb-10">
                             <!-- begin :: Column -->

@@ -28,7 +28,8 @@ class StoreGroupRequest extends FormRequest
             "time_ids.*" => ["integer", "exists:times,id"], // Assuming 'features' table with 'id' column
     
              "day_id" => ["required", "integer", "min:1"],
-        
+             "student_limit_per_group" => ["required", "integer", "min:1"],
+
             'available' => 'required|boolean',
  
         ];

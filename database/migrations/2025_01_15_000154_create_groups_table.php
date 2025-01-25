@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
+            $table->integer('student_limit_per_group')->default(0); // Add the new column
+
             $table->unsignedBigInteger('day_id')->nullable();
             $table->foreign('day_id')->references('id')->on('days');
             $table->boolean('available')->default(true); // Availability of the group, true by default
