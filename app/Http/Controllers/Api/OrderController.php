@@ -138,13 +138,13 @@ class OrderController extends Controller
             $client = new Client();
     
             // Get API token from config
-            // $authToken = env('API_TOKEN');
+            $authToken ='egy_sk_test_564c7d7f1c4c530d038a10927e1955cef9f2f4e6430747f9b780d936119ff4cb';
  
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
             $customer = Customer::findOrFail($data['customer_id']);
              $headers = [
-                // 'Authorization' => 'Token ' . $authToken, // Correct format
+                'Authorization' => 'Token ' . $authToken, // Correct format
                 'Content-Type'  => 'application/json',
             ];
     
