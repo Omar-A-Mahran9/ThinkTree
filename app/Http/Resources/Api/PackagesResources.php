@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -41,23 +42,29 @@ class PackagesResources extends JsonResource
                 ];
             }),
 
-        'groups' => $this->groups->filter(function ($group) {
-            $today = Carbon::today(); // Get today's date
+'groups' => $this->groups->filter(function ($group) {
+    $today = Carbon::today(); // Get today's date
+    
+    // Check if the group's day is today or in the future
+    $isGroupFutureOrToday = Carbon::parse($group->day->date)->gt($today); // Greater than today
 
-            // Check if the group's day is today or in the future
-            return Carbon::parse($group->day->date)->gt($today); // Greater than today
-        })->map(function ($group) {
-            return [
-                'id' => $group->id,
-                'name' => $group->name,
-                'day' => [
-                    'id' => $group->day->id,
-                    'name' => $group->day->name,
-                    'date' => $group->day->date
-                ],
-            ];
-        }),
+    // Check if the group exceeds the student limit
+    $studentsInGroup = Order::where('group_id', $group->id)->count();
+    $isGroupFull = $studentsInGroup >= $group->student_limit_per_group;
 
+    // Only return groups that are either today or in the future and are not full
+    return $isGroupFutureOrToday && !$isGroupFull;
+})->map(function ($group) {
+    return [
+        'id' => $group->id,
+        'name' => $group->name,
+        'day' => [
+            'id' => $group->day->id,
+            'name' => $group->day->name,
+            'date' => $group->day->date
+        ],
+    ];
+}),
       
         ];
         
