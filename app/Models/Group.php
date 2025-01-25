@@ -45,4 +45,10 @@ class Group extends Model
     {
         return $this->belongsTo(Day::class,'day_id');
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Group::class, 'group_id');
+    }
+
 }

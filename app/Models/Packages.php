@@ -33,7 +33,7 @@ class Packages extends Model
     {
         return $this->belongsToMany(Group::class, 'package_group', 'package_id', 'group_id');
     }
- 
+   
     
 
     public function outcomes()
