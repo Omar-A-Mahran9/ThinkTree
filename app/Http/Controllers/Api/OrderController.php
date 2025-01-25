@@ -132,7 +132,7 @@ class OrderController extends Controller
     }
 
 
-    public function paymob($data)
+    private function paymob($data)
     {
         try {
             $client = new Client();
@@ -143,8 +143,7 @@ class OrderController extends Controller
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
             $customer = Customer::findOrFail($data['customer_id']);
-    
-            $headers = [
+             $headers = [
                 'Authorization' => 'Token ' . $authToken, // Correct format
                 'Content-Type'  => 'application/json',
             ];
@@ -159,7 +158,7 @@ class OrderController extends Controller
                 "items" => [
                     [
                         "name" => $package->name,
-                        "name" => $package->name,
+                        "image" => $package->getFullImagePathAttribute(),
 
                         "amount" => (int) $package->FinalPrice * 100, // Convert to cents
                         "description" => $package->description,
