@@ -27,7 +27,7 @@ class UpdateAdminRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:255', new NotNumbersOnly()],
-            'phone' => ['required', 'string', 'regex:/^[0-9]+$/', 'max:20', Rule::unique('admins')->ignore($admin->id), new PhoneNumber(), new ExistPhone(new Admin(), $admin->id)],
+            'phone' => ['required', 'string', 'regex:/^[0-9]+$/', 'max:20', Rule::unique('admins')->ignore($admin->id), new ExistPhone(new Admin(), $admin->id)],
             'email' => ['required', 'string', 'email', Rule::unique('admins')->ignore($admin->id)],
             'roles' => ['required', 'array', 'min:1'],
             'password' => ['nullable', 'exclude_if:password,null', 'string', 'min:8', 'regex:/^(?=.*[a-zA-Z])(?=.*\d).+$/', 'confirmed'],
