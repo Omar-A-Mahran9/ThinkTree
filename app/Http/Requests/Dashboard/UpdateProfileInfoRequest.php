@@ -29,7 +29,7 @@ class UpdateProfileInfoRequest extends FormRequest
         $admin = auth()->user();
         return [
             'name' => ['required', 'string', 'max:255', new NotNumbersOnly()],
-            'phone' => ['required', 'string', new PhoneNumber(), new ExistPhone(new Admin(), $admin->id), 'max:20', Rule::unique('admins')->ignore($admin->id)],
+            'phone' => ['required', 'string' , new ExistPhone(new Admin(), $admin->id), 'max:20', Rule::unique('admins')->ignore($admin->id)],
         ];
     }
 }
