@@ -135,7 +135,6 @@
                             <label for="phone_inp"
                                 class="form-label required fs-6 fw-bold mb-3">{{ __('Phone') }}</label>
                             <div class="input-group input-group-solid mb-5">
-                                <span class="input-group-text">+966</span>
                                 <input type="text" name="phone"
                                     class="form-control form-control-lg form-control-solid no-arrow" id="phone_inp"
                                     placeholder="0xxxxxxxx">
