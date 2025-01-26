@@ -16,15 +16,15 @@ class RateResource extends JsonResource
     {
         return [
             "id"=> $this->id,
-             "chield" => $this->customer->chields->isEmpty() 
-            ? null // If no chields, return null
-            : $this->customer->chields->map(function ($chield) {
+            "chield" => $this->customer && $this->customer->chields->isNotEmpty() 
+            ? $this->customer->chields->map(function ($chield) {
                 return [
                     'name' => $chield->name,
                     'image' => $chield->full_image_path,
                     'age' => $chield->birthdate ? \Carbon\Carbon::parse($chield->birthdate)->age : null, // Calculate age if birthdate is provided
                 ];
-            }),
+            })
+            : null, // Return null if no customer or no children
             "comment" => $this->comment,
             "status" => $this->status,
             // "truncatedText" => "",
