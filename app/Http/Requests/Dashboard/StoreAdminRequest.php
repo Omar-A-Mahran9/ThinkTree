@@ -23,7 +23,7 @@ class StoreAdminRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', new NotNumbersOnly()],
-            'phone' => ['required', 'string', new PhoneNumber(), 'max:20', new ExistButDeleted(new Admin()), 'unique:admins', new ExistPhone(new Admin())],
+            'phone' => ['required', 'string', 'max:20', new ExistButDeleted(new Admin()), 'unique:admins', new ExistPhone(new Admin())],
             'email' => ['required', 'string', 'email:rfc,dns', new ExistButDeleted(new Admin()), 'unique:admins'],
             'roles' => ['required', 'array', 'min:1'],
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-zA-Z])(?=.*\d).+$/'],
