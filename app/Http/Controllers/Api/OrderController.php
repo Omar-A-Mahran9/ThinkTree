@@ -126,7 +126,7 @@ class OrderController extends Controller
             $paydata = $this->paymob($data);
             $handelpaymenturl=$this->handlePaymentRequest( $paydata);
  
-            Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
+            // Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
 
 
             return $this->success("",$handelpaymenturl);
