@@ -57,18 +57,7 @@
                             <div class="fs-4  ">{{ $count_customerRate }}</div>
                         </div>
                         <!--end::Due-->
-                        <!--begin::Budget-->
-                        <div class="rounded min-w-125px py-1 px-4 ">
-                            <div class="fs-2 fw-bold text-success">{{ __('visited count') }}</div>
-                            <div class="fs-4 text-success ">{{ $visited_site }}</div>
-                        </div>
-                        <!--end::Budget-->
-                        <!--begin::Budget-->
-                        <div class="rounded min-w-125px py-1 px-4 ">
-                            <div class="fs-2 fw-bold text-danger">{{ __('visited count') }}</div>
-                            <div class="fs-4 text-danger ">{{ $visited_site }}</div>
-                        </div>
-                        <!--end::Budget-->
+                        
 
                     </div>
                     <!--end::Info-->
