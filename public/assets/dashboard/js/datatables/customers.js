@@ -130,25 +130,7 @@ var KTDatatablesServerSide = (function () {
                                         ${__("Edit")}
                                     </a>
                                 </div>
-                                <!--end::Menu item-->
-                                ${
-                                    data.block_flag === 0
-                                        ? `<!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="blocking_row">
-                                            ${__("Blocked")}
-                                        </a>
-                                    </div>
-                                    <!--end::Menu item-->`
-                                        : `<!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="blocking_row">
-                                            ${__("Unblocked")}
-                                        </a>
-                                    </div>
-                                    <!--end::Menu item-->`
-                                }
-                                <!--end::Menu item-->
+                    
                             </div>
                             <!--end::Menu-->
                         </div
