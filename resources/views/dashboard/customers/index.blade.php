@@ -156,45 +156,7 @@
                                 placeholder="0xxxxxxxx">
                             <div class="fv-plugins-message-container invalid-feedback" id="phone"></div>
                         </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="password_inp" class="form-label fs-6 fw-bold mb-3">{{ __('Password') }}</label>
-                            <!--begin::Input wrapper-->
-                            <div class="position-relative mb-3" data-kt-password-meter="true">
-                                <input class="form-control form-control-lg form-control-solid" type="password"
-                                    name="password" autocomplete="new-password" id="password_inp"
-                                    placeholder="{{ __('Password') }}" />
-                                <!--begin::Visibility toggle-->
-                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
-                                    data-kt-password-meter-control="visibility">
-                                    <i class="bi bi-eye-slash fs-2"></i>
-
-                                    <i class="bi bi-eye fs-2 d-none"></i>
-                                </span>
-                                <!--end::Visibility toggle-->
-                            </div>
-                            <!--end::Input wrapper-->
-                            <div class="fv-plugins-message-container invalid-feedback" id="password"></div>
-                        </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="password_confirmation_inp"
-                                class="form-label fs-6 fw-bold mb-3">{{ __('Password confirmation') }}</label>
-                            <!--begin::Input wrapper-->
-                            <div class="position-relative mb-3" data-kt-password-meter="true">
-                                <input class="form-control form-control-lg form-control-solid" type="password"
-                                    name="password_confirmation" autocomplete="off" id="password_confirmation_inp"
-                                    placeholder="{{ __('Password') }}" />
-                                <!--begin::Visibility toggle-->
-                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
-                                    data-kt-password-meter-control="visibility">
-                                    <i class="bi bi-eye-slash fs-2"></i>
-
-                                    <i class="bi bi-eye fs-2 d-none"></i>
-                                </span>
-                                <!--end::Visibility toggle-->
-                            </div>
-                            <!--end::Input wrapper-->
-                            <div class="fv-plugins-message-container invalid-feedback" id="password_confirmation"></div>
-                        </div>
+                       
                     </div>
 
                     <div class="modal-footer">
