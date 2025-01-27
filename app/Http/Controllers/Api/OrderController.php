@@ -27,10 +27,11 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function update($id)
     {
-        //
-    }
+        $order = Order::find($id);
+        $order->Payment_statue = 'Paid';
+     }
 
     public function store(OrderRequest $request, $step = null)
     {

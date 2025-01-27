@@ -37,5 +37,6 @@
 
     Route::post('/order/store/{step}', [OrderController::class, 'store'])->name('order.store');
 
-    
+    Route::post('/order/{id}', [OrderController::class, 'update'])->name('order.update');
+
  
