@@ -26,6 +26,7 @@ Route::delete("trip/delete-selected", "TripController@deleteSelected");
 Route::get("trip/restore-selected", "TripController@restoreSelected");
 Route::delete("tags/delete-selected", "TagController@deleteSelected");
 Route::get("tags/restore-selected", "TagController@restoreSelected");
+Route::delete("newsletter/delete-selected", "NewsLetterController@deleteSelected");
 
 Route::delete("ourlevels/delete-selected", "OurlevelController@deleteSelected");
 Route::get("ourlevels/restore-selected", "OurlevelController@restoreSelected");
@@ -52,6 +53,7 @@ Route::get("days/restore-selected", "DaysController@restoreSelected");
  Route::resource('admins', 'AdminController')->except(['create', 'edit']);
  Route::resource('whyus', 'WhyUsController')->except(['create', 'edit']);
  Route::resource('trip', 'TripController')->except(['create', 'edit']);
+ Route::resource('newsletter', 'NewsLetterController')->only(['index', 'destroy']);
 
  Route::resource('ourlevels', 'OurlevelController')->except(['create', 'edit']);
 
