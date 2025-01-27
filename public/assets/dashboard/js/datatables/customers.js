@@ -26,7 +26,6 @@ var KTDatatablesServerSide = (function () {
                 { data: "name" },
                 { data: "image" },
                 { data: "email" },
-                { data: "block_flag" },
                 { data: "created_at" },
                 { data: null },
             ],
@@ -94,27 +93,9 @@ var KTDatatablesServerSide = (function () {
                         `;
                     },
                 },
+          
                 {
                     targets: 4,
-                    render: function (data) {
-                        let status = {
-                            0: { color: "primary", title: __("Enabled") },
-                            1: { color: "danger", title: __("Blocking") },
-                        };
-
-                        // Provide a default value for unknown statuses
-                        let statusInfo = status[data] || {
-                            color: "info",
-                            title: __("Unknown"),
-                        };
-
-                        return `<span class="badge badge-light-${
-                            statusInfo.color
-                        }">${__(statusInfo.title)}</span>`;
-                    },
-                },
-                {
-                    targets: 5,
                     render: function (data, type, row) {
                         return `
                             <div>
