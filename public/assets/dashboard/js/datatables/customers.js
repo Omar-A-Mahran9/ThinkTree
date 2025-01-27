@@ -2,8 +2,8 @@
 
 var datatable;
 // Class definition
-var KTDatatablesServerSide = function () {
-    let dbTable = 'customers';
+var KTDatatablesServerSide = (function () {
+    let dbTable = "customers";
     // Private functions
     var initDatatable = function () {
         datatable = $("#kt_datatable").DataTable({
@@ -14,20 +14,20 @@ var KTDatatablesServerSide = function () {
             order: [],
             stateSave: saveState,
             select: {
-                style: 'multi',
+                style: "multi",
                 selector: 'td:first-child input[type="checkbox"]',
-                className: 'row-selected'
+                className: "row-selected",
             },
             ajax: {
                 url: `/dashboard/${dbTable}`,
             },
             columns: [
-                { data: 'id' },
-                { data: 'name' },
-                { data: 'image' },
-                { data: 'email' },
-                { data: 'block_flag' },
-                { data: 'created_at' },
+                { data: "id" },
+                { data: "name" },
+                { data: "image" },
+                { data: "email" },
+                { data: "block_flag" },
+                { data: "created_at" },
                 { data: null },
             ],
             columnDefs: [
@@ -37,9 +37,11 @@ var KTDatatablesServerSide = function () {
                     render: function (data, type, row, meta) {
                         return `
                             <div class="form-check form-check-sm form-check-custom form-check-solid" style="justify-content: center;">
-                                <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${meta.row + 1}</a>
+                                <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${
+                                    meta.row + 1
+                                }</a>
                             </div>`;
-                    }
+                    },
                 },
                 {
                     targets: 1,
@@ -53,7 +55,7 @@ var KTDatatablesServerSide = function () {
                                 <!--end::Info-->
                             </div>
                         `;
-                    }
+                    },
                 },
                 {
                     targets: 2,
@@ -76,7 +78,7 @@ var KTDatatablesServerSide = function () {
                             </a>
                             <!--end::Overlay-->
                         `;
-                    }
+                    },
                 },
                 {
                     targets: 3,
@@ -90,18 +92,26 @@ var KTDatatablesServerSide = function () {
                                 <!--end::Info-->
                             </div>
                         `;
-                    }
+                    },
                 },
                 {
                     targets: 4,
                     render: function (data) {
                         let status = {
-                            '0': { 'color': 'primary', 'title': __('Enabled') },
-                            '1': { 'color': 'danger', 'title': __('Blocking') },
+                            0: { color: "primary", title: __("Enabled") },
+                            1: { color: "danger", title: __("Blocking") },
                         };
 
-                        return `<span class="badge badge-light-${status[data]['color']}">${__(status[data]['title'])}</span>`;
-                    }
+                        // Provide a default value for unknown statuses
+                        let statusInfo = status[data] || {
+                            color: "info",
+                            title: __("Unknown"),
+                        };
+
+                        return `<span class="badge badge-light-${
+                            statusInfo.color
+                        }">${__(statusInfo.title)}</span>`;
+                    },
                 },
                 {
                     targets: 5,
@@ -115,7 +125,7 @@ var KTDatatablesServerSide = function () {
                                 <!--end::Info-->
                             </div>
                         `;
-                    }
+                    },
                 },
                 {
                     targets: -1,
@@ -136,23 +146,27 @@ var KTDatatablesServerSide = function () {
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
                                     <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="edit_row">
-                                        ${__('Edit')}
+                                        ${__("Edit")}
                                     </a>
                                 </div>
                                 <!--end::Menu item-->
-                                ${data.block_flag === 0 ? `<!--begin::Menu item-->
+                                ${
+                                    data.block_flag === 0
+                                        ? `<!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="blocking_row">
-                                            ${__('Blocked')}
+                                            ${__("Blocked")}
                                         </a>
                                     </div>
-                                    <!--end::Menu item-->` : `<!--begin::Menu item-->
+                                    <!--end::Menu item-->`
+                                        : `<!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="blocking_row">
-                                            ${__('Unblocked')}
+                                            ${__("Unblocked")}
                                         </a>
                                     </div>
-                                    <!--end::Menu item-->`}
+                                    <!--end::Menu item-->`
+                                }
                                 <!--end::Menu item-->
                             </div>
                             <!--end::Menu-->
@@ -164,11 +178,11 @@ var KTDatatablesServerSide = function () {
             // Add data-filter attribute
             createdRow: function (row, data, dataIndex) {
                 // $(row).find('td:eq(4)').attr('data-filter', data.CreditCardType);
-            }
+            },
         });
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
-        datatable.on('draw', function () {
+        datatable.on("draw", function () {
             initToggleToolbar();
             toggleToolbars();
             handleEditRows();
@@ -181,89 +195,100 @@ var KTDatatablesServerSide = function () {
             handlePreviewAttachments();
             handleBlockingRows();
         });
-    }
+    };
     var handleBlockingRows = () => {
         // Select all edit buttons
-        const blockingButtons = document.querySelectorAll('[data-kt-docs-table-filter="blocking_row"]');
+        const blockingButtons = document.querySelectorAll(
+            '[data-kt-docs-table-filter="blocking_row"]'
+        );
 
-        blockingButtons.forEach(d => {
+        blockingButtons.forEach((d) => {
             // edit button on click
-            d.addEventListener('click', function (e) {
+            d.addEventListener("click", function (e) {
                 e.preventDefault();
 
-                let currentBtnIndex = $(blockingButtons).index(d)
+                let currentBtnIndex = $(blockingButtons).index(d);
                 let data = datatable.row(currentBtnIndex).data();
 
                 if (data.block_flag === 0) {
-                    loadingAlert(__("Blocking..."))
+                    loadingAlert(__("Blocking..."));
                 } else {
-                    loadingAlert(__("Unblocking..."))
-
+                    loadingAlert(__("Unblocking..."));
                 }
                 $.ajax({
                     type: "get",
                     url: `/dashboard/${dbTable}/blocking/${data.id}`,
                     data: {
-                        status: data.status
+                        status: data.status,
                     },
                     success: function () {
                         datatable.draw();
                         if (data.block_flag === 0) {
-                            successAlert(`${__('Blocked successfully')} `);
+                            successAlert(`${__("Blocked successfully")} `);
                         } else {
-                            successAlert(`${__('Un Blocked successfully')} `);
+                            successAlert(`${__("Un Blocked successfully")} `);
                         }
                     },
                     error: function (err) {
-                        if (err.hasOwnProperty('responseJSON')) {
-                            if (err.responseJSON.hasOwnProperty('message')) {
-                                errorAlert(err.responseJSON.message)
+                        if (err.hasOwnProperty("responseJSON")) {
+                            if (err.responseJSON.hasOwnProperty("message")) {
+                                errorAlert(err.responseJSON.message);
                             }
                         }
                         console.log(err);
-                    }
+                    },
                 });
-            })
+            });
         });
-    }
+    };
     var handleEditRows = () => {
         // Select all edit buttons
-        const editButtons = document.querySelectorAll('[data-kt-docs-table-filter="edit_row"]');
+        const editButtons = document.querySelectorAll(
+            '[data-kt-docs-table-filter="edit_row"]'
+        );
 
-        editButtons.forEach(d => {
+        editButtons.forEach((d) => {
             // edit button on click
-            d.addEventListener('click', function (e) {
+            d.addEventListener("click", function (e) {
                 e.preventDefault();
 
-                let currentBtnIndex = $(editButtons).index(d)
+                let currentBtnIndex = $(editButtons).index(d);
                 let data = datatable.row(currentBtnIndex).data();
 
-                $("#form_title").text(__('Edit Customer'));
-                $('.image-input-wrapper').css('background-image', `url('${data.full_image_path}')`);
-                $("#password_inp").val('');
-                $("#password_confirmation_inp").val('');
+                $("#form_title").text(__("Edit Customer"));
+                $(".image-input-wrapper").css(
+                    "background-image",
+                    `url('${data.full_image_path}')`
+                );
+                $("#password_inp").val("");
+                $("#password_confirmation_inp").val("");
                 $("#first_name_inp").val(data.first_name);
                 $("#last_name_inp").val(data.last_name);
                 $("#email_inp").val(data.email);
                 $("#phone_inp").val(data.phone);
-                $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
-                $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
-                $("[for*='password']").removeClass('required');
-                $("#crud_modal").modal('show');
-            })
+                $("#crud_form").attr(
+                    "action",
+                    `/dashboard/${dbTable}/${data.id}`
+                );
+                $("#crud_form").prepend(
+                    `<input type="hidden" name="_method" value="PUT">`
+                );
+                $("[for*='password']").removeClass("required");
+                $("#crud_modal").modal("show");
+            });
         });
-    }
+    };
 
     var handlePreviewAttachments = () => {
         // Select all edit buttons
         const previewButtons = $('[data-action="preview_attachments"]');
 
         $.each(previewButtons, function (indexInArray, button) {
-            $(button).on('click', function (e) {
+            $(button).on("click", function (e) {
                 e.preventDefault();
 
                 let data = datatable.row(indexInArray).data();
-                $(".attachments").html('');
+                $(".attachments").html("");
 
                 $(".attachments").append(`
                     <!--begin::Overlay-->
@@ -278,10 +303,10 @@ var KTDatatablesServerSide = function () {
                     <!--end::Overlay-->
                 `);
                 refreshFsLightbox();
-                $("[data-fslightbox='lightbox-basic']:first").trigger('click');
-            })
+                $("[data-fslightbox='lightbox-basic']:first").trigger("click");
+            });
         });
-    }
+    };
 
     // Public methods
     return {
@@ -297,10 +322,9 @@ var KTDatatablesServerSide = function () {
             // });
             handlePreviewAttachments();
             handleBlockingRows();
-
-        }
-    }
-}();
+        },
+    };
+})();
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
