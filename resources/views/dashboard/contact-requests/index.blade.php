@@ -69,6 +69,8 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
+                        <th>{{ __('Child Name') }}</th>
+
                         <th>{{ __('Phone') }}</th>
 
                         <th>{{ __('Description') }}</th>

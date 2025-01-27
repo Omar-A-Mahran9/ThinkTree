@@ -23,7 +23,8 @@ var KTDatatablesServerSide = (function () {
             },
             columns: [
                 { data: "id" },
-                { data: "name" },
+                { data: "parent_name" },
+                { data: "child_name" },
                 { data: "phone" },
                 { data: "message" },
                 // { data: "reply" },
@@ -48,7 +49,21 @@ var KTDatatablesServerSide = (function () {
                             <div class="d-flex align-items-center">
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.name}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.parent_name}</a>
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                        `;
+                    },
+                },
+                {
+                    targets: 2,
+                    render: function (data, type, row) {
+                        return `
+                            <div class="d-flex align-items-center">
+                                <!--begin::Info-->
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.child_name}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
@@ -57,7 +72,7 @@ var KTDatatablesServerSide = (function () {
                 },
 
                 {
-                    targets: 2,
+                    targets: 3,
                     render: function (data, type, row) {
                         return `
                             <div class="d-flex align-items-center">
@@ -71,7 +86,7 @@ var KTDatatablesServerSide = (function () {
                     },
                 },
                 {
-                    targets: 3,
+                    targets: 4,
                     render: function (data, type, row) {
                         return `
                             <div class="d-flex align-items-center">
