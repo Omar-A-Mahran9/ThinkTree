@@ -12,7 +12,7 @@ class ContactUsController extends Controller
  
     public function store(StoreContact_usRequest $request)
     {
-
+dd($request);
         $contact_us = $request->validated();
         $contact_us_data = Contact_us::create($contact_us);
         return $this->success(__('Contact Us has been registered successfully'));

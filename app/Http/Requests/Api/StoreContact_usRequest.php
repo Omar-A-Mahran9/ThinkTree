@@ -26,7 +26,12 @@ class StoreContact_usRequest extends FormRequest
         return [
             'parent_name' => ['required'],
             'child_name' => ['required'],
-            'phone' => ['required', 'numeric', 'digits_between:10,15'],
+            "phone" => [
+                'required',
+                'string',
+                'max:20',
+                new PhoneNumber(),
+            ],
             'message' => ['required']
         ];
     }
