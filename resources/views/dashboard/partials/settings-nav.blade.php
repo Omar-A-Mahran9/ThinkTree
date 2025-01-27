@@ -14,7 +14,7 @@
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'general') }}"
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'main') }}"
                     href="{{ route('dashboard.settings.general.main') }}">{{ __('General settings') }}</a>
             </li>
             <!--end::Nav item-->
