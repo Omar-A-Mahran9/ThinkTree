@@ -276,7 +276,7 @@ return [
         'schedules.*.*.break_end_time' => 'نهاية الراحة',
         'price' => 'السعر',
         'addon_service_id' => 'نوع الخدمة',
-        'date' => 'تاريخ الزيارة',
+        'date' => 'التاريخ',
         'age' => 'العمر',
 
         'category_id' => 'الفئة',

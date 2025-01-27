@@ -10,6 +10,7 @@ use App\Models\Day;
  use App\Models\Group;
  use App\Models\Packages;
 use App\Models\Time;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
  
 class GroupsController extends Controller
@@ -21,8 +22,9 @@ class GroupsController extends Controller
     {
         $this->authorize('view_packages');
         $times    = Time::select('id', 'from', 'to')->get();
-        $days    = Day::select('id', 'name_ar', 'name_en')->get();
-
+        $days = Day::select('id', 'name_ar', 'name_en')
+        ->whereDate('date', '>=', Carbon::today())
+        ->get();
         if ($request->ajax()){
             return response(getModelData(model: new Group(), relations: ['day' => ['id', 'name_ar', 'name_en','created_at'],'times' => ['id', 'from', 'from','created_at']]));
         }
