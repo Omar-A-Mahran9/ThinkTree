@@ -42,7 +42,7 @@ class Role extends Model
         'roles',
       
          'home_content',
-         'payment_ways',
+         'newsletter',
         'packages',
         'order',
      

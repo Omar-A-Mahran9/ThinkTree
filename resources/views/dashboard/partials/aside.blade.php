@@ -89,7 +89,13 @@
                     </x-dashboard.aside-item>
                 @endcan
                 <!--end:Menu item-->
-
+                <!--begin:Menu item-->
+                @can('view_newsletter')
+                    <x-dashboard.aside-item :slug="'newsletter'" :route="route('dashboard.newsletter.index')" :title="__('Newsletter')">
+                        <i class="ki-outline ki-book-square fs-1"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+                <!--end:Menu item-->
                 <!--begin:Menu item-->
                 @can('view_cities')
                     <x-dashboard.aside-item :slug="'cities'" :route="route('dashboard.cities.index')" :title="__('Cities')">
