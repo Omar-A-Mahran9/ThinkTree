@@ -12,7 +12,7 @@ class TripController extends Controller
 {
     public function index(Request $request)
     {
-        $this->authorize('view_childern_trip');
+        $this->authorize('view_children_trip');
         if ($request->ajax()){
             return response(getModelData(model: new Trip()));
         }
@@ -64,17 +64,17 @@ class TripController extends Controller
     
     
 
-    public function destroy( $childern_trip)
+    public function destroy( $children_trip)
     {
-         $Trip=Trip::find($childern_trip);
-        $this->authorize('delete_childern_trip');
+         $Trip=Trip::find($children_trip);
+        $this->authorize('delete_children_trip');
         $Trip->delete();
         return response(["Trip deleted successfully"]);
     }
 
     public function deleteSelected(Request $request)
     {
-         $this->authorize('delete_childern_trip');
+         $this->authorize('delete_children_trip');
        $Trip= Trip::whereIn('id', $request->selected_items_ids)->delete();
         return response(["selected Trip deleted successfully"]);
     }

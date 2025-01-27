@@ -16,7 +16,7 @@ class UpdateTripRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('update_childern_trip');
+        return abilities()->contains('update_children_trip');
     }
 
     /**

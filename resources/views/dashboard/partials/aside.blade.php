@@ -114,8 +114,8 @@
                     </x-dashboard.aside-item>
                 @endcan
 
-                @can('view_childern_trip')
-                    <x-dashboard.aside-item :slug="'trip'" :route="route('dashboard.trip.index')" :title="__('Childern Trip')">
+                @can('view_children_trip')
+                    <x-dashboard.aside-item :slug="'trip'" :route="route('dashboard.trip.index')" :title="__('children Trip')">
                         <i class="fas fa-chess fs-2 me-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
@@ -128,6 +128,14 @@
                     </x-dashboard.aside-item>
                 @endcan
                 <!--end:Menu item-->
+
+                <!--begin:Menu item-->
+                @can('view_customers')
+                    <x-dashboard.aside-item :slug="'children'" :route="route('dashboard.children.index')" :title="__('children')">
+                        <i class="ki-outline ki-people fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
                 @canany(['view_packages'])
                     {{-- <div class="menu-item">
                         <div class="menu-content pt-5 pb-0">

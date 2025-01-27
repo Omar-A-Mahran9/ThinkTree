@@ -14,6 +14,8 @@ Route::delete("admins/delete-selected", "AdminController@deleteSelected");
 Route::get("admins/restore-selected", "AdminController@restoreSelected");
  Route::delete("contact-requests/delete-selected", "ContactRequestController@deleteSelected");
 Route::delete("customers/delete-selected", "CustomerController@deleteSelected");
+Route::delete("children/delete-selected", "childrenController@deleteSelected");
+
 Route::delete("tags/delete-selected", "TagController@deleteSelected");
 Route::get("tags/restore-selected", "TagController@restoreSelected");
 Route::delete("cities/delete-selected", "CityController@deleteSelected");
@@ -69,6 +71,8 @@ Route::resource('outcomes', 'OutcomeController')->except(['create', 'edit']);
 Route::resource('features', 'FeatureController')->except(['create', 'edit']);
   Route::resource('contact-requests', 'ContactRequestController')->except(['create', 'edit', 'store', 'update']);
 Route::resource('customers', 'CustomerController')->except(['create', 'edit']);
+Route::resource('children', 'childrenController')->except(['create', 'edit']);
+
 Route::resource('customers_rates', 'CustomersRatesController')->except(['create', 'edit']);
 Route::resource('packages', 'PackagesController')->except(['create', 'edit']);
 Route::resource('groups', 'GroupsController')->except(['create', 'edit']);

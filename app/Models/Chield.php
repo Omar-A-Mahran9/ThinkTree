@@ -26,6 +26,6 @@ class Chield extends Authenticatable
     }
     public function getFullImagePathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->image, 'chields', "default.svg"));
+        return asset(getImagePathFromDirectory($this->image, 'Chields', "default.svg"));
     }
 }

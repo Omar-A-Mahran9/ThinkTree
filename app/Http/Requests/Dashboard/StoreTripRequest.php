@@ -14,7 +14,7 @@ class StoreTripRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('create_childern_trip');
+        return abilities()->contains('create_children_trip');
     }
 
     /**

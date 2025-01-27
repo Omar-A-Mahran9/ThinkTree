@@ -24,7 +24,7 @@ class Role extends Model
         'admins',
         'whyus',
         'ourlevels',
-        'childern_trip',
+        'children_trip',
         'ourheroes',
         'tags',
 
