@@ -31,6 +31,8 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->Payment_statue = 'Paid';
+        return $this->success("succes update");
+
      }
 
     public function store(OrderRequest $request, $step = null)
