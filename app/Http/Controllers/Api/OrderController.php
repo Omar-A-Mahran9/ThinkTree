@@ -24,16 +24,26 @@ class OrderController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function update($id)
     {
+        // Find the order by its ID
         $order = Order::find($id);
-        $order->Payment_statue = 'Paid';
-        return $this->success("succes update");
-
-     }
+    
+        // Check if the order exists
+        if ($order) {
+            // Update the Payment_statue
+            $order->Payment_statue = 'Paid';
+    
+            // Save the changes to the database
+            $order->save();
+    
+            // Return a success response
+            return $this->success("Success update");
+        } else {
+            // If the order wasn't found, return an error message
+            return $this->error("Order not found");
+        }
+    }
 
     public function store(OrderRequest $request, $step = null)
     {
