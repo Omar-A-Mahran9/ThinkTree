@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\OrderRequest;
+use App\Mail\OrderConfirmationMail;
 use App\Models\Chield;
 use App\Models\Customer;
 use App\Models\Order;
@@ -11,6 +12,7 @@ use App\Models\Packages;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -123,7 +125,9 @@ class OrderController extends Controller
              // Call Paymob to process payment
             $paydata = $this->paymob($data);
             $handelpaymenturl=$this->handlePaymentRequest( $paydata);
-           
+ 
+            Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
+
 
             return $this->success("",$handelpaymenturl);
         }

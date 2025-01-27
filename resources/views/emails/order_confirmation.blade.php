@@ -95,11 +95,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                {{-- <tr>
                     <td>{{ $order->addon_service_id }}</td>
                     <td>{{ $order->addon_service->name }}</td>
                     <td>{{ $order->addon_service->price }}</td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
 
