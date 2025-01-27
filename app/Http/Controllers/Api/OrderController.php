@@ -39,10 +39,7 @@ class OrderController extends Controller
     
             // Return a success response
             return $this->success("Success update");
-        } else {
-            // If the order wasn't found, return an error message
-            return $this->error("Order not found");
-        }
+        } 
     }
 
     public function store(OrderRequest $request, $step = null)
