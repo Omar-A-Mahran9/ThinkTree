@@ -21,7 +21,7 @@
             @can('view_home_content')
                 <!--begin::Nav item-->
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'home-content') }}"
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'about-us') }}"
                         href="{{ route('dashboard.settings.home.about-us') }}">{{ __('Home page settings') }}</a>
                 </li>
                 <!--end::Nav item-->
@@ -32,7 +32,7 @@
             @can('view_home_content')
                 <!--begin::Nav item-->
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'home-content') }}"
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ getClassIfUrlContains('active', 'metatags') }}"
                         href="{{ route('dashboard.settings.general.metatags') }}">{{ __('Meta tags settings') }}</a>
                 </li>
                 <!--end::Nav item-->
