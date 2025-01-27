@@ -132,7 +132,7 @@
                 <!--begin:Menu item-->
                 @can('view_customers')
                     <x-dashboard.aside-item :slug="'children'" :route="route('dashboard.children.index')" :title="__('children')">
-                        <i class="ki-outline ki-people fs-2"></i>
+                        <i class="fas fa-child fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
