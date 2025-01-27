@@ -103,12 +103,10 @@ class OrderController extends Controller
             }
 
             $package=Packages::find($data['package_id']);
-
             $data['price'] = $package->FinalPrice;
 
             // Handle optional duration selection
             if ($data['Choose_duration_later'] === 1) {
-                $data['package_id'] = null;
                 $data['group_id'] = null;
                 $data['time_id'] = null;
                 $data['day_id'] = null;
@@ -119,7 +117,7 @@ class OrderController extends Controller
                  $data['chield_id'] = $lastChild->id;
                  unset($data['email']);
                  unset($data['phone']);
-                 
+ 
              // Create the order record
             $order = Order::create($data);
              // Call Paymob to process payment
