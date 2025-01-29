@@ -179,14 +179,14 @@ class OrderController extends Controller
                 ],
                 "billing_data" => [  // Fixed here: using => instead of :
                     "apartment" => "sympl",
-                    "first_name" => "dumy",
-                    "last_name" => "dumy",
+                    "first_name" => $customer->first_name,
+                    "last_name" => $customer->last_name,
                     "street" => "dumy",
                     "building" => "dumy",
-                    "phone_number" => "+201003287527",
+                    "phone_number" => $customer->phone,
                     "city" => "dumy",
                     "country" => "EG",
-                    "email" => "dumy@dumy.com",
+                    "email" => $customer->email,
                     "floor" => "dumy",
                     "state" => "dumy"
                 ],
