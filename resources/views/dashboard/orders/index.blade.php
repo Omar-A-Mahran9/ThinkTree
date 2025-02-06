@@ -39,14 +39,7 @@
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
                         class="form-control form-control-solid w-250px ps-20" placeholder="{{ __('Search for orders') }}">
-                    <select class="form-select form-select-solid w-200px ps-40 filter-input ms-2" data-filter-index="3"
-                        data-dir="@if (isArabic()) rtl @else ltr @endif" name="status" id="status_inp"
-                        data-control="select2" data-allow-clear="true" data-placeholder="{{ __('Select status') }}">
-                        <option></option>
-                        @foreach (App\Enums\OrderStatus::values() as $key => $value)
-                            <option value="{{ $key }}">{{ __('' . $value) }}</option>
-                        @endforeach
-                    </select>
+
                 </div>
                 <!--end::Search-->
 

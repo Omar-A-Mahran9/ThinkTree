@@ -28,18 +28,18 @@ class OrderController extends Controller
     {
         // Find the order by its ID
         $order = Order::find($id);
-    
+
         // Check if the order exists
         if ($order) {
             // Update the Payment_statue
             $order->Payment_statue = 'Paid';
-    
+
             // Save the changes to the database
             $order->save();
-    
+
             // Return a success response
             return $this->success("Success update");
-        } 
+        }
     }
 
     public function store(OrderRequest $request, $step = null)
@@ -55,7 +55,7 @@ class OrderController extends Controller
             $customer = Customer::where('email', $data['email'])
                 ->orWhere('phone', $data['phone'])
                 ->first();
-    
+
             if ($customer) {
                 $customer->sendOTP();
             } else {
@@ -66,11 +66,11 @@ class OrderController extends Controller
                     "email" => $data['email'],
                     "phone" => $data['phone'],
                 ];
-    
+
                 $customer = Customer::create($customerData);
                 $customer->sendOTP();
             }
-    
+
             // Create child record
             $childData = [
                 "name" => $data['child_name'],
@@ -79,8 +79,8 @@ class OrderController extends Controller
             ];
 
             $child = Chield::create($childData);
-    
-   
+
+
             return $this->success("Step 1 success", [
                 'id' => $customer->id,
                 'otp' => $customer->otp,
@@ -93,7 +93,7 @@ class OrderController extends Controller
             if ($customer) {
                 $otp = $data['otp'];
                 $response = $customer->verfiedOTP($otp);
-    
+
                 if ($response === true) {
                     return $this->success("Validate OTP Success");
                 } else {
@@ -109,12 +109,12 @@ class OrderController extends Controller
             ->first();
 
             if ($customer) {
-                    $lastChild = Chield::where('customer_id', $customer->id)
-                    ->orderBy('created_at', 'desc') // Or order by 'id' if auto-incremented
-                    ->first();
+                $lastChild = Chield::where('customer_id', $customer->id)
+                ->orderBy('created_at', 'desc') // Or order by 'id' if auto-incremented
+                ->first();
             }
 
-            $package=Packages::find($data['package_id']);
+            $package = Packages::find($data['package_id']);
             $data['price'] = $package->FinalPrice;
 
             // Handle optional duration selection
@@ -124,22 +124,22 @@ class OrderController extends Controller
                 $data['day_id'] = null;
             }
 
-                 $data['customer_id'] = $customer->id;
+            $data['customer_id'] = $customer->id;
 
-                 $data['chield_id'] = $lastChild->id;
-                 unset($data['email']);
-                 unset($data['phone']);
- 
-             // Create the order record
+            $data['chield_id'] = $lastChild->id;
+            unset($data['email']);
+            unset($data['phone']);
+
+            // Create the order record
             $order = Order::create($data);
-             // Call Paymob to process payment
+            // Call Paymob to process payment
             $paydata = $this->paymob($data);
-            $handelpaymenturl=$this->handlePaymentRequest( $paydata);
- 
+            $handelpaymenturl = $this->handlePaymentRequest($paydata);
+
             // Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
 
 
-            return $this->success($order,$handelpaymenturl);
+            return $this->success($order, $handelpaymenturl);
         }
     }
 
@@ -148,21 +148,21 @@ class OrderController extends Controller
     {
         try {
             $client = new Client();
-    
+
             // Get API token from config
-            $authToken ="egy_sk_test_564c7d7f1c4c530d038a10927e1955cef9f2f4e6430747f9b780d936119ff4cb";
- 
+            $authToken = "egy_sk_test_564c7d7f1c4c530d038a10927e1955cef9f2f4e6430747f9b780d936119ff4cb";
+
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
             $customer = Customer::findOrFail($data['customer_id']);
-             $headers = [
-                'Authorization' => 'Token ' . $authToken, // Correct format
-                'Content-Type'  => 'application/json',
+            $headers = [
+               'Authorization' => 'Token ' . $authToken, // Correct format
+               'Content-Type'  => 'application/json',
             ];
-    
+
             // Replace "you can add Integration id..." with actual Integration ID from Paymob
-            $paymentMethods =  [4935783,4935866,4935867];
-    
+            $paymentMethods =  [4935783,4935866,4935867,4937863];
+
             $body = [
                 "amount" => (int) $package->FinalPrice * 100, // Convert to cents
                 "currency" => "EGP",
@@ -197,16 +197,16 @@ class OrderController extends Controller
                     "phone" => ["number" => $customer->phone],
                 ],
             ];
-            
+
             // Send the request
             $response = $client->post('https://accept.paymob.com/v1/intention/', [
                 'headers' => $headers,
                 'json'    => $body, // Use `json` instead of `json_encode($body)`
             ]);
-    
+
             // Decode response
             $responseData = json_decode($response->getBody(), true);
-             return response()->json($responseData);
+            return response()->json($responseData);
         } catch (RequestException $e) {
             // Handle API errors
             return response()->json([
@@ -218,23 +218,23 @@ class OrderController extends Controller
 
         }
     }
-    
+
     public function handlePaymentRequest($request)
     {
         // Step 1: Get the data from Paymob (assuming you've already obtained it)
         $responseData = json_decode($request->content(), true);
-     
+
         // Correctly access the order ID from payment_keys
         $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
-        
+
         // Step 3: Inject the public key and client secret into the URL
         $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
         $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
-    
+
         // Step 4: Return the URL
         return   $paymobUrl ;
     }
-    
-    
- 
+
+
+
 }

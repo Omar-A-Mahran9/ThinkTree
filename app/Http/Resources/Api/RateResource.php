@@ -15,8 +15,8 @@ class RateResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id"=> $this->id,
-            "chield" => $this->customer && $this->customer->chields->isNotEmpty() 
+            "id" => $this->id,
+            "chield" => $this->customer && $this->customer->chields->isNotEmpty()
             ? $this->customer->chields->map(function ($chield) {
                 return [
                     'name' => $chield->name,
@@ -26,6 +26,8 @@ class RateResource extends JsonResource
             })
             : null, // Return null if no customer or no children
             "comment" => $this->comment,
+            "rate" => $this->rate,
+
             "status" => $this->status,
             // "truncatedText" => "",
             // 'created_at' => $this->created_at->diffForHumans()
