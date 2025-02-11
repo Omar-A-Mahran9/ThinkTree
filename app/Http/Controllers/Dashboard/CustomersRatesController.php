@@ -47,7 +47,7 @@ class CustomersRatesController extends Controller
         $this->authorize('update_customersRate');
 
         $data = $request->validate([
-            'child_id' => 'required|exists:customers,id', // Validating customer_id to be unique
+            'child_id' => 'required|exists:chields,id', // Validating customer_id to be unique
             'rate'         => 'required|numeric', // Validating rate
             'status'       => 'required|in:pending,reject,approve', // Validating status
             'comment'       => 'required', // Validating status
