@@ -15,12 +15,12 @@ class AchievemntResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'lessons' => $this->Lessons,
-            'puzzles' => $this->Puzzles,
-            'stars' => $this->Stars,
-            'online' => $this->Online,
-            'kids_played' => $this->Kids_Played,
-            'games' => $this->Games,
+            'lessons' => number_format($this->Lessons),
+        'puzzles' => number_format($this->Puzzles),
+        'stars' => number_format($this->Stars),
+        'online' => number_format($this->Online),
+        'kids_played' => number_format($this->Kids_Played),
+        'games' => number_format($this->Games),
         ];
 
     }
