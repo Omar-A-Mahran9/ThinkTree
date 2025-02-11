@@ -15,10 +15,10 @@ class NumberResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'parents_experiment' => $this->Parents_experiment,
-            'training_hours' => number_format($this->Traning_houres), // Ensure numeric formatting
-            'our_heroes' => number_format($this->Our_heroes),
-            'heroes_rate' => $this->Heroes_rate,
+            'parents_experiment' => +$this->Parents_experiment,
+            'training_hours' => +$this->Traning_houres, // Ensure numeric formatting
+            'our_heroes' => +$this->Our_heroes,
+            'heroes_rate' => +$this->Heroes_rate,
         ];
 
     }
