@@ -18,7 +18,7 @@ class NumberResource extends JsonResource
             'parents_experiment' => $this->Parents_experiment,
             'training_hours' => number_format($this->Traning_houres), // Ensure numeric formatting
             'our_heroes' => number_format($this->Our_heroes),
-            'heroes_rate' => number_format($this->Heroes_rate),
+            'heroes_rate' => $this->Heroes_rate,
         ];
 
     }
