@@ -247,7 +247,7 @@
                             <!--end::Label-->
                             <!--begin::Select2-->
                             <select class="form-select form-select-solid product_name_comination_class"
-                                onchange="handleInputChange()" data-control="select2" name="child_id" id="child_id_inp"
+                                data-control="select2" name="child_id" id="child_id_inp"
                                 data-placeholder="{{ __('Choose the child') }}"
                                 data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
                                 <option value="" selected></option>
@@ -267,7 +267,7 @@
                             <!--end::Label-->
                             <!--begin::Select2-->
                             <select class="form-select form-select-solid product_name_comination_class"
-                                onchange="handleInputChange()" data-control="select2" name="rate" id="rate_inp"
+                                data-control="select2" name="rate" id="rate_inp"
                                 data-placeholder="{{ __('Choose a rate') }}"
                                 data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
                                 <option value="" selected>{{ __('Choose a rate') }}</option>
