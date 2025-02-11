@@ -57,7 +57,7 @@
                             <div class="fs-4  ">{{ $count_customerRate }}</div>
                         </div>
                         <!--end::Due-->
-                        
+
 
                     </div>
                     <!--end::Info-->
@@ -252,7 +252,7 @@
                                 data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
                                 <option value="" selected></option>
 
-                                @foreach ($customers as $customer)
+                                @foreach ($childes as $customer)
                                     <option value="{{ $customer->id }}"> {{ $customer->name }} </option>
                                 @endforeach
                             </select>

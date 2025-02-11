@@ -23,8 +23,8 @@ class customers_rates extends Model
         static::addGlobalScope(new SortingScope);
     }
 
-    public function customer()
+    public function child()
     {
-        return $this->belongsTo(Customer::class,'customer_id');
+        return $this->belongsTo(Chield::class,'child_id');
     }
 }
