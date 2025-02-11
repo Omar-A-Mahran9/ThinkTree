@@ -16,8 +16,8 @@ class RateResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "chield" => $this->customer && $this->customer->chields->isNotEmpty()
-            ? $this->customer->chields->map(function ($chield) {
+            "chield" => $this->child && $this->child->isNotEmpty()
+            ? $this->chields->map(function ($chield) {
                 return [
                     'name' => $chield->name,
                     'image' => $chield->full_image_path,

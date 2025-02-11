@@ -47,7 +47,7 @@ var KTDatatablesServerSide = (function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.customer.name}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.child.name}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
