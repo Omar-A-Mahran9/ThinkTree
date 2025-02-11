@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Resources\Api\AchievemntResource;
 use App\Http\Resources\Api\HeroesResource;
+use App\Http\Resources\Api\NumberResource;
 use App\Http\Resources\Api\OurlevelResources;
  use App\Http\Resources\Api\PackagesResources;
 
@@ -15,7 +16,8 @@ use App\Http\Resources\Api\whyusResources;
 use App\Models\customers_rates;
  use App\Models\Ourhero;
 use App\Models\Ourlevel;
- use App\Models\Packages;
+use App\Models\OurNumber;
+use App\Models\Packages;
 
 use App\Models\Whyus;
 use Illuminate\Http\Request;
@@ -46,7 +48,7 @@ class GeneralInvokableController extends Controller
         ->get();
 
         $rate = customers_rates::get();
-
+        $numbers=OurNumber::first();
 
             return $this->success('', [
 
@@ -54,9 +56,12 @@ class GeneralInvokableController extends Controller
                 'image'=> asset(getImagePathFromDirectory(setting('herosection_image'), 'Settings', "default.svg")),
                 'title' => setting('landing_page.main_section_title_' . request()->header('Content-language', 'ar')),
                 'description' => setting('landing_page.main_section_description_' . request()->header('Content-language', 'ar')),
-
                 ],
                 "ourheroes"=>HeroesResource::collection($ourheroes),
+                "numbers"=>new NumberResource($numbers),
+
+                "Achievement"=>new AchievemntResource($numbers),
+
                 "whythinktree"=>whyusResources::collection($whyus),
                 "Ourlevel"=>OurlevelResources::collection($levels),
                 "Packages"=>PackagesResources::collection($packages),

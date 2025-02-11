@@ -19,7 +19,7 @@
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
- 
+
     Route::get('general', 'GeneralInvokableController');
     Route::get('about_us', 'AboutusInvokableController');
     Route::get('meta_tags', 'metatagsInvokableController');
@@ -35,8 +35,9 @@
     Route::get('timeslot', 'dataController@timeslot');
     Route::get('footer', 'dataController@footer');
 
+    Route::get('numbers', 'dataController@footer');
+
+
     Route::post('/order/store/{step}', [OrderController::class, 'store'])->name('order.store');
 
-    Route::post('/order/{id}', [OrderController::class, 'update'])->name('order.update');
 
- 
