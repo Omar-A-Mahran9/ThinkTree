@@ -14,17 +14,14 @@ class RateResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        return[
             "id" => $this->id,
-            "chield" => $this->child && $this->child->isNotEmpty()
-            ? $this->chields->map(function ($chield) {
-                return [
-                    'name' => $chield->name,
-                    'image' => $chield->full_image_path,
-                    'age' => $chield->birthdate ? \Carbon\Carbon::parse($chield->birthdate)->age : null, // Calculate age if birthdate is provided
-                ];
-            })
-            : null, // Return null if no customer or no children
+            "chield" =>
+                [
+                    'name' => $this->child->name,
+                    'image' => $this->child->full_image_path,
+                    'age' => $this->child->birthdate ? \Carbon\Carbon::parse($this->child->birthdate)->age : null, // Calculate age if birthdate is provided
+                ],
             "comment" => $this->comment,
             "rate" => $this->rate,
 

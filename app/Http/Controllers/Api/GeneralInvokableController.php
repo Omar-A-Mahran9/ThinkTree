@@ -44,10 +44,8 @@ class GeneralInvokableController extends Controller
         ->orderBy('id', 'ASC') // Orders the results by the 'id' column in ascending order
         ->limit(3) // Limits the results to 3 rows
         ->get();
-        $rate = customers_rates::with(['child']) // Eager load customer and their chields
-        ->select('id', 'child_id', 'comment', 'rate', 'status')
-        ->where('status', 'approve')
-        ->get();
+
+        $rate = customers_rates::get();
 
 
             return $this->success('', [
