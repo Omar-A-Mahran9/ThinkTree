@@ -243,12 +243,12 @@
                     <div class="modal-body">
                         <div class="fv-row flex-row-fluid">
                             <!--begin::Label-->
-                            <label class="required form-label">{{ __('Customer') }}</label>
+                            <label class="required form-label">{{ __('Children list') }}</label>
                             <!--end::Label-->
                             <!--begin::Select2-->
                             <select class="form-select form-select-solid product_name_comination_class"
-                                onchange="handleInputChange()" data-control="select2" name="customer_id"
-                                id="categories_inp" data-placeholder="{{ __('Choose the customer') }}"
+                                onchange="handleInputChange()" data-control="select2" name="child_id" id="child_id_inp"
+                                data-placeholder="{{ __('Choose the child') }}"
                                 data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
                                 <option value="" selected></option>
 
@@ -257,7 +257,7 @@
                                 @endforeach
                             </select>
                             <!--end::Select2-->
-                            <div class="fv-plugins-message-container invalid-feedback" id="customer_id">
+                            <div class="fv-plugins-message-container invalid-feedback" id="child_id">
                             </div>
                         </div>
 
