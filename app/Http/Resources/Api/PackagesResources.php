@@ -29,7 +29,7 @@ class PackagesResources extends JsonResource
             'number_of_levels'=>$this->number_of_levels,
             'number_of_sessions'=>$this->number_of_sessions,
             'description' => $this->description,
-            'outcomes' => $this->features->map(function ($feature) {
+            'outcomes' => $this->outcomes->map(function ($feature) {
                 return [
                     'name' => $feature->name, // Assuming the `Feature` model has a `name` attribute
                     'full_image_path' => $feature->full_image_path, // Assuming `full_image_path` is an accessor in the `Feature` model
@@ -44,7 +44,7 @@ class PackagesResources extends JsonResource
 
 'groups' => $this->groups->filter(function ($group) {
     $today = Carbon::today(); // Get today's date
-    
+
     // Check if the group's day is today or in the future
     $isGroupFutureOrToday = Carbon::parse($group->day->date)->gt($today); // Greater than today
 
@@ -65,8 +65,8 @@ class PackagesResources extends JsonResource
         ],
     ];
 }),
-      
+
         ];
-        
+
         }
 }
