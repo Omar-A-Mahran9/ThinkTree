@@ -131,16 +131,16 @@ class OrderController extends Controller
             unset($data['phone']);
 
             // Create the order record
-            $order = Order::create($data);
+            // $order = Order::create($data);
             // Call Paymob to process payment
             $paydata = $this->paymob($data);
 
-            $handelpaymenturl = $this->handlePaymentRequest($paydata);
+            // $handelpaymenturl = $this->handlePaymentRequest($paydata);
 
             // Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
 
 
-            return $this->success($order, $handelpaymenturl);
+            // return $this->success($order, $handelpaymenturl);
         }
     }
 
