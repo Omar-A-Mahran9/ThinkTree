@@ -16,10 +16,12 @@ class TwoWords implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        // Ensure the name contains at least two words
-        if (str_word_count($value) < 2) {
-             $fail(__(":attribute") . ' ' . __('must contain at least a first name and a last name.'));
+        // Match words in both Arabic and English
+        preg_match_all('/\p{L}+/u', $value, $matches);
 
+        if (count($matches[0]) < 2) {
+            $fail(__(":attribute") . ' ' . __('must contain at least a first name and a last name.'));
         }
     }
+
 }
