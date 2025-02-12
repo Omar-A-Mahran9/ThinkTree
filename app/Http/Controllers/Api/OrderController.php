@@ -123,7 +123,7 @@ class OrderController extends Controller
                 $data['time_id'] = null;
                 $data['day_id'] = null;
             }
-            return $customer;
+            return json_decode($customer);
 
             $data['customer_id'] = $customer->id;
 
