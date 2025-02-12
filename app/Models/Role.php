@@ -31,22 +31,23 @@ class Role extends Model
         'skills',
         'vision',
         'orders',
-        
+
         'contact_us',
         'cities',
+        'numbers',
 
         'customers',
         'customersRate',
 
         'settings',
         'roles',
-      
+
          'home_content',
          'newsletter',
         'packages',
         'order',
-     
-   
+
+
     ];
 
     protected static function booted()

@@ -64,8 +64,9 @@ Route::get("days/restore-selected", "DaysController@restoreSelected");
  Route::resource('vision', 'VisionController')->except(['create', 'edit']);
 
  Route::resource('ourheroes', 'OurheroController')->except(['create', 'edit']);
- 
+
 Route::resource('cities', 'CityController')->except(['create', 'edit']);
+Route::resource('numbers', 'NumbersController')->except(['create', 'edit']);
 
 Route::resource('outcomes', 'OutcomeController')->except(['create', 'edit']);
 Route::resource('features', 'FeatureController')->except(['create', 'edit']);
@@ -103,7 +104,7 @@ Route::prefix('settings')->name('settings.')->group(function () {
 
     Route::resource('roles', 'RoleController');
     Route::get('role/{role}/admins', 'RoleController@admins');
- 
+
     Route::match(['get', 'post'], 'home-content/main', 'HomeController@index')->name('home-content');
     Route::match(['get', 'post'], 'home-content/about-us', 'HomeController@aboutUs')->name('home.about-us');
     Route::match(['get', 'post'], 'home-content/terms', 'HomeController@terms')->name('home.terms');
@@ -111,9 +112,9 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::match(['get', 'post'], 'home-content/return-policy', 'HomeController@returnPolicy')->name('home.return-policy');
     Route::match(['get', 'post'], 'home-content/loyality', 'HomeController@loyality')->name('home.loyality');
 
- 
 
- 
+
+
 });
 
 Route::get('trash/{modelName}/{id}/restore', 'TrashController@restore')->name('trash.restore');

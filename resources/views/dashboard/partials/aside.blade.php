@@ -104,6 +104,14 @@
                 @endcan
                 <!--end:Menu item-->
 
+                <!--begin:Menu item-->
+                @can('view_numbers')
+                    <x-dashboard.aside-item :slug="'numbers'" :route="route('dashboard.numbers.index')" :title="__('Numbers')">
+                        <i class="ki-outline ki-abstract-19 fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+                <!--end:Menu item-->
+
 
 
 
