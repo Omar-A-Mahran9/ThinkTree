@@ -147,78 +147,9 @@ class OrderController extends Controller
 
     private function paymob($data)
     {
-        try {
-            $client = new Client();
+        return  $data;
 
-            // Get API token from config
-            $authToken = "egy_sk_test_564c7d7f1c4c530d038a10927e1955cef9f2f4e6430747f9b780d936119ff4cb";
-
-            // Validate required data
-            $package = Packages::findOrFail($data['package_id']);
-            $customer = Customer::findOrFail($data['customer_id']);
-            $headers = [
-               'Authorization' => 'Token ' . $authToken, // Correct format
-               'Content-Type'  => 'application/json',
-            ];
-            return  $customer->last_name;
-
-            // Replace "you can add Integration id..." with actual Integration ID from Paymob
-            $paymentMethods =  [4935783,4935866,4935867,4937863];
-
-            $body = [
-                "amount" => (int) $package->FinalPrice * 100, // Convert to cents
-                "currency" => "EGP",
-                "payment_methods" => $paymentMethods,
-                "items" => [
-                    [
-                        "name" => $package->name,
-                        "image" => $package->getFullImagePathAttribute(),
-
-                        "amount" => (int) $package->FinalPrice * 100, // Convert to cents
-                        "description" => $package->description,
-                        "quantity" => 1,
-                    ],
-                ],
-                "billing_data" => [  // Fixed here: using => instead of :
-                    "apartment" => "sympl",
-                    "first_name" => $customer->first_name,
-                    "last_name" => $customer->last_name,
-                    "street" => "dumy",
-                    "building" => "dumy",
-                    "phone_number" => $customer->phone,
-                    "city" => "dumy",
-                    "country" => "EG",
-                    "email" => $customer->email,
-                    "floor" => "dumy",
-                    "state" => "dumy"
-                ],
-                "customer" => [
-                    "first_name" => $customer->first_name,
-                    "last_name" => $customer->last_name,
-                    "email" => $customer->email,
-                    "phone" => ["number" => $customer->phone],
-                ],
-            ];
-
-            // Send the request
-            $response = $client->post('https://accept.paymob.com/v1/intention/', [
-                'headers' => $headers,
-                'json'    => $body, // Use `json` instead of `json_encode($body)`
-            ]);
-
-            // Decode response
-            $responseData = json_decode($response->getBody(), true);
-            return response()->json($responseData);
-        } catch (RequestException $e) {
-            // Handle API errors
-            return response()->json([
-                'error' => $e->getMessage(),
-                'response' => $e->hasResponse() ? json_decode($e->getResponse()->getBody(), true) : null,
-            ], 400);
-
-            return response()->json($responseData);
-
-        }
+    
     }
 
     public function handlePaymentRequest($request)
