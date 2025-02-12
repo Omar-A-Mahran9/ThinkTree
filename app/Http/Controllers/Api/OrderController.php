@@ -134,7 +134,8 @@ class OrderController extends Controller
             $order = Order::create($data);
             // Call Paymob to process payment
             $paydata = $this->paymob($data);
-            dd($paydata);
+            return  $paydata;
+
             $handelpaymenturl = $this->handlePaymentRequest($paydata);
 
             // Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
