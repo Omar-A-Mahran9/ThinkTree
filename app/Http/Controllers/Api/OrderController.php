@@ -149,24 +149,24 @@ class OrderController extends Controller
     {
         return  $data;
 
-    
+
     }
 
-    public function handlePaymentRequest($request)
-    {
-        // Step 1: Get the data from Paymob (assuming you've already obtained it)
-        $responseData = json_decode($request->content(), true);
+    // public function handlePaymentRequest($request)
+    // {
+    //     // Step 1: Get the data from Paymob (assuming you've already obtained it)
+    //     $responseData = json_decode($request->content(), true);
 
-        // Correctly access the order ID from payment_keys
-        $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
+    //     // Correctly access the order ID from payment_keys
+    //     $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
 
-        // Step 3: Inject the public key and client secret into the URL
-        $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
-        $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
+    //     // Step 3: Inject the public key and client secret into the URL
+    //     $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
+    //     $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
 
-        // Step 4: Return the URL
-        return   $paymobUrl ;
-    }
+    //     // Step 4: Return the URL
+    //     return   $paymobUrl ;
+    // }
 
 
 
