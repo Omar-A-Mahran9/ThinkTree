@@ -123,7 +123,6 @@ class OrderController extends Controller
                 $data['time_id'] = null;
                 $data['day_id'] = null;
             }
-            return json_decode($customer);
 
             $data['customer_id'] = $customer->id;
 
@@ -180,14 +179,14 @@ class OrderController extends Controller
                 ],
                 "billing_data" => [  // Fixed here: using => instead of :
                     "apartment" => "sympl",
-                    "first_name" => $customer->first_name,
-                    "last_name" => $customer->last_name,
+                    "first_name" => $customer->first_name??"first",
+                    "last_name" => $customer->last_name??"last",
                     "street" => "dumy",
                     "building" => "dumy",
-                    "phone_number" => $customer->phone,
+                    "phone_number" => $customer->phone??"010",
                     "city" => "dumy",
                     "country" => "EG",
-                    "email" => $customer->email,
+                    "email" => $customer->email??"emal@gmail.com",
                     "floor" => "dumy",
                     "state" => "dumy"
                 ],
