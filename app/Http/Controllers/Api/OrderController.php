@@ -155,6 +155,7 @@ class OrderController extends Controller
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
             $customer = Customer::findOrFail($data['customer_id']);
+            return $customer;
             $headers = [
                'Authorization' => 'Token ' . $authToken, // Correct format
                'Content-Type'  => 'application/json',
@@ -179,8 +180,8 @@ class OrderController extends Controller
                 ],
                 "billing_data" => [  // Fixed here: using => instead of :
                     "apartment" => "sympl",
-                    "first_name" => $customer->first_name??'first_name',
-                    "last_name" => $customer->last_nam??'last_name',
+                    "first_name" => $customer->first_name,
+                    "last_name" => $customer->last_name,
                     "street" => "dumy",
                     "building" => "dumy",
                     "phone_number" => $customer->phone,
