@@ -16,10 +16,10 @@ class OrderRequest extends FormRequest
     public function authorize()
     {
         return true;
- 
+
     }
 
- 
+
  public function rules(): array
 {
     $currentStep = request()->route('step');
@@ -27,7 +27,8 @@ class OrderRequest extends FormRequest
     // Define validation rules for each step
     $stepsRules = [
         1 => [
-            "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
+            "name" => ['required', 'string', 'max:255', new NotNumbersOnly(),'regex:/^\S+\s+\S+/' // Ensures at least two words
+        ],
             "email" => ['nullable', 'email'],
             "child_name" => ['required', 'string', 'max:255'],
             "phone" => [
