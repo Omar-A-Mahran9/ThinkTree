@@ -147,7 +147,7 @@ class OrderController extends Controller
 
     private function paymob($data)
     {
-        return  $data;
+        return $this->success($data);
 
 
     }
