@@ -123,6 +123,7 @@ class OrderController extends Controller
                 $data['time_id'] = null;
                 $data['day_id'] = null;
             }
+            return $customer;
 
             $data['customer_id'] = $customer->id;
 
@@ -155,7 +156,6 @@ class OrderController extends Controller
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
             $customer = Customer::findOrFail($data['customer_id']);
-            return $customer;
             $headers = [
                'Authorization' => 'Token ' . $authToken, // Correct format
                'Content-Type'  => 'application/json',
