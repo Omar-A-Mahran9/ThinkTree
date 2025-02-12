@@ -45,7 +45,7 @@
                 <div class="d-flex justify-content-end" id="add_btn" data-bs-toggle="modal" data-bs-target="#crud_modal"
                     data-kt-docs-table-toolbar="base">
                     <!--begin::Add customer-->
-                    {{--  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip"
+                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip"
                         data-bs-original-title="Coming Soon" data-kt-initialized="1">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -57,7 +57,7 @@
                                     fill="currentColor"></rect>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->{{ __('Add customer') }}</button>  --}}
+                        <!--end::Svg Icon-->{{ __('Add client') }}</button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
@@ -134,15 +134,17 @@
                         <div class="fv-row mb-0 fv-plugins-icon-container">
                             <label for="birthdate_inp"
                                 class="form-label required fs-6 fw-bold mb-3">{{ __('Select Birth Date') }}</label>
-                            <input type="date" name="birthdate" class="form-control form-control-lg form-control-solid"
-                                id="birthdate_inp" placeholder="{{ __('Select Birth Date') }}">
+                            <input type="date" name="birthdate"
+                                class="form-control form-control-lg form-control-solid" id="birthdate_inp"
+                                placeholder="{{ __('Select Birth Date') }}">
                             <div class="fv-plugins-message-container invalid-feedback" id="birthdate"></div>
                         </div>
 
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                        <button type="button" class="btn btn-light"
+                            data-bs-dismiss="modal">{{ __('Close') }}</button>
                         <button type="submit" class="btn btn-primary">
                             <span class="indicator-label">
                                 {{ __('Save') }}

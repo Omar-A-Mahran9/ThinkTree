@@ -161,7 +161,7 @@ class OrderController extends Controller
             ];
 
             // Replace "you can add Integration id..." with actual Integration ID from Paymob
-            $paymentMethods =  [4935783,4935866,4935867,4937863];
+            $paymentMethods =  [4937231,4934302,4934301,4934250,4934249,4933863,4933864];
 
             $body = [
                 "amount" => (int) $package->FinalPrice * 100, // Convert to cents
