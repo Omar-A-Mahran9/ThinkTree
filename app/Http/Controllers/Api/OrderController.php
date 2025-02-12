@@ -131,42 +131,109 @@ class OrderController extends Controller
             unset($data['phone']);
 
             // Create the order record
-            // $order = Order::create($data);
+            $order = Order::create($data);
             // Call Paymob to process payment
             $paydata = $this->paymob($data);
-
-            // $handelpaymenturl = $this->handlePaymentRequest($paydata);
+            $handelpaymenturl = $this->handlePaymentRequest($paydata);
 
             // Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
 
 
-            // return $this->success($order, $handelpaymenturl);
+            return $this->success($order, $handelpaymenturl);
         }
     }
 
 
     private function paymob($data)
     {
-        return $this->success($data);
+        try {
+            $client = new Client();
 
+            // Get API token from config
+            $authToken = "egy_sk_test_564c7d7f1c4c530d038a10927e1955cef9f2f4e6430747f9b780d936119ff4cb";
 
+            // Validate required data
+            $package = Packages::findOrFail($data['package_id']);
+            $customer = Customer::findOrFail($data['customer_id']);
+            $headers = [
+               'Authorization' => 'Token ' . $authToken, // Correct format
+               'Content-Type'  => 'application/json',
+            ];
+
+            // Replace "you can add Integration id..." with actual Integration ID from Paymob
+            $paymentMethods =  [4935783,4935866,4935867,4937863];
+
+            $body = [
+                "amount" => (int) $package->FinalPrice * 100, // Convert to cents
+                "currency" => "EGP",
+                "payment_methods" => $paymentMethods,
+                "items" => [
+                    [
+                        "name" => $package->name,
+                        "image" => $package->getFullImagePathAttribute(),
+
+                        "amount" => (int) $package->FinalPrice * 100, // Convert to cents
+                        "description" => $package->description,
+                        "quantity" => 1,
+                    ],
+                ],
+                "billing_data" => [  // Fixed here: using => instead of :
+                    "apartment" => "sympl",
+                    "first_name" => $customer->first_name??'first_name',
+                    "last_name" => $customer->last_nam??'last_name',
+                    "street" => "dumy",
+                    "building" => "dumy",
+                    "phone_number" => $customer->phone,
+                    "city" => "dumy",
+                    "country" => "EG",
+                    "email" => $customer->email,
+                    "floor" => "dumy",
+                    "state" => "dumy"
+                ],
+                "customer" => [
+                    "first_name" => $customer->first_name,
+                    "last_name" => $customer->last_name,
+                    "email" => $customer->email,
+                    "phone" => ["number" => $customer->phone],
+                ],
+            ];
+
+            // Send the request
+            $response = $client->post('https://accept.paymob.com/v1/intention/', [
+                'headers' => $headers,
+                'json'    => $body, // Use `json` instead of `json_encode($body)`
+            ]);
+
+            // Decode response
+            $responseData = json_decode($response->getBody(), true);
+            return response()->json($responseData);
+        } catch (RequestException $e) {
+            // Handle API errors
+            return response()->json([
+                'error' => $e->getMessage(),
+                'response' => $e->hasResponse() ? json_decode($e->getResponse()->getBody(), true) : null,
+            ], 400);
+
+            return response()->json($responseData);
+
+        }
     }
 
-    // public function handlePaymentRequest($request)
-    // {
-    //     // Step 1: Get the data from Paymob (assuming you've already obtained it)
-    //     $responseData = json_decode($request->content(), true);
+    public function handlePaymentRequest($request)
+    {
+        // Step 1: Get the data from Paymob (assuming you've already obtained it)
+        $responseData = json_decode($request->content(), true);
 
-    //     // Correctly access the order ID from payment_keys
-    //     $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
+        // Correctly access the order ID from payment_keys
+        $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
 
-    //     // Step 3: Inject the public key and client secret into the URL
-    //     $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
-    //     $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
+        // Step 3: Inject the public key and client secret into the URL
+        $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
+        $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
 
-    //     // Step 4: Return the URL
-    //     return   $paymobUrl ;
-    // }
+        // Step 4: Return the URL
+        return   $paymobUrl ;
+    }
 
 
 
