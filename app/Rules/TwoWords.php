@@ -18,7 +18,8 @@ class TwoWords implements ValidationRule
     {
         // Ensure the name contains at least two words
         if (str_word_count($value) < 2) {
-            $fail("The {$attribute} must contain at least a first name and a last name.");
+             $fail(__(":attribute") . ' ' . __('must contain at least a first name and a last name.'));
+
         }
     }
 }

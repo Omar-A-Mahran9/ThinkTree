@@ -439,8 +439,8 @@
     "Add new child trip": "اضافة رحلة الطفل",
     "Child Trip list": "قائمة رحلات الأطفال",
     "Search for Child Trip": "البحث في رحلة الطفل",
- 
-      "Hello": "مرحباً",
+
+    "Hello": "مرحباً",
     "Enter your address": "ادخل العنوان",
     "Arabic Address": "العنوان بالعربية",
     "English Address": "العنوان بالانجليزية",
@@ -512,6 +512,8 @@
     "Employees belong to this role": "الموظفين التابعين لهذه الصلاحية",
     "There are no employees for this role!": "لا يوجد موظفين لهذه الصلاحية !",
     "This city does not have the fast shipping option": "هذه المدينة لا يتوفر بها شحن سريع",
+    "must contain at least a first name and a last name.": "الاسم يجب ان يحتوي على الاسم الثنائي على الأقل",
+
     "Fast Shipped products": "منتجات الشحن السريع",
     "Product name": "اسم المنتج",
     "Vendor name": "اسم التاجر",
