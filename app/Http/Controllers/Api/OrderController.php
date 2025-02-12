@@ -134,7 +134,6 @@ class OrderController extends Controller
             $order = Order::create($data);
             // Call Paymob to process payment
             $paydata = $this->paymob($data);
-            return  $paydata;
 
             $handelpaymenturl = $this->handlePaymentRequest($paydata);
 
@@ -161,6 +160,7 @@ class OrderController extends Controller
                'Authorization' => 'Token ' . $authToken, // Correct format
                'Content-Type'  => 'application/json',
             ];
+            return  $customer->last_name;
 
             // Replace "you can add Integration id..." with actual Integration ID from Paymob
             $paymentMethods =  [4935783,4935866,4935867,4937863];
