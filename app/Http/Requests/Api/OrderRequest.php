@@ -4,8 +4,7 @@ namespace App\Http\Requests\Api;
 
  use App\Rules\PhoneNumber;
 use App\Rules\NotNumbersOnly;
-
-
+use App\Rules\TwoWords;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderRequest extends FormRequest
@@ -27,7 +26,7 @@ class OrderRequest extends FormRequest
     // Define validation rules for each step
     $stepsRules = [
         1 => [
-            "name" => ['required', 'string', 'max:255', new NotNumbersOnly(),'regex:/^\S+\s+\S+/' // Ensures at least two words
+            "name" => ['required', 'string', 'max:255', new NotNumbersOnly(), new TwoWords() // Ensures at least two words
         ],
             "email" => ['nullable', 'email'],
             "child_name" => ['required', 'string', 'max:255'],
