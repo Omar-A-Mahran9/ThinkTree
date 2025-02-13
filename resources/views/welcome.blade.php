@@ -1,12 +1,13 @@
 @extends('dashboard.partials.master')
 @section('content')
     <img src="{{ asset(getImagePathFromDirectory(setting('logo'), 'Settings', 'default.svg')) }}" alt="Watermark"
-        style="position: absolute; 
-top: 50%; 
-left: 50%; 
-transform: translate(-50%, -50%); 
-opacity: 0.4; 
-z-index: -1; 
+        style="position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+opacity: 0.4;
+width: 10%;
+z-index: -1;
 pointer-events: none;" />
     <!--begin::Content-->
     <div id="kt_app_content" class="flex-column-fluid">
