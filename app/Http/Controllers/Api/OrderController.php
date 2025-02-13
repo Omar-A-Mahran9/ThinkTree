@@ -225,7 +225,7 @@ class OrderController extends Controller
         $responseData = json_decode($request->content(), true);
 
         // Correctly access the order ID from payment_keys
-        $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
+        $clientSecret = $responseData['client_secret']??'';  // Access the first element of 'payment_keys' and get 'key'
 
         // Step 3: Inject the public key and client secret into the URL
         $publicKey = env("PAYMOB_PUBLIC_KEY");
