@@ -37,6 +37,7 @@
 
     Route::get('numbers', 'dataController@footer');
 
+    Route::post('order/{id}', 'OrderController@update');
 
     Route::post('/order/store/{step}', [OrderController::class, 'store'])->name('order.store');
 

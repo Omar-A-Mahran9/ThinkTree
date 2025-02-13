@@ -31,7 +31,6 @@ class OrderController extends Controller
 
         // Check if the order exists
         if ($order) {
-            // Update the Payment_statue
             $order->Payment_statue = 'Paid';
 
             // Save the changes to the database
