@@ -150,7 +150,7 @@ class OrderController extends Controller
             $client = new Client();
 
             // Get API token from config
-            $authToken = "egy_sk_test_564c7d7f1c4c530d038a10927e1955cef9f2f4e6430747f9b780d936119ff4cb";
+            $authToken = "";
 
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
@@ -228,7 +228,7 @@ class OrderController extends Controller
         $clientSecret = $responseData['client_secret'];  // Access the first element of 'payment_keys' and get 'key'
 
         // Step 3: Inject the public key and client secret into the URL
-        $publicKey = 'egy_pk_test_KC7oMHvRj6a9YDXGnOshbP3GVnoF2zey';  // Replace with your actual public key
+        $publicKey = '';  // Replace with your actual public key
         $paymobUrl = "https://accept.paymob.com/unifiedcheckout/?publicKey={$publicKey}&clientSecret={$clientSecret}";
 
         // Step 4: Return the URL
