@@ -43,7 +43,8 @@ class OrderController extends Controller
     }
 
     public function store(OrderRequest $request, $step = null)
-    {
+    {          
+
         $data = $request->validated();
         if ($step == 1) {
             // Split name into first and last names
@@ -151,7 +152,7 @@ class OrderController extends Controller
 
             // Get API token from config
             $authToken = env("PAYMOB_SECRET_KEY");
-
+dd(  $authToken);
             // Validate required data
             $package = Packages::findOrFail($data['package_id']);
             $customer = Customer::findOrFail($data['customer_id']);
