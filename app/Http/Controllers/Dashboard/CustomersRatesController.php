@@ -84,11 +84,12 @@ class CustomersRatesController extends Controller
 
 
 
-    public function destroy(customers_rates $customers_rates)
+    public function destroy( $customers_rates)
     {
+         $customrRate=customers_rates::find($customers_rates);
         $this->authorize('delete_customersRate');
 
-        $customers_rates->delete();
+        $customrRate->delete();
         return response(["customers_rates deleted successfully"]);
     }
 }
