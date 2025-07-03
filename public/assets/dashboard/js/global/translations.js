@@ -10,7 +10,7 @@ let translations = {
         "Add new level": "اضافة مستوى جديد",
         "Add new hero": "إضافة بطل جديد",
         "Add new currency": "إضافة عملة",
-
+        "Edit currency": "تعديل العملة",
         "Add new Feature": "أضف ميزة جديدة",
         "Please wait...": "يرجى الانتظار...",
         "Are you sure from deleting this ": "هل انت متاكد من حذف  ",
