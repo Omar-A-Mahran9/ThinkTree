@@ -67,6 +67,7 @@ Route::get("days/restore-selected", "DaysController@restoreSelected");
 
 Route::resource('cities', 'CityController')->except(['create', 'edit']);
 Route::resource('numbers', 'NumbersController')->except(['create', 'edit']);
+Route::resource('currencies', 'CurrencyController')->except(['create', 'edit']);
 
 Route::resource('outcomes', 'OutcomeController')->except(['create', 'edit']);
 Route::resource('features', 'FeatureController')->except(['create', 'edit']);

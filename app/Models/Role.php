@@ -27,6 +27,7 @@ class Role extends Model
         'children_trip',
         'ourheroes',
         'tags',
+        'currency',
 
         'skills',
         'vision',

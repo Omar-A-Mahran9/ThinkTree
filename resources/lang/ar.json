@@ -685,11 +685,17 @@
     "Lessons": "الدروس",
     "Puzzles": "الألغاز",
     "Stars": "النجوم",
+    "currencies count": "عدد العملات",
+    "currencies list": "قائمة العملات",
+    "Search for currencies": "البحث عن العملات",
+    "Add currency": "إضافة عملة",
+    "Add new currency": "إضافة عملة",
+
     "Online": "عبر الإنترنت",
     "Kids Played": "الأطفال الذين لعبوا",
     "Games": "الألعاب",
     "Children trip": "رحلة الطفل",
-    "Order": "المستخدم",
+    "currencies": "العملات",
 
     "User": "المستخدم",
     "View All": "مشاهدة الجميع",

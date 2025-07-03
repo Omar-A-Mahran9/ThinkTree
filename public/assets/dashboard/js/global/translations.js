@@ -9,6 +9,7 @@ let translations = {
         "Add new why us": "اضافة من نحن جديد",
         "Add new level": "اضافة مستوى جديد",
         "Add new hero": "إضافة بطل جديد",
+        "Add new currency": "إضافة عملة",
 
         "Add new Feature": "أضف ميزة جديدة",
         "Please wait...": "يرجى الانتظار...",

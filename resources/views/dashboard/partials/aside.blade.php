@@ -103,7 +103,11 @@
                     </x-dashboard.aside-item>
                 @endcan
                 <!--end:Menu item-->
-
+                @can('view_currency')
+                    <x-dashboard.aside-item :slug="'currency'" :route="route('dashboard.currencies.index')" :title="__('currencies')">
+                        <i class="ki-outline ki-dollar fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
                 <!--begin:Menu item-->
                 @can('view_numbers')
                     <x-dashboard.aside-item :slug="'numbers'" :route="route('dashboard.numbers.index')" :title="__('Numbers')">
