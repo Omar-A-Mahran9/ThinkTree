@@ -25,6 +25,8 @@ class CurrencyController extends Controller
     public function store(StoreCurrencyRequest $request)
     {
         $data = $request->validated();
+        
+        if($request->hasFile('image'))
         $data['image'] = uploadImageToDirectory($request->file('image'), "currency");
 
         Currency::create($data);
