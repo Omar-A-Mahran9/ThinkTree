@@ -212,6 +212,8 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
+                $("#currency_id_inp").val(data.currency_id).trigger("change");
+
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
                 $("#description_ar_inp").val(data.description_ar);
