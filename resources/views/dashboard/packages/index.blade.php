@@ -237,7 +237,7 @@
                         <!-- begin :: Row -->
                         <div class="row mb-10">
                             <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
+                            <div class="col-md-4 fv-row">
 
                                 <label class="fs-5 fw-bold mb-2">{{ __('Price') }}</label>
                                 <div class="form-floating">
@@ -252,7 +252,7 @@
                             <!-- end   :: Column -->
 
                             <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
+                            <div class="col-md-4 fv-row">
 
                                 <div class="form-check form-switch form-check-custom form-check-solid mb-2">
                                     <label class="fs-5 fw-bold">{{ __('Discount price') }}</label>
@@ -278,6 +278,21 @@
 
                             </div>
                             <!-- end   :: Column -->
+
+                            <div class="col-md-4 fv-row">
+                                <label for="currency_id_inp"
+                                    class="form-label required fs-6 fw-bold mb-3">{{ __('Currency') }}</label>
+                                <select class="form-select" data-control="select2" id="currency_id_inp"
+                                    name="currency_id" data-placeholder="{{ __('Choose currency') }}"
+                                    data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                    <option value="" disabled selected>{{ __('Choose currency') }}</option>
+                                    @foreach ($currencies as $currency)
+                                        <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="fv-plugins-message-container invalid-feedback" id="currency_id"></div>
+                            </div>
+
                         </div>
 
                         <div class="row mb-10">

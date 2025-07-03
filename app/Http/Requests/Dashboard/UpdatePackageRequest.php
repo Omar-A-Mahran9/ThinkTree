@@ -24,48 +24,49 @@ class UpdatePackageRequest extends FormRequest
      */
     public function rules()
     {
- 
+
         return [
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg', // Image is optional for updates
-            
+
             "name_ar" => [
-                "required", 
-                "string", 
-                "max:255", 
+                "required",
+                "string",
+                "max:255",
                  new NotNumbersOnly()
             ],
             "name_en" => [
-                "required", 
-                "string", 
-                "max:255", 
+                "required",
+                "string",
+                "max:255",
                  new NotNumbersOnly()
             ],
-            
+
             "description_ar" => ["required", "string" ],
             "description_en" => ["required", "string" ],
-            
+
             "features" => ["required", "array", "min:1"],
             "features.*" => ["integer", "exists:features,id"],
-    
+
             "outcomes" => ["required", "array", "min:1"],
             "outcomes.*" => ["integer", "exists:outcomes,id"],
-    
+                "currency_id" => ["required"],
+
                      // Validate features as an array and each item in the array should be a valid integer (assuming feature IDs are integers)
                      "groups" => ["required", "array", "min:1"],
                      "groups.*" => ["integer", "exists:groups,id"], // Assuming 'features' table with 'id' column
-    
+
 
             "price" => ["required", "numeric", "min:0"],
             "have_discount" => ["required", "boolean"],
             "discount_price" => ["nullable", "numeric", "min:0", "required_if:have_discount,1"],
-       
+
             "price_per_session" => ["required", "numeric", "min:0"],
-            
+
             "duration_monthly" => ["required", "integer", "min:1"],
             "number_of_session_per_week" => ["required", "integer", "min:1"],
             "number_of_levels" => ["required", "integer", "min:1"],
             "number_of_sessions" => ["required", "integer", "min:1"],
-            
+
             'available' => 'required|boolean',
             'featured' => 'boolean',
         ];

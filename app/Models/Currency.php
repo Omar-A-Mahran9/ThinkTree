@@ -32,6 +32,6 @@ class Currency extends Model
 
     public function getFullImagePathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->image, 'city', "default.svg"));
+        return asset(getImagePathFromDirectory($this->image, 'currencies', "default.svg"));
     }
 }

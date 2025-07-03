@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StorePackageRequest;
 use App\Http\Requests\Dashboard\UpdatePackageRequest;
+use App\Models\Currency;
 use App\Models\Feature;
 use App\Models\Group;
 use App\Models\Outcome;
@@ -22,12 +23,13 @@ class PackagesController extends Controller
         $features    = Feature::select('id', 'name_ar', 'name_en','image')->get();
         $outcomes    = Outcome::select('id', 'name_ar', 'name_en','image')->get();
         $groups    = Group::select('id', 'name_ar', 'name_en')->get();
+    $currencies = Currency::all(); // <-- add this
 
         if ($request->ajax()){
             return response(getModelData(model: new Packages(), relations: ['features' => ['id', 'name_ar', 'name_en','created_at'],'outcomes' => ['id', 'name_ar', 'name_en','created_at'],'groups' => ['id', 'name_ar', 'name_en','created_at']]));
         }
         else
-            return view('dashboard.packages.index',compact('features','outcomes','groups'));
+            return view('dashboard.packages.index',compact('features','outcomes','groups','currencies'));
     }
 
     /**
@@ -45,9 +47,9 @@ class PackagesController extends Controller
     {
         // Validate and retrieve validated data
         $validatedData = $request->validated();
-        $validatedData['image'] = uploadImageToDirectory($request->file('image'), "Packages"); 
+        $validatedData['image'] = uploadImageToDirectory($request->file('image'), "Packages");
 
-        
+
         // Extract specific fields
         $features = $validatedData['features'];
         $outcomes = $validatedData['outcomes'];
@@ -55,10 +57,10 @@ class PackagesController extends Controller
 
         // Remove features and outcomes from the main data
         unset($validatedData['features'], $validatedData['outcomes'], $validatedData['groups']);
-    
+
         // Create a new package using the remaining validated data
         $package = Packages::create($validatedData);
-    
+
         // Attach features and outcomes to the package
         $package->features()->sync($features);
         $package->outcomes()->sync($outcomes);
@@ -69,7 +71,7 @@ class PackagesController extends Controller
 
     }
 
- 
+
 /**
  * Update the specified resource in storage.
  */
@@ -137,5 +139,5 @@ public function destroy($id)
     return response(["Package deleted successfully"], 200);
 }
 
-        
+
 }
