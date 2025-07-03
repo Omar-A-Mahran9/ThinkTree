@@ -22,6 +22,8 @@ class PackagesResources extends JsonResource
             'name' => $this->name,
             'featured'=>$this->featured,
             'price'=>$this->FinalPrice,
+            'currency'=>$this->currency->name,
+
             'old_price'=>$this->have_discount==1?$this->price:null,
             'price_per_session'=>$this->price_per_session,
             'duration_monthelly'=>$this->duration_monthly,

@@ -25,6 +25,7 @@ class Currency extends Model
     {
         static::addGlobalScope(new SortingScope);
     }
+
     public function getNameAttribute()
     {
         return $this->attributes['name_' . app()->getLocale()];

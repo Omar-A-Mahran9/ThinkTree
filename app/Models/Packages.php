@@ -33,8 +33,8 @@ class Packages extends Model
     {
         return $this->belongsToMany(Group::class, 'package_group', 'package_id', 'group_id');
     }
-   
-    
+
+
 
     public function outcomes()
     {
@@ -54,4 +54,12 @@ class Packages extends Model
 
         return $this->price;
     }
+
+    // app/Models/Package.php
+
+public function currency()
+{
+    return $this->belongsTo(Currency::class);
+}
+
 }
